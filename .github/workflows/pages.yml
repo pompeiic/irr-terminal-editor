@@ -1,0 +1,37 @@
+name: Deploy to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  # Same self-heal as the item editor: a deploy only fires on push or dispatch, so retry on a timer in
+  # case GitHub's Pages queue wedges. Remove once deploys are stable.
+  schedule:
+    - cron: "5,20,35,50 * * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# An Unreal sync uploads one commit per terminal file; cancel superseded runs so deploys don't queue up.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@v5
+        with:
+          timeout: 3300000

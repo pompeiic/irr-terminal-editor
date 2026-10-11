@@ -1,0 +1,46 @@
+name: Validate JSON
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate terminal JSON files
+        run: |
+          node - <<'EOF'
+          const fs = require("fs");
+          const files = ["Schema.json", "Workflow.json"].filter(f => fs.existsSync(f));
+          if (fs.existsSync("Terminals")) files.push(...fs.readdirSync("Terminals").filter(f => f.endsWith(".json")).map(f => "Terminals/" + f));
+          const checkClasses = (v, where) => {
+            if (Array.isArray(v)) return v.forEach((x, i) => checkClasses(x, `${where}[${i}]`));
+            if (v && typeof v === "object") {
+              if ("$class" in v && typeof v.$class !== "string") throw new Error(`${where}: $class is not a string`);
+              if ("$text" in v && typeof v.$text !== "string") throw new Error(`${where}: $text is not a string`);
+              for (const [k, x] of Object.entries(v)) checkClasses(x, `${where}.${k}`);
+            }
+          };
+          let failed = false;
+          for (const file of files) {
+            try {
+              const doc = JSON.parse(fs.readFileSync(file, "utf8"));
+              if (file.startsWith("Terminals/")) {
+                if (!doc.data || typeof doc.data !== "object") throw new Error("missing data object");
+                if (typeof doc.name !== "string" || !/^[A-Za-z_][A-Za-z0-9_]*$/.test(doc.name)) throw new Error("bad asset name");
+                if (file !== `Terminals/${doc.name}.json`) throw new Error(`file name does not match name "${doc.name}"`);
+                if (typeof doc.asset !== "string" || typeof doc.sourceHash !== "string") throw new Error("missing asset/sourceHash");
+                checkClasses(doc.data, "data");
+              }
+              if (file === "Workflow.json" && !Array.isArray(doc.log)) throw new Error("missing log array");
+              console.log(`OK ${file}`);
+            } catch (e) {
+              console.error(`FAIL ${file}: ${e.message}`);
+              failed = true;
+            }
+          }
+          process.exit(failed ? 1 : 0);
+          EOF
