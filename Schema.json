@@ -908,7 +908,9 @@
 				"OnSuccessSequences": [],
 				"OnFailureSequences": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": []
 					}
 				],
 				"RequiredUserTag": ""
@@ -2828,16 +2830,23 @@
 					"CommandTag": "",
 					"Argument":
 					{
-						"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Login"
+						"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Login",
+						"bPredictable": false,
+						"OnSuccessSequences": [],
+						"OnFailureSequences": []
 					},
 					"OnSuccessSequences": [
 						{
-							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+							"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+							"Events": []
 						}
 					],
 					"OnFailSequences": [
 						{
-							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+							"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+							"Events": []
 						}
 					]
 				}
