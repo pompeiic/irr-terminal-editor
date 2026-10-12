@@ -3,7 +3,7 @@
 	"schemaHardVersion": 1,
 	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_VLF.DA_Terminal_VLF",
 	"name": "DA_Terminal_VLF",
-	"sourceHash": "ab0c4428b615030900b0a03e99c9f290",
+	"sourceHash": "79a50f4d4117dcd2ef7ffbc4d82d2341",
 	"data":
 	{
 		"VersionInfo":
@@ -27,7 +27,9 @@
 		"BootSequences": [],
 		"ErrorSequence":
 		{
-			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+			"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+			"Events": []
 		},
 		"CharacterDelay": 0.0050000000000000001,
 		"ResponseDelay": 0.5,
@@ -65,10 +67,42 @@
 				"Requirements": [],
 				"Files": [
 					{
-						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Readme.txt",
+						"bAutoHack": false,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": []
+									}
+								]
+							}
+						}
 					},
 					{
-						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Users.txt",
+						"bAutoHack": false,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": []
+									}
+								]
+							}
+						}
 					}
 				]
 			},
@@ -77,15 +111,159 @@
 				"DirectoryName": "Documents",
 				"Requirements": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [
+							{
+								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+								"Events": []
+							}
+						],
+						"RequiredUserTag": "Mission.Terminal.Users.Admin"
 					}
 				],
 				"Files": [
 					{
-						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "VLF_MemberData.zip",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Scan":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": []
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Scanned",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "VLF_MemberData.zip"
+												}
+											}
+										]
+									}
+								]
+							},
+							"Mission.Terminal.Commands.Download":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": []
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Downloaded",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "VLF_MemberData.zip"
+												}
+											}
+										]
+									}
+								]
+							}
+						}
 					},
 					{
-						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "VLF_MemberChart.png",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Download":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": []
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Downloaded",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "Terminal"
+												}
+											}
+										],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Downloaded",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "VLF_MemberChart.png"
+												}
+											}
+										]
+									}
+								]
+							}
+						}
 					}
 				]
 			},
@@ -95,7 +273,35 @@
 				"Requirements": [],
 				"Files": [
 					{
-						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "VirusScan.exe",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Run":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": []
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 2,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": []
+									}
+								]
+							}
+						}
 					}
 				]
 			},
@@ -104,12 +310,63 @@
 				"DirectoryName": "WeatherData",
 				"Requirements": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [
+							{
+								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+								"Events": []
+							}
+						],
+						"RequiredUserTag": "Mission.Terminal.Users.Meteorologist"
 					}
 				],
 				"Files": [
 					{
-						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "VLF_WeatherData.zip",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Download":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": []
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 2,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Downloaded",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "VLF_WeatherData.zip"
+												}
+											}
+										]
+									}
+								]
+							}
+						}
 					}
 				]
 			},
@@ -118,12 +375,66 @@
 				"DirectoryName": "External",
 				"Requirements": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_HasItem.BP_TerminalDirectoryRequirement_HasItem_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_HasItem.BP_TerminalDirectoryRequirement_HasItem_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [],
+						"Items": [
+							"Inventory.Items.Quest.Defense.Intel C"
+						],
+						"Container Indexes": []
 					}
 				],
 				"Files": [
 					{
-						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "QuarryTargets.zip",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Scan":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Game/Blueprints/MissionSystem/Objects/Events/BP_MissionEvent_TriggerReinforcement.BP_MissionEvent_TriggerReinforcement_C",
+												"NetworkExecType": "OnlyServer",
+												"Target Tag": "Terminal"
+											}
+										]
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Scanned",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "QuarryTargets.zip"
+												}
+											}
+										]
+									}
+								]
+							}
+						}
 					}
 				]
 			},
@@ -132,7 +443,13 @@
 				"DirectoryName": "Storage",
 				"Requirements": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_HasItem.BP_TerminalDirectoryRequirement_HasItem_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_HasItem.BP_TerminalDirectoryRequirement_HasItem_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [],
+						"Items": [
+							"Inventory.Items.Quest.Defense.Intel D"
+						],
+						"Container Indexes": []
 					}
 				],
 				"Files": []
@@ -146,7 +463,9 @@
 				"Argument": null,
 				"OnSuccessSequences": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": []
 					}
 				],
 				"OnFailSequences": []
@@ -157,7 +476,10 @@
 				"CommandTag": "Mission.Terminal.Commands.ChangeDirectory",
 				"Argument":
 				{
-					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_ChangeDirectory"
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_ChangeDirectory",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": []
 				},
 				"OnSuccessSequences": [],
 				"OnFailSequences": []
@@ -168,7 +490,10 @@
 				"CommandTag": "Mission.Terminal.Commands.GoBack",
 				"Argument":
 				{
-					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_GoBack"
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_GoBack",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": []
 				},
 				"OnSuccessSequences": [],
 				"OnFailSequences": []
@@ -180,7 +505,9 @@
 				"Argument": null,
 				"OnSuccessSequences": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": []
 					}
 				],
 				"OnFailSequences": []
@@ -192,10 +519,41 @@
 				"Argument": null,
 				"OnSuccessSequences": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": []
 					},
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_RequestLogin.W_TerminalResponse_RequestLogin_C",
+						"Events": [],
+						"Command":
+						{
+							"Keyword": "",
+							"Aliases": [],
+							"CommandTag": "",
+							"Argument":
+							{
+								"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Login",
+								"bPredictable": false,
+								"OnSuccessSequences": [],
+								"OnFailureSequences": []
+							},
+							"OnSuccessSequences": [
+								{
+									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+									"Events": []
+								}
+							],
+							"OnFailSequences": [
+								{
+									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+									"Events": []
+								}
+							]
+						}
 					}
 				],
 				"OnFailSequences": []
@@ -206,7 +564,18 @@
 				"CommandTag": "Mission.Terminal.Commands.Run",
 				"Argument":
 				{
-					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand"
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Run",
+					"OnFailText":
+					{
+						"$text": "Cannot run {file}.",
+						"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+						"$key": "91DEF2D24A18B607F4F77A91EBA6D5B5"
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
 				"OnSuccessSequences": [],
 				"OnFailSequences": []
@@ -217,7 +586,18 @@
 				"CommandTag": "Mission.Terminal.Commands.Read",
 				"Argument":
 				{
-					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand"
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Read",
+					"OnFailText":
+					{
+						"$text": "Cannot read {file}.",
+						"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+						"$key": "C9F8D14C4200B9D672A52E9742CBC3B9"
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
 				"OnSuccessSequences": [],
 				"OnFailSequences": []
@@ -228,7 +608,18 @@
 				"CommandTag": "Mission.Terminal.Commands.Scan",
 				"Argument":
 				{
-					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand"
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Scan",
+					"OnFailText":
+					{
+						"$text": "Cannot scan {file}.",
+						"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+						"$key": "5ACB27D1428812644C7C6BACBD80375B"
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
 				"OnSuccessSequences": [],
 				"OnFailSequences": []
@@ -239,7 +630,16 @@
 				"CommandTag": "Mission.Terminal.Commands.Download",
 				"Argument":
 				{
-					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand"
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Download",
+					"OnFailText":
+					{
+						"$text": ""
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
 				"OnSuccessSequences": [],
 				"OnFailSequences": []
@@ -251,7 +651,22 @@
 				"Argument": null,
 				"OnSuccessSequences": [
 					{
-						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C"
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [
+							{
+								"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendWorldEvent",
+								"NetworkExecType": "Both",
+								"MessageTag": "Mission.Messages.Shutdown",
+								"Payload":
+								{
+									"IntegerValue": 0,
+									"FloatValue": 0,
+									"BoolValue": true,
+									"StringPayload": "Terminal"
+								}
+							}
+						]
 					}
 				],
 				"OnFailSequences": []
@@ -262,7 +677,10 @@
 				"CommandTag": "Mission.Terminal.Commands.Hack",
 				"Argument":
 				{
-					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Hack"
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Hack",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": []
 				},
 				"OnSuccessSequences": [],
 				"OnFailSequences": []
@@ -274,7 +692,32 @@
 		"HackBypassCost": 8,
 		"HackInterruptedSequences": [
 			{
-				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_HackStatus.BP_TerminalSequence_HackStatus_C"
+				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_HackStatus.BP_TerminalSequence_HackStatus_C",
+				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+				"Events": [],
+				"bUseInterruptReason": false,
+				"ReadyText":
+				{
+					"$text": "Intrusion device {Device} connected. Battery {Battery}%. Estimated cost {Cost}%. Type \"hack\" to start.",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "Ready"
+				},
+				"NoDeviceText":
+				{
+					"$text": "No intrusion device connected.",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "NoDevice"
+				},
+				"DepletedText":
+				{
+					"$text": "Intrusion device {Device}: battery depleted ({Battery}%).",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "Depleted"
+				},
+				"NoDeviceRequiredText":
+				{
+					"$text": ""
+				}
 			}
 		]
 	}
