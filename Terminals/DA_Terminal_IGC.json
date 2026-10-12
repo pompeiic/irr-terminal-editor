@@ -1,0 +1,258 @@
+{
+	"schemaSoftVersion": 1,
+	"schemaHardVersion": 1,
+	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_IGC.DA_Terminal_IGC",
+	"name": "DA_Terminal_IGC",
+	"sourceHash": "354dcffbc33fb3393fafb145bed25abc",
+	"data":
+	{
+		"VersionInfo":
+		{
+			"$text": "Domovoy (домовой) Terminal - IRON GUARD CORPS INTERNAL NETWORK",
+			"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+			"$key": "C5DC89F2465FC3AD902038A8C8786DB2"
+		},
+		"SystemArt":
+		{
+			"$text": "██████╗  ██████╗ ███╗   ███╗ ██████╗ ██╗   ██╗ ██████╗ ██╗   ██╗\r\n██╔══██╗██╔═══██╗████╗ ████║██╔═══██╗██║   ██║██╔═══██╗╚██╗ ██╔╝\r\n██║  ██║██║   ██║██╔████╔██║██║   ██║██║   ██║██║   ██║ ╚████╔╝ \r\n██║  ██║██║   ██║██║╚██╔╝██║██║   ██║╚██╗ ██╔╝██║   ██║  ╚██╔╝  \r\n██████╔╝╚██████╔╝██║ ╚═╝ ██║╚██████╔╝ ╚████╔╝ ╚██████╔╝   ██║   \r\n╚═════╝  ╚═════╝ ╚═╝     ╚═╝ ╚═════╝   ╚═══╝   ╚═════╝    ╚═╝   \r\n                                                                ",
+			"$invariant": true
+		},
+		"GuidePrompt":
+		{
+			"$text": "Type \"help\" for a list of available commands.",
+			"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+			"$key": "28D3060547571558932423A9ED1122E5"
+		},
+		"bBootSequence": false,
+		"BootSequences": [
+			{
+				"$class": "/Script/IRRMissionSystem.IRRTerminalSequence_HackStatus"
+			}
+		],
+		"ErrorSequence":
+		{
+			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+		},
+		"CharacterDelay": 0.0050000000000000001,
+		"ResponseDelay": 0.5,
+		"Users": [
+			{
+				"Tag": "Mission.Terminal.Users.Guest",
+				"Name": "Guest",
+				"Password": "accessUICS"
+			},
+			{
+				"Tag": "Mission.Terminal.Users.Admin",
+				"Name": "Admin",
+				"Password": "IronGC_*"
+			},
+			{
+				"Tag": "Mission.Terminal.Users.Meteorologist",
+				"Name": "Meteorologist",
+				"Password": "Delta_IGC@Meteo!"
+			}
+		],
+		"Directories": [
+			{
+				"MotherDirectoryName": "",
+				"DirectoryName": "sys",
+				"Requirements": [],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+					},
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Notes",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C"
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Programs",
+				"Requirements": [],
+				"Files": []
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "WeatherData",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C"
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "External",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_HasItem.BP_TerminalDirectoryRequirement_HasItem_C"
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile"
+					}
+				]
+			}
+		],
+		"Commands": [
+			{
+				"Keyword": "help",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Help",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "cd",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.ChangeDirectory",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_ChangeDirectory"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "pop",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.GoBack",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_GoBack"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "dir",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Dir",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C"
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "login",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Login",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+					},
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C"
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "run",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Run",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "read",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Read",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "scan",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Scan",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "download",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Download",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "shutdown",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Shutdown",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C"
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "hack",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Hack",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Hack"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			}
+		],
+		"HackDelay": 0.5,
+		"RequiredHackDevice": "Inventory.Items.Quest.USB Drive",
+		"HackCommandCost": 2,
+		"HackBypassCost": 8,
+		"HackInterruptedSequences": [
+			{
+				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_HackStatus.BP_TerminalSequence_HackStatus_C"
+			}
+		]
+	}
+}
