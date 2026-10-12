@@ -524,7 +524,7 @@ function fileRow(d, di, f, fi, depth) {
       const c = commandForTag(data, t);
       return el("span", { class: "chip " + (c ? "acc" : "err"), title: c ? `typed as "${c.Keyword} ${f.Name}"` : "No command answers this tag" }, c ? c.Keyword : leaf(t));
     })),
-    el("span", { class: "grow" }),
+    el("span", { class: "excerpt", title: fileExcerpt(f) }, fileExcerpt(f)),
     f && f.bAutoHack ? el("span", { class: "chip", title: "The terminal hack types these commands automatically" }, "AUTO HACK") : null,
     f && f.$class !== fileBase() ? el("span", { class: "hint" }, classLabel(f.$class)) : null);
 }
@@ -792,6 +792,18 @@ function panelFile(body, foot, f, ctx) {
     renderFields(body, f, fields.filter(x => x !== respField), ctx, {
       nameCheck: (field, v) => field.name === "Name" && dir.Files.some(x => x && x !== f && eqName(x.Name, v)) ? `"${dir.DirectoryName}" already has a file "${v}".` : ""
     });
+    const shown = Object.entries(f.Responses || {});
+    if (shown.length) {
+      body.append(el("div", { class: "sec" }, "On screen"));
+      shown.forEach(([tag, resp]) => {
+        const c = commandForTag(data, tag);
+        const lines = responseLines(resp);
+        body.append(el("div", { class: "hint" }, `> ${c ? c.Keyword : leaf(tag)} ${f.Name}${(resp?.Condition || []).filter(Boolean).length ? "   (if conditions pass)" : ""}`),
+          el("div", { class: "screen" }, lines.length
+            ? lines.map(l => el("div", { class: l.sys ? "sys" : "" }, l.text))
+            : el("div", { class: "sys" }, "[no sequences — the command's own sequences play]")));
+      });
+    }
     if (respField) {
       body.append(el("div", { class: "sec" }, "Responses"),
         el("div", { class: "note" }, "One entry per command this file answers. The command's argument picks the entry by its tag; conditions must all pass, otherwise the argument's failure sequences play."));
@@ -1240,6 +1252,21 @@ function objPreviewFull(obj) {
     const v = obj[f.name];
     if (f.type.kind === "text" && textOf(v)) return textOf(v);
     if (f.type.kind === "string" && v) return v;
+  }
+  return "";
+}
+// What a response prints, sequence by sequence; listing/help sequences have no text of their own.
+function responseLines(resp) {
+  return (resp?.Sequences || []).map(s => {
+    if (!s) return { sys: true, text: "[empty sequence slot]" };
+    const text = objPreviewFull(s);
+    return text ? { text } : { sys: true, text: `[${classLabel(s.$class)}]` };
+  });
+}
+function fileExcerpt(f) {
+  for (const resp of Object.values(f?.Responses || {})) {
+    const hit = responseLines(resp).find(l => !l.sys);
+    if (hit) return hit.text.replace(/\s+/g, " ").trim();
   }
   return "";
 }
