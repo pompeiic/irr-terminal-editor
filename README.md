@@ -17,7 +17,7 @@ assets. The game never reads this repo — changes ship with the next build.
 1. **Unreal ↔ repo:** IRR menu → **Terminals → Sync**. It downloads this repo, imports web edits onto the
    assets (and saves them), exports every terminal plus the schema, and uploads the result. **Download + Import**
    only pulls. The repo is configured in Project Settings → IRR → Terminal Sync, the token in
-   Editor Preferences → IRR → Terminal Sync (User).
+   Editor Preferences → IRR → Terminal Sync (User) — left empty, the Item Sync (User) token is used.
 2. **Edit here:**
    - **Files** — the folder tree. Add, rename (subfolders follow), move or delete folders (deleting removes
      the subtree), set entry requirements, and add, move, duplicate or delete files. Each file lists the
