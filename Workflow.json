@@ -1,3 +1,15 @@
 {
-	"log": []
+	"log": [
+		{
+			"terminal": "Terminals/DA_Terminal_FANG_Test.json",
+			"time": "2026-10-14T19:57:04.551Z",
+			"author": "pompeiic",
+			"lines": [
+				"Folder fang › File Readme.txt › Responses › Read › Sequences[1] › Text: \"HIDEOUT-01 TEST TERMINAL\\r\\n-----------------------------------------------------\\r\\nThis node exists to exercise every terminal feature.\\r\\n\\r\\n  fang\\\\Briefings     locked to Operator\\r\\n  fang\\\\Logistics     locked to Quartermaster\\r\\n  fang\\\\Archive       open; Classified inside needs Key Card A\\r\\n  fang\\\\Admin         locked to Admin\\r\\n\\r\\nLogins are in Credentials.txt. Encrypted.dat only opens with a USB Drive in your inventory.\\r\\nTry: dir, cd Briefings, login, read, scan, download, run, pop, hack.\" → \"HIDEOUT-01 TEST TERMINAL\\n-----------------------------------------------------\\nThis node exists to exercise every terminal feature.\\n\\n  fang\\\\Briefings     locked to Operator\\n  fang\\\\Logistics     locked to Quartermaster\\n  fang\\\\Archive       open; Classified inside needs INTEL\\n  fang\\\\Admin         locked to Admin\\n\\nLogins are in Credentials.txt. Encrypted.dat only opens with a USB Drive in your inventory.\\nTry: dir, cd Briefings, login, read, scan, download, run, pop, hack.\"",
+				"Folder Classified › Requirements[1] › OnSuccessSequences[1] › Text: \"Key card accepted.\" → \"INTEL accepted.\"",
+				"Folder Classified › Requirements[1] › OnFailureSequences[1] › Text: \"ACCESS DENIED - present Key Card A.\" → \"ACCESS DENIED - present INTEL.\"",
+				"Folder Classified › Requirements[1] › Items[1]: Key Card A → Intel D"
+			]
+		}
+	]
 }
