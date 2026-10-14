@@ -3,7 +3,7 @@
 	"schemaHardVersion": 1,
 	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_VLF.DA_Terminal_VLF",
 	"name": "DA_Terminal_VLF",
-	"sourceHash": "79a50f4d4117dcd2ef7ffbc4d82d2341",
+	"sourceHash": "553035e834e8438d9a1c08affd8c42b9",
 	"data":
 	{
 		"VersionInfo":
@@ -29,7 +29,13 @@
 		{
 			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 			"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-			"Events": []
+			"Events": [],
+			"Text":
+			{
+				"$text": "Error: Command \"{command}\" not recognized. Please enter a valid command. Or type \"help\" for a list of available commands.",
+				"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+				"$key": "9F51D2BE401207C298B32FA5EAEA1128"
+			}
 		},
 		"CharacterDelay": 0.0050000000000000001,
 		"ResponseDelay": 0.5,
@@ -79,7 +85,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "# VLF TERMINAL SYSTEM – README\r\n\r\nWelcome to the VLF Secure Operations Terminal.\r\n\r\nThis terminal operates under the authority of the Vietnamese Liberation Front and is reserved for trusted personnel only. Unauthorized access is a breach of operational protocol. All usage is monitored and archived by the Internal Oversight Division.\r\n\r\n## SYSTEM FUNCTIONS\r\n\r\n- **read** – View the contents of a file  \r\n- **run** – Execute scripts or VLF-compatible operations  \r\n- **scan** – Analyze files for intel, threats, or encoded data  \r\n- **download** – Save files from the terminal to your local cache  \r\n\r\nNeed assistance? Use the `help` command for more detailed instructions.\r\n\r\n## USER LEVELS\r\n\r\n- Guest: Limited access to general notices and surface-level records  \r\n- Admin: Full system authority, including access to encrypted data and override commands\r\n\r\n## CODE OF CONDUCT\r\n\r\n- Confirm your clearance before issuing commands  \r\n- Never share credentials or transfer them via unsecured channels  \r\n- Report suspicious terminal behavior to Command Liaison using form CL-09  \r\n- If you suspect infiltration or compromise, initiate Contingency Protocol Blackline immediately\r\n\r\n## SUPPORT CONTACT\r\n\r\nFor technical issues, submit a secured query through Node V-42 or contact Engineering Command directly.\r\n\r\n## FINAL NOTICE\r\n\r\nThis terminal is an asset of the Vietnamese Liberation Front. Tampering, unauthorized use, or compromise will be treated as an internal threat and handled accordingly.\r\n\r\nVLF — The Red River is ours.\r\n\r\n> END OF FILE",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "BDC95BBC428DC3D8EEE56AB02EDD2BCA"
+										}
 									}
 								]
 							}
@@ -98,7 +110,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "# VLF Secure Terminal Access Credentials\r\n\r\n## Authorized Users List\r\n\r\n- **Guest**\r\n  - Username: Guest\r\n  - Password: 1234\r\n  - Note: Limited access; only for viewing non-sensitive data.\r\n\r\n- **Meteorologist**\r\n  - Username: Meteorologist\r\n  - Password: MeteoCtr!\r\n  - Note: Exclusive access to all weather data collected over the past view month. Otherwise same access level as guest.\r\n\r\n- **Admin**\r\n  - Username: Admin\r\n  - Password: VLF@dm1n\r\n  - Note: Full administrative privileges. Access to all system functions.",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "EC67E93A4157EAE72690078B718B64BC"
+										}
 									}
 								]
 							}
@@ -117,7 +135,13 @@
 							{
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-								"Events": []
+								"Events": [],
+								"Text":
+								{
+									"$text": "{user} has not access to this directory.",
+									"$ns": "[94C1237E4409FBDE2491BD34F82176A9]",
+									"$key": "9A48A7124A627645EAFA4F8605C7BD65"
+								}
 							}
 						],
 						"RequiredUserTag": "Mission.Terminal.Users.Admin"
@@ -137,7 +161,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating scan of classified document...\r\nPlease wait, retrieving data...",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "B6A4A1A741CC50520F0F138E979D71AB"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -163,7 +193,13 @@
 													"StringPayload": "VLF_MemberData.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "File: VLF_MemberData.txt  \r\nClassification: Restricted – Internal Use Only  \r\nGenerated: 2024-10-19  \r\nSource Node: V-CTRL.42  \r\nEncryption Signature: Verified\r\n\r\nACTIVE OPERATIVES – REDACTED FIELD SUMMARY  \r\n-----------------------------------------------------\r\n[REDACTED-01]  \r\nCodename: ████████  \r\nRole: Logistics Intercept / Comms Relay Hijack  \r\nLast Known Location: En route to Southern Comm Tower  \r\nStatus: [ACTIVE]  \r\n\r\n[REDACTED-02]  \r\nCodename: “Lancer”  \r\nRole: Forward Sabotage / Demo Specialist  \r\nUnit: Black Echo Cell  \r\nNotes: Reported successful plant at VEKTOR-11 site.  \r\nStatus: [NO CONTACT – 3 DAYS]  \r\n\r\n[REDACTED-03]  \r\nCodename: “Reza Nahl”  \r\nRole: Command Liaison / Strategic Coordination  \r\nClearance: LEVEL-3  \r\nKnown Attachments: Intel Section 4D, Demo Team Echo  \r\nStatus: [ACTIVE]  \r\n\r\n[REDACTED-04]  \r\nCodename: ████████  \r\nRole: Counter-Intel Operations  \r\nNotes: Identity unknown. Suspected to be embedded in UICS command perimeter.  \r\nStatus: [DEEP COVER]  \r\n\r\n[REDACTED-05]  \r\nCodename: “Marshal Vex”  \r\nRole: Oversight Division / Morale Monitoring  \r\nDocuments Linked: `internal_morale_report.vlfdoc`  \r\nStatus: [STATIONED – CENTRAL BUNKER]  \r\n\r\n-----------------------------------------------------\r\n\r\nWARNING: Unauthorized distribution of agent profiles is a violation of Directive VLF-7A.  \r\nSystem access log will be reviewed upon next sync.\r\n\r\n> END OF FILE",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "5BFD8A5649C3ED39FEADB89DCB203C04"
+										}
 									}
 								]
 							},
@@ -174,7 +210,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "7FAFC5C34959F2D5D0C2828026796EBB"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -200,7 +242,13 @@
 													"StringPayload": "VLF_MemberData.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "{r} downloaded file successfully. ",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "16BD73594BEECF7118B0929F0A3AD1DB"
+										}
 									}
 								]
 							}
@@ -219,7 +267,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "9443666A4F77AA1B82AA9585704D6558"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -259,7 +313,13 @@
 													"StringPayload": "VLF_MemberChart.png"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "{r} downloaded file successfully. ",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "284D982C4A8B97DED347EE896E37A1C4"
+										}
 									}
 								]
 							}
@@ -285,7 +345,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Run Virus Scan..",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "640EEEED412A907ED9E224B6E980F2AF"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -297,7 +363,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "No Virus found.",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "DFE3AF014C5DC25229E63A816182D58A"
+										}
 									}
 								]
 							}
@@ -316,7 +388,13 @@
 							{
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-								"Events": []
+								"Events": [],
+								"Text":
+								{
+									"$text": "{user} has not access to this directory.",
+									"$ns": "[94C1237E4409FBDE2491BD34F82176A9]",
+									"$key": "9A48A7124A627645EAFA4F8605C7BD65"
+								}
 							}
 						],
 						"RequiredUserTag": "Mission.Terminal.Users.Meteorologist"
@@ -336,7 +414,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "8704DFFB470E8AD41639EE8FEFFDF853"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -362,7 +446,13 @@
 													"StringPayload": "VLF_WeatherData.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"Bunker – Weather Data\"  \r\nClassification: Confidential – Internal Distribution Only\r\n\r\nDocument successfully downloaded.",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "1A35C03A4127BF7C7B029AAE51C1BAB3"
+										}
 									}
 								]
 							}
@@ -404,7 +494,13 @@
 												"NetworkExecType": "OnlyServer",
 												"Target Tag": "Terminal"
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Initiating scan of classified document...\r\nPlease wait, retrieving data...",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "D354454B4AF6BE46A4D52E89179E6E72"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -430,7 +526,13 @@
 													"StringPayload": "QuarryTargets.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"Target Assessment Brief – Quarry Sector UICS Installations\"  \r\nDate: 2024-11-04  \r\nClassification: Top Secret – Direct Action Recommended\r\n\r\nOverview:  \r\nSurveillance teams have identified multiple UICS-controlled structures in and around the quarry region. These locations support production, logistics, and command functions tied to operations in the central corridor. The following sites are marked for sabotage, infiltration, or strategic surveillance.\r\n\r\n-----------------------------------------------------\r\nTier 1 – Priority Targets\r\n\r\n• SITE DESIGNATION: BLOCK-7  \r\n  Type: UICS Quarry Block Factory  \r\n  Location: Northern edge of quarry basin  \r\n  Notes: Actively producing reinforced modular blocks used in subterranean structure reinforcement. Limited external defense, heavy material flow suggests priority status. Recommended: nighttime approach + remote detonation.\r\n\r\n• SITE DESIGNATION: BASE-QUARRY  \r\n  Type: UICS Military Outpost  \r\n  Location: Western high-ground ridge overlooking the quarry  \r\n  Notes: Well-defended. High patrol frequency. Believed to house intel terminals and encrypted uplink systems. Risk of reinforcement high. Potential intel jackpot. Recommended: stealth recon only until path is confirmed.\r\n\r\n-----------------------------------------------------\r\nTier 2 – Secondary Observation\r\n\r\n• SITE DESIGNATION: CORE-PIT  \r\n  Type: Primary Quarry Extraction Zone  \r\n  Location: Central pit, open terrain  \r\n  Notes: Constant UICS drone traffic observed. Raw resource extraction underway. Possibly tied to BLOCK-7 logistics. Patrols light, but sightlines wide. Risk of exposure high.\r\n\r\n• SITE DESIGNATION: CAVE-DELTA  \r\n  Type: Natural Cave System (suspected forward node)  \r\n  Location: Southeast rim of quarry perimeter  \r\n  Notes: Limited visual contact. Thermal returns suggest low-volume movement and occasional shortwave bursts. Possibly used for temporary staging or covert relay.\r\n\r\n-----------------------------------------------------\r\nAction Items:\r\n- Prioritize BLOCK-7 for disruption operation; coordinate with Demo Team Echo.\r\n- Conduct passive relay sweep near CAVE-DELTA to confirm or deny node usage.\r\n- Maintain watch on BASE-QUARRY; extraction team needed before further action.\r\n\r\nCompiled by:  \r\nIntel Section 4D – Vanguard Recon  \r\nAuth. Code: RX-VLF-9342Z  \r\nStatus: Cleared for tactical distribution",
+											"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+											"$key": "C633466E44F19F9D520CD586F9580D98"
+										}
 									}
 								]
 							}
@@ -465,7 +567,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "Available Commands:\r\n\r\n1. help - Display available commands and their descriptions.\r\n2. dir - Display all of the files and folders in the current directory.\r\n3. pop - Switch back to previous directory (e.g. go back).\r\n4. login - Enter new login credentials to change the user & permissions.\r\n5. cd <directory> - Change directory to navigate within the terminal system.\r\n6. run <file_id> - Execute the exe file.\r\n7. download <file_id> - Download content from target file.\r\n8. scan <file_id> - Scan content from file.\r\n9. read <file_id> - Reading content of file.\r\n10. shutdown - Shutdown the terminal.\r\n\r\n**Additional help**\r\n\r\n> To find a file, try changing directories via cd <directory> and us the dir command to display all available files at the current level\r\n> Some directories require special access. Use the login command to get Admin access. You may have to take a look at the users file to find the credentials.",
+							"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+							"$key": "39F480F5445925B7869593840B7C6D9C"
+						}
 					}
 				],
 				"OnFailSequences": []
@@ -507,7 +615,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "Directory {active}\r\n{directories} {files}\r\n",
+							"$ns": "[77E2FA750C295F22B53B087B1D9F5B3C]",
+							"$key": "D37BE9D241811A536FF46BB6C21A1C4C"
+						}
 					}
 				],
 				"OnFailSequences": []
@@ -521,7 +635,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "VLF Secure Operations Terminal\r\n\r\nUnauthorized access or misuse of this system is strictly prohibited and may be punishable under VLF regulations.\r\n\r\nSecurity Clearance Required",
+							"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+							"$key": "82E13EBB424486F451F07A9A7CAC542E"
+						}
 					},
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C",
@@ -543,14 +663,26 @@
 								{
 									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-									"Events": []
+									"Events": [],
+									"Text":
+									{
+										"$text": "Successfully logged in as [{user}].",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "AA4672204D5CA7F619AF6D86E228DBB5"
+									}
 								}
 							],
 							"OnFailSequences": [
 								{
 									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-									"Events": []
+									"Events": [],
+									"Text":
+									{
+										"$text": "Failed to login. Credentials do not match.",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "8D760DE34A7589873DD79C82F9171205"
+									}
 								}
 							]
 						}
@@ -666,7 +798,13 @@
 									"StringPayload": "Terminal"
 								}
 							}
-						]
+						],
+						"Text":
+						{
+							"$text": "Shutting down the terminal...\r\nTerminal secure. You may now extract safely.",
+							"$ns": "[680EB13DB6AABA9D965D692ABD17282F]",
+							"$key": "B98429FB48EB6388064AF0BA562C0A8D"
+						}
 					}
 				],
 				"OnFailSequences": []
