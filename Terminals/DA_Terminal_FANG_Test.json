@@ -1,14 +1,16 @@
 {
 	"schemaSoftVersion": 1,
 	"schemaHardVersion": 1,
-	"asset": "",
+	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_FANG_Test.DA_Terminal_FANG_Test",
 	"name": "DA_Terminal_FANG_Test",
-	"sourceHash": "",
+	"sourceHash": "b02970e7613a82e6876822c475a2b2bc",
 	"data":
 	{
 		"VersionInfo":
 		{
-			"$text": "FANG OPNET Node HIDEOUT-01 - Field Terminal v0.9 (test build)"
+			"$text": "FANG OPNET Node HIDEOUT-01 - Field Terminal v0.9 (test build)",
+			"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+			"$key": "055E39174AA8D5774D84868E399ECF85"
 		},
 		"SystemArt":
 		{
@@ -17,7 +19,9 @@
 		},
 		"GuidePrompt":
 		{
-			"$text": "Type \"help\" for a list of available commands. Start with \"read Readme.txt\"."
+			"$text": "Type \"help\" for a list of available commands. Start with \"read Readme.txt\".",
+			"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+			"$key": "4EAAEA94482C08F71D965C8007498308"
 		},
 		"bBootSequence": true,
 		"BootSequences": [
@@ -27,7 +31,9 @@
 				"Events": [],
 				"Text":
 				{
-					"$text": "Booting HIDEOUT-01...\r\nMounting volume fang ........ OK\r\nChecking relay uplink ........"
+					"$text": "Booting HIDEOUT-01...\r\nMounting volume fang ........ OK\r\nChecking relay uplink ........",
+					"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+					"$key": "AF66CBE14783747806602C8700ECA22E"
 				}
 			},
 			{
@@ -43,7 +49,9 @@
 				"Events": [],
 				"Text":
 				{
-					"$text": "Uplink established. Session opened as Guest."
+					"$text": "Uplink established. Session opened as Guest.",
+					"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+					"$key": "4CE24CBB4145153B91949EBA82FA808D"
 				}
 			}
 		],
@@ -54,10 +62,12 @@
 			"Events": [],
 			"Text":
 			{
-				"$text": "\"{command}\" is not a recognised command. Type \"help\" for the list."
+				"$text": "\"{command}\" is not a recognised command. Type \"help\" for the list.",
+				"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+				"$key": "ADB76274497676DBB63F9EBCD64D38B3"
 			}
 		},
-		"CharacterDelay": 0.005,
+		"CharacterDelay": 0.0050000000000000001,
 		"ResponseDelay": 0.5,
 		"Users": [
 			{
@@ -103,7 +113,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "HIDEOUT-01 TEST TERMINAL\r\n-----------------------------------------------------\r\nThis node exists to exercise every terminal feature.\r\n\r\n  fang\\Briefings     locked to Operator\r\n  fang\\Logistics     locked to Quartermaster\r\n  fang\\Archive       open; Classified inside needs Key Card A\r\n  fang\\Admin         locked to Admin\r\n\r\nLogins are in Credentials.txt. Encrypted.dat only opens with a USB Drive in your inventory.\r\nTry: dir, cd Briefings, login, read, scan, download, run, pop, hack."
+											"$text": "HIDEOUT-01 TEST TERMINAL\r\n-----------------------------------------------------\r\nThis node exists to exercise every terminal feature.\r\n\r\n  fang\\Briefings     locked to Operator\r\n  fang\\Logistics     locked to Quartermaster\r\n  fang\\Archive       open; Classified inside needs Key Card A\r\n  fang\\Admin         locked to Admin\r\n\r\nLogins are in Credentials.txt. Encrypted.dat only opens with a USB Drive in your inventory.\r\nTry: dir, cd Briefings, login, read, scan, download, run, pop, hack.",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "CD4C91C94EA82B18A873A0A4AC62D490"
 										}
 									}
 								]
@@ -126,7 +138,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "TEST ACCOUNTS - do not ship\r\n-----------------------------------------------------\r\n  Guest           fang\r\n  Operator        Wolfpack-07\r\n  Quartermaster   Ledger#2291\r\n  Admin           FANG@Root"
+											"$text": "TEST ACCOUNTS - do not ship\r\n-----------------------------------------------------\r\n  Guest           fang\r\n  Operator        Wolfpack-07\r\n  Quartermaster   Ledger#2291\r\n  Admin           FANG@Root",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "529DF954481DF8A8D549B19318F9B987"
 										}
 									}
 								]
@@ -149,7 +163,9 @@
 								"Events": [],
 								"Text":
 								{
-									"$text": "ACCESS DENIED - Briefings is restricted to the Operator account."
+									"$text": "ACCESS DENIED - Briefings is restricted to the Operator account.",
+									"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+									"$key": "492FC3454FD21E5DB0E8A48466E15EB0"
 								}
 							}
 						],
@@ -173,7 +189,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "OPERATION BRIEFING - QUARRY\r\nClassification: FANG Internal\r\n-----------------------------------------------------\r\nUICS has moved a weather relay and two patrol elements into the quarry basin. VLF scouts were sighted on the north ridge last night.\r\n\r\nObjective: recover the relay logs, avoid contact with VLF, extract before dawn.\r\nSupport: none. Assume both factions are hostile to us.\r\n-----------------------------------------------------\r\nEnd of briefing."
+											"$text": "OPERATION BRIEFING - QUARRY\r\nClassification: FANG Internal\r\n-----------------------------------------------------\r\nUICS has moved a weather relay and two patrol elements into the quarry basin. VLF scouts were sighted on the north ridge last night.\r\n\r\nObjective: recover the relay logs, avoid contact with VLF, extract before dawn.\r\nSupport: none. Assume both factions are hostile to us.\r\n-----------------------------------------------------\r\nEnd of briefing.",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "2F1F516C47FB88B05849B993B456D9C2"
 										}
 									}
 								]
@@ -188,7 +206,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "Scanning Briefing_Quarry.txt for tracking markers..."
+											"$text": "Scanning Briefing_Quarry.txt for tracking markers...",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "E88686CA4A2452DB6758D39ABC8805AF"
 										}
 									},
 									{
@@ -218,7 +238,9 @@
 										],
 										"Text":
 										{
-											"$text": "Scan complete. No markers found. Document is clean."
+											"$text": "Scan complete. No markers found. Document is clean.",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "E52D33974C41209D732C2BAE54DDA042"
 										}
 									}
 								]
@@ -241,7 +263,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "Running image analysis on Recon_Photo_07.png..."
+											"$text": "Running image analysis on Recon_Photo_07.png...",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "CB573B6B4E3AE1B9AC6FA0896EF734B3"
 										}
 									},
 									{
@@ -271,7 +295,9 @@
 										],
 										"Text":
 										{
-											"$text": "ANALYSIS RESULT\r\n-----------------------------------------------------\r\nObjects identified: 2x light utility vehicle, 1x mast antenna, 6-8 personnel.\r\nMarkings: UICS engineering corps.\r\nTimestamp in metadata: 04:12, two days ago.\r\n-----------------------------------------------------\r\nResult archived."
+											"$text": "ANALYSIS RESULT\r\n-----------------------------------------------------\r\nObjects identified: 2x light utility vehicle, 1x mast antenna, 6-8 personnel.\r\nMarkings: UICS engineering corps.\r\nTimestamp in metadata: 04:12, two days ago.\r\n-----------------------------------------------------\r\nResult archived.",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "28EAF51B4645A932FA733694C3F939E1"
 										}
 									}
 								]
@@ -286,7 +312,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "Copying Recon_Photo_07.png to your device..."
+											"$text": "Copying Recon_Photo_07.png to your device...",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "B0A8F85A4E710ED848FE6A9E2CAE3B1C"
 										}
 									},
 									{
@@ -316,7 +344,9 @@
 										],
 										"Text":
 										{
-											"$text": "Download complete (2.4 MB)."
+											"$text": "Download complete (2.4 MB).",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "8FAB8BDA434DDB7A7A8F8EA2986070FC"
 										}
 									}
 								]
@@ -339,7 +369,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "[04:12:07] UICS-RELAY-2 > QUARRY-OPS : mast is up, starting calibration\r\n[04:12:31] QUARRY-OPS > UICS-RELAY-2 : copy. keep the generator quiet, VLF is close\r\n[04:13:02] UICS-RELAY-2 > QUARRY-OPS : understood. logs sync every 30 minutes\r\n[04:13:40] -- carrier lost --"
+											"$text": "[04:12:07] UICS-RELAY-2 > QUARRY-OPS : mast is up, starting calibration\r\n[04:12:31] QUARRY-OPS > UICS-RELAY-2 : copy. keep the generator quiet, VLF is close\r\n[04:13:02] UICS-RELAY-2 > QUARRY-OPS : understood. logs sync every 30 minutes\r\n[04:13:40] -- carrier lost --",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "FC71B9D74FB97A0EC58BC595E8DEDD26"
 										}
 									}
 								]
@@ -362,7 +394,9 @@
 								"Events": [],
 								"Text":
 								{
-									"$text": "ACCESS DENIED - Logistics is restricted to the Quartermaster account."
+									"$text": "ACCESS DENIED - Logistics is restricted to the Quartermaster account.",
+									"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+									"$key": "A6B606B64F1D914E65CEBE86B2D57B36"
 								}
 							}
 						],
@@ -386,7 +420,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "ITEM;QTY;STATUS\r\n5.45x39 BT;1200;in stock\r\n7.62x39 PS;640;low\r\nIFAK;14;in stock\r\nBattery pack (USB);3;reserved for intrusion kit\r\nMRE;22;in stock\r\nFuel (L);40;critical"
+											"$text": "ITEM;QTY;STATUS\r\n5.45x39 BT;1200;in stock\r\n7.62x39 PS;640;low\r\nIFAK;14;in stock\r\nBattery pack (USB);3;reserved for intrusion kit\r\nMRE;22;in stock\r\nFuel (L);40;critical",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "DDCC8DB442335AADF0E32C9758D658C3"
 										}
 									}
 								]
@@ -409,7 +445,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "Copying Requisition_Form.doc to your device..."
+											"$text": "Copying Requisition_Form.doc to your device...",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "705718E64A0E5FFCCF292C8F218F675D"
 										}
 									},
 									{
@@ -439,7 +477,9 @@
 										],
 										"Text":
 										{
-											"$text": "Download complete (88 KB)."
+											"$text": "Download complete (88 KB).",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "FE781AB44BF2D4823C3EC6922A467BAB"
 										}
 									}
 								]
@@ -469,7 +509,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "MEMO - to all teams\r\nWhoever keeps leaving the generator running overnight: we can hear it from the road. So can everyone else.\r\n- QM"
+											"$text": "MEMO - to all teams\r\nWhoever keeps leaving the generator running overnight: we can hear it from the road. So can everyone else.\r\n- QM",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "D03547AA4B25B257734D8AB27BD8896B"
 										}
 									}
 								]
@@ -499,7 +541,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "USB key detected. Decrypting Encrypted.dat..."
+											"$text": "USB key detected. Decrypting Encrypted.dat...",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "47F091B6472255DB2FE200BECFF44C54"
 										}
 									},
 									{
@@ -515,7 +559,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "Decrypted. Contents:\r\n\"If you can read this, the item condition works. - test\""
+											"$text": "Decrypted. Contents:\r\n\"If you can read this, the item condition works. - test\"",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "2A75C4F54A4A067A39693F8A0F117AA4"
 										}
 									}
 								]
@@ -537,7 +583,9 @@
 								"Events": [],
 								"Text":
 								{
-									"$text": "Key card accepted."
+									"$text": "Key card accepted.",
+									"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+									"$key": "399B64E54CA631066F8F2984EB0581E0"
 								}
 							}
 						],
@@ -548,7 +596,9 @@
 								"Events": [],
 								"Text":
 								{
-									"$text": "ACCESS DENIED - present Key Card A."
+									"$text": "ACCESS DENIED - present Key Card A.",
+									"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+									"$key": "A26A2927482195EDEBF831B907FEAC0F"
 								}
 							}
 						],
@@ -575,7 +625,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "PROJECT EMBER\r\n-----------------------------------------------------\r\nTest document behind an item lock. Reaching it means the HasItem directory requirement and its success sequence both work."
+											"$text": "PROJECT EMBER\r\n-----------------------------------------------------\r\nTest document behind an item lock. Reaching it means the HasItem directory requirement and its success sequence both work.",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "029964204837C048700AB3B256F6DF8F"
 										}
 									}
 								]
@@ -611,7 +663,9 @@
 										],
 										"Text":
 										{
-											"$text": "Project_Ember.txt scanned and archived."
+											"$text": "Project_Ember.txt scanned and archived.",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "2D68C798429D69351024F09E36498F2B"
 										}
 									}
 								]
@@ -634,7 +688,9 @@
 								"Events": [],
 								"Text":
 								{
-									"$text": "ACCESS DENIED - administrator only."
+									"$text": "ACCESS DENIED - administrator only.",
+									"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+									"$key": "ABC02F5E455B236B0D81279D1106756B"
 								}
 							}
 						],
@@ -658,7 +714,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "[boot] HIDEOUT-01 up, 4 accounts loaded\r\n[auth] Guest signed in\r\n[auth] failed login for Operator (3x)\r\n[net ] relay uplink degraded, retrying\r\n[disk] Archive\\Classified locked by key card policy"
+											"$text": "[boot] HIDEOUT-01 up, 4 accounts loaded\r\n[auth] Guest signed in\r\n[auth] failed login for Operator (3x)\r\n[net ] relay uplink degraded, retrying\r\n[disk] Archive\\Classified locked by key card policy",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "CDAEF22043F920DF5611288149F018B8"
 										}
 									}
 								]
@@ -681,7 +739,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "Running node diagnostics..."
+											"$text": "Running node diagnostics...",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "E82252624C74D87C4A3CF0A9433DAD58"
 										}
 									},
 									{
@@ -697,7 +757,9 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "CPU ........ OK\r\nStorage .... OK (61% used)\r\nUplink ..... DEGRADED\r\nPower ...... ON GENERATOR\r\nDiagnostics finished, 1 warning."
+											"$text": "CPU ........ OK\r\nStorage .... OK (61% used)\r\nUplink ..... DEGRADED\r\nPower ...... ON GENERATOR\r\nDiagnostics finished, 1 warning.",
+											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+											"$key": "9EAAA7714BCFF3B28D956686F55E066E"
 										}
 									}
 								]
@@ -722,7 +784,9 @@
 						"Events": [],
 						"Text":
 						{
-							"$text": "Available commands:\r\n  help / ?            this list\r\n  dir / ls            list the current folder\r\n  cd <folder>         open a folder\r\n  pop / ..            back to the parent folder\r\n  login               sign in as another user\r\n  read <file>         print a document\r\n  scan <file>         analyse a file\r\n  download <file>     copy a file to your device\r\n  run <file>          start a program\r\n  hack                automatic intrusion\r\n  shutdown / exit     close the session"
+							"$text": "Available commands:\r\n  help / ?            this list\r\n  dir / ls            list the current folder\r\n  cd <folder>         open a folder\r\n  pop / ..            back to the parent folder\r\n  login               sign in as another user\r\n  read <file>         print a document\r\n  scan <file>         analyse a file\r\n  download <file>     copy a file to your device\r\n  run <file>          start a program\r\n  hack                automatic intrusion\r\n  shutdown / exit     close the session",
+							"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+							"$key": "53D2399A4414F81480142BB0D81E5D0B"
 						}
 					}
 				],
@@ -744,7 +808,9 @@
 							"Events": [],
 							"Text":
 							{
-								"$text": "No such folder."
+								"$text": "No such folder.",
+								"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+								"$key": "C592363B42285147B3DF8E8E806227D6"
 							}
 						}
 					]
@@ -770,7 +836,9 @@
 							"Events": [],
 							"Text":
 							{
-								"$text": "Already at the top folder."
+								"$text": "Already at the top folder.",
+								"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+								"$key": "24A2DD094C7114E88C8A0C9045544D6C"
 							}
 						}
 					]
@@ -789,7 +857,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "Directory {active}\r\n{directories} {files}\r\n",
+							"$ns": "[77E2FA750C295F22B53B087B1D9F5B3C]",
+							"$key": "D37BE9D241811A536FF46BB6C21A1C4C"
+						}
 					}
 				],
 				"OnFailSequences": []
@@ -806,7 +880,9 @@
 						"Events": [],
 						"Text":
 						{
-							"$text": "Enter user name and password."
+							"$text": "Enter user name and password.",
+							"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+							"$key": "AD097BB2443C9DAA23AAA1AF485217EF"
 						}
 					},
 					{
@@ -832,7 +908,9 @@
 									"Events": [],
 									"Text":
 									{
-										"$text": "Access granted. Signed in as {user}."
+										"$text": "Access granted. Signed in as {user}.",
+										"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+										"$key": "BF67175C446D003D9DED5491F732E20C"
 									}
 								}
 							],
@@ -843,7 +921,9 @@
 									"Events": [],
 									"Text":
 									{
-										"$text": "Wrong user name or password."
+										"$text": "Wrong user name or password.",
+										"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+										"$key": "5CAD4D52460328F679F1BD99739D21C9"
 									}
 								}
 							]
@@ -865,7 +945,9 @@
 					"Tag": "Mission.Terminal.Commands.Read",
 					"OnFailText":
 					{
-						"$text": "Cannot read {file}."
+						"$text": "Cannot read {file}.",
+						"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+						"$key": "A0E8F0B448817742C6F72BB20770ECFD"
 					},
 					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
@@ -885,7 +967,9 @@
 					"Tag": "Mission.Terminal.Commands.Scan",
 					"OnFailText":
 					{
-						"$text": "Cannot scan {file}."
+						"$text": "Cannot scan {file}.",
+						"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+						"$key": "BD2C532A48011F569E6FA88C5FE09ABC"
 					},
 					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
@@ -905,7 +989,9 @@
 					"Tag": "Mission.Terminal.Commands.Download",
 					"OnFailText":
 					{
-						"$text": "Cannot download {file}."
+						"$text": "Cannot download {file}.",
+						"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+						"$key": "35E144424149EE9164780797F65E3FBA"
 					},
 					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
@@ -925,7 +1011,9 @@
 					"Tag": "Mission.Terminal.Commands.Run",
 					"OnFailText":
 					{
-						"$text": "Cannot run {file}."
+						"$text": "Cannot run {file}.",
+						"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+						"$key": "434CAFFF4EA4BC20AD7C8CAD82DF1878"
 					},
 					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
@@ -959,7 +1047,9 @@
 						],
 						"Text":
 						{
-							"$text": "Session closed."
+							"$text": "Session closed.",
+							"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+							"$key": "A22D94CD4595A8ACFD6E7DA18CE80BF4"
 						}
 					}
 				],
