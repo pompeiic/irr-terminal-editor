@@ -651,7 +651,7 @@ function renderSettings() {
     el("label", {}, "Asset name"), nameInp,
     el("div", { class: "note" }, cur.isNew
       ? `Created as ${schema.newTerminalFolder || "?"}/${cur.doc.name} on the next Unreal sync. The name can change until then.`
-      : `${cur.doc.asset} — rename or delete it in Unreal.`));
+      : `${cur.doc.asset} — rename or delete it in Unreal. To take it out of the web editor, turn off "Sync With Web Editor" on the asset (Web Editor category) and sync.`));
   const ctx = makeCtx("set", () => renderMain(true), "main");
   renderFields(body, D(), rootFields(), ctx, { skip: ["Users", "Directories", "Commands"], categories: true });
   if (cur.isNew) body.append(el("div", { class: "sec" }, "Danger"), btn("Delete terminal", deleteTerminal, "danger"));
