@@ -3,7 +3,7 @@
 	"schemaHardVersion": 1,
 	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_IGC.DA_Terminal_IGC",
 	"name": "DA_Terminal_IGC",
-	"sourceHash": "57b2e15a9a63cc94ded2ac58a061890e",
+	"sourceHash": "0c1cdc9ae7e4bc42a2f8aa2f51e7c58c",
 	"data":
 	{
 		"VersionInfo":
@@ -58,7 +58,13 @@
 		{
 			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 			"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-			"Events": []
+			"Events": [],
+			"Text":
+			{
+				"$text": "Error: Command \"{command}\" not recognized. Please enter a valid command. Or type \"help\" for a list of available commands.",
+				"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+				"$key": "CBE0D683479E809DC82F5FB55348A8D9"
+			}
 		},
 		"CharacterDelay": 0.0050000000000000001,
 		"ResponseDelay": 0.5,
@@ -98,7 +104,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "# UICS TERMINAL SYSTEM – README\r\n\r\nWelcome to the Iron Guard Corps Command Terminal.\r\n\r\nThis terminal is a hardened access point of the IGC BlackGrid, governed under Directive IRON-LAW/7.\r\nIt is intended exclusively for Iron Guard personnel operating under verified clearance.\r\n\r\nAll activity is continuously monitored, cross-checked, and retained.\r\nThere is no anonymity inside Iron Guard systems.\r\n\r\n## SYSTEM FUNCTIONS\r\n\r\n- **read** – Open and view a file's contents  \r\n- **run** – Execute a script or terminal-compatible file  \r\n- **scan** – Check a file for security classification or hidden data  \r\n- **download** – Save a file from the terminal to your local device  \r\n\r\nNeed more info? Use the `help` command at any time for detailed usage.\r\n## USER LEVELS\r\n\r\n- Guest: View-only access to non-sensitive bulletins and maintenance schedules\r\n- Meteorologist: Exclusive access to weather data.\r\n- Admin: Full terminal control, including configuration management and override protocols\r\n\r\n## CODE OF CONDUCT\r\n\r\n- Verify clearance before executing any command.Credentials are non-transferable. \r\n- Shared access is treated as sabotage.\r\n- Report inconsistencies, foreign data artifacts, or unexpected system responses immediately.\r\n- In the event of suspected compromise, initiate BLACKOUT PROTOCOL OMEGA and sever all external links.\r\n\r\nFailure to comply will be logged and escalated without warning.\r\n\r\n## SUPPORT CONTACT\r\n\r\nTechnical escalation is handled internally by IGC Systems Oversight.\r\nNo external support channels exist.\r\n\r\n## FINAL NOTICE\r\n\r\nThis terminal is property of the Iron Guard Corps.\r\nUnauthorized access, data extraction, or misuse constitutes treason under Iron Guard military law.\r\n\r\nPunishment includes:\r\n\r\n- Detention\r\n- Reassignment\r\n- Permanent clearance revocation\r\n\r\nThe Iron Guard does not forgive negligence.\r\n\r\nIGC — Discipline. Authority. Dominion.\r\n\r\n> END OF FILE",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "5563C4E9468B68CD786425B79C01646C"
+										}
 									}
 								]
 							}
@@ -117,7 +129,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "# IGC Secure Terminal Access Credentials\r\n\r\n## Authorized Users List\r\n\r\n- **Guest**\r\n  - Username: Guest\r\n  - Password: accessUICS\r\n  - Note: Restricted view-only access. Permitted to read non-sensitive operational bulletins and public directives.\r\n\r\n- **Meteorologist**\r\n  - Username: Meteorologist\r\n  - Password: Delta_IGC@Meteo!\r\n  - Note: Exclusive access to all weather data collected over the past view month. Otherwise same access level as guest.\r\n\r\n- **Admin**\r\n  - Username: Admin\r\n  - Password: UICS@Root1\r\n  - Note: Full administrative control. Grants access to secure command functions, encrypted channels, and terminal override capabilities.",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "603E82414BE023F214D752AB05109185"
+										}
 									}
 								]
 							}
@@ -136,7 +154,13 @@
 							{
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-								"Events": []
+								"Events": [],
+								"Text":
+								{
+									"$text": "{user} has not access to this directory.",
+									"$ns": "[94C1237E4409FBDE2491BD34F82176A9]",
+									"$key": "9A48A7124A627645EAFA4F8605C7BD65"
+								}
 							}
 						],
 						"RequiredUserTag": "Mission.Terminal.Users.Admin"
@@ -156,7 +180,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating scan of classified document...\r\nPlease wait, retrieving data...",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "48F9B81D495434946A51FF932E1AC47A"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -182,7 +212,13 @@
 													"StringPayload": "InternalMemo.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Document Title: “SYSTEM INTEGRITY ALERT – BLACKGRID ANOMALIES”\r\nDate: 2024-12-02\r\nClassification: Command Eyes Only\r\n\r\nDocument successfully scanned and secured.\r\nPreview of Document Content:\r\n\r\n-----------------------------------------------------\r\n\"SYSTEM INTEGRITY ALERT:\r\n\r\nRecent automated audits across peripheral BlackGrid nodes have detected irregular data signatures inconsistent with Iron Guard encryption standards. While no confirmed breach has been identified, multiple markers align with known UICS signal forensics and residual civilian contractor frameworks.\r\n\r\nAffected sectors include logistics mirrors, mission cache relays, and auxiliary terminal endpoints operating under reduced oversight. These anomalies do not appear accidental.\r\n\r\nAll Operators are hereby instructed to immediately scan newly accessed files for tampering indicators, foreign metadata, or unauthorized execution flags. Execution of scripts with unverified origin is strictly prohibited.\r\n\r\nFailure to report irregularities will be treated as willful negligence under Directive IRON-LAW/7.\r\n\r\nThe Iron Guard operates under the assumption of infiltration until proven otherwise.\"\r\n-----------------------------------------------------\r\n",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "37AAADA246D6020BE79A4995631F32F0"
+										}
 									}
 								]
 							},
@@ -193,7 +229,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "DE92C61B44A82177DD650D8CD4E078FF"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -219,7 +261,13 @@
 													"StringPayload": "InternalMemo.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "{r} downloaded file successfully. ",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "A2CD1E48439FBC0686165087EA5D04AE"
+										}
 									}
 								]
 							}
@@ -244,7 +292,13 @@
 							{
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-								"Events": []
+								"Events": [],
+								"Text":
+								{
+									"$text": "{user} has not access to this directory.",
+									"$ns": "[94C1237E4409FBDE2491BD34F82176A9]",
+									"$key": "9A48A7124A627645EAFA4F8605C7BD65"
+								}
 							}
 						],
 						"RequiredUserTag": "Mission.Terminal.Users.Meteorologist"
@@ -264,7 +318,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "972B94D9460F5518A33227888C3A6D4E"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -290,7 +350,13 @@
 													"StringPayload": "IGC_WeatherData.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"Delta – Weather Data\"  \r\nClassification: Confidential – Internal Distribution Only\r\n\r\nDocument successfully downloaded.",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "6BD06F9544BEA53EE412CABAC3CE5DB8"
+										}
 									}
 								]
 							}
@@ -332,7 +398,13 @@
 												"NetworkExecType": "OnlyServer",
 												"Target Tag": "Terminal"
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Initiating scan of classified document...\r\nPlease wait, retrieving data...",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "2B6BC85C42F322EC7A9BC1ABAEF56BA3"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -358,7 +430,13 @@
 													"StringPayload": "IGC_Operations.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"IGC_Operations.zip\"  \r\nDate: 2024-11-28  \r\nClassification: Confidential – Internal Distribution Only\r\n\r\nDocument successfully scanned and archived.  \r\nPreview of Document Content:\r\n-----------------------------------------------------\r\n\"FACILITY OVERVIEW – SITE BLOCK-7:  \r\nThe factory installation adjacent to the quarry remains fully operational and is responsible for high-volume processing of marble and composite concrete. The materials produced are used in structural reinforcement, subterranean encasement, and modular defensive installations.\r\n\r\nKey operations include rotary crushing, thermal curing, and form compression. Automated batching units maintain a 24/7 output cycle. All export shipments are routed through controlled rail access under GridSec Protocol 6C.\r\n\r\nPersonnel clearance checks are enforced at two entry gates. Observation drones perform perimeter sweeps at 20-minute intervals. While the site is not classified as a high-risk zone, patrols have been increased following recent interference reports from nearby sectors.\r\n\r\nFacility status: STABLE  \r\nOutput capacity: 91%  \r\nSecurity recommendation: Maintain current protocols. Escalation unnecessary unless actionable intel is confirmed.\"\r\n-----------------------------------------------------\r\n\r\nFull document secured for reference and compliance logging.",
+											"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+											"$key": "16296B164ADAE9139DC9F0AC69250DFD"
+										}
 									}
 								]
 							}
@@ -377,7 +455,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "Available Commands:\r\n\r\n1. help - Display available commands and their descriptions.\r\n2. dir - Display all of the files and folders in the current directory.\r\n3. pop - Switch back to previous directory (e.g. go back).\r\n4. login - Enter new login credentials to change the user & permissions.\r\n5. cd <directory> - Change directory to navigate within the terminal system.\r\n6. run <file_id> - Execute the exe file.\r\n7. download <file_id> - Download content from target file.\r\n8. scan <file_id> - Scan content from file.\r\n9. read <file_id> - Reading content of file.\r\n10. shutdown - Shutdown the terminal.\r\n\r\n**Additional help**\r\n\r\n> To find a file, try changing directories via cd <directory> and us the dir command to display all available files at the current level\r\n> Some directories require special access. Use the login command to get Admin access. You may have to take a look at the users file to find the credentials.",
+							"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+							"$key": "5B6D84D14DD2AA9F0E2605ADC4A36D62"
+						}
 					}
 				],
 				"OnFailSequences": []
@@ -419,7 +503,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "Directory {active}\r\n{directories} {files}\r\n",
+							"$ns": "[77E2FA750C295F22B53B087B1D9F5B3C]",
+							"$key": "D37BE9D241811A536FF46BB6C21A1C4C"
+						}
 					}
 				],
 				"OnFailSequences": []
@@ -433,7 +523,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "IGC Secure Operations Terminal\r\n\r\nUnauthorized access or misuse of this system is strictly prohibited and punishable under Iron Guard military law.\r\n\r\nCommand-level security clearance required.",
+							"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+							"$key": "3D060F4B43B3DC2CD581A79873F20A19"
+						}
 					},
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C",
@@ -455,14 +551,26 @@
 								{
 									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-									"Events": []
+									"Events": [],
+									"Text":
+									{
+										"$text": "Successfully logged in as [{user}].",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "AA4672204D5CA7F619AF6D86E228DBB5"
+									}
 								}
 							],
 							"OnFailSequences": [
 								{
 									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-									"Events": []
+									"Events": [],
+									"Text":
+									{
+										"$text": "Failed to login. Credentials do not match.",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "8D760DE34A7589873DD79C82F9171205"
+									}
 								}
 							]
 						}
@@ -580,7 +688,13 @@
 									"StringPayload": "Terminal"
 								}
 							}
-						]
+						],
+						"Text":
+						{
+							"$text": "Shutting down the terminal...\r\nTerminal secure. You may now extract safely.",
+							"$ns": "[4442EDC16ABAC1CFA5A5B695986A3659]",
+							"$key": "8C3BD74B498BB0BA7465428B9E22E573"
+						}
 					}
 				],
 				"OnFailSequences": []
