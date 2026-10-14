@@ -910,7 +910,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "{user} has not access to this directory.",
+							"$ns": "[94C1237E4409FBDE2491BD34F82176A9]",
+							"$key": "9A48A7124A627645EAFA4F8605C7BD65"
+						}
 					}
 				],
 				"RequiredUserTag": ""
@@ -1297,6 +1303,53 @@
 				}
 			}
 		},
+		"/Script/IRRMissionSystem.IRRTargetData_OperationActor":
+		{
+			"fields": [
+				{
+					"name": "StringPayload",
+					"label": "String Payload",
+					"tooltip": "Additional specifier if we need it, for example for specific enmies like a bosses",
+					"category": "Setup",
+					"type":
+					{
+						"kind": "string"
+					},
+					"meta":
+					{
+					}
+				},
+				{
+					"name": "Actor",
+					"label": "Actor",
+					"tooltip": "Empty on an objective: that mission's operation actor. Set this, or call MakeForActor, on the object passed to BroadcastMissionEvent.",
+					"category": "Setup",
+					"type":
+					{
+						"kind": "asset",
+						"class": "/Script/Engine.Actor"
+					},
+					"meta":
+					{
+					}
+				}
+			],
+			"name": "IRRTargetData_OperationActor",
+			"displayName": "Target Data (Operation Actor)",
+			"tooltip": "Matches the actor the mission's operation start point runs (the convoy, the airdrop).\nLeave Actor empty on the objective; pass MakeForActor to BroadcastMissionEvent.",
+			"chain": [
+				"/Script/IRRMissionSystem.IRRTargetData_OperationActor",
+				"/Script/IRRMissionSystem.IRRTargetData",
+				"/Script/IRREnhancedObjects.IRRReplicatedObject",
+				"/Script/IRREnhancedObjects.IRRBaseObject",
+				"/Script/CoreUObject.Object"
+			],
+			"defaults":
+			{
+				"StringPayload": "",
+				"Actor": ""
+			}
+		},
 		"/Script/IRRMissionSystem.IRRTargetData":
 		{
 			"fields": [
@@ -1620,6 +1673,123 @@
 				},
 				"Level Zones": [],
 				"Impact Bone": ""
+			}
+		},
+		"/Script/IRRMissionSystem.IRRMissionEvent_PlayMissionBriefing":
+		{
+			"fields": [
+				{
+					"name": "NetworkExecType",
+					"label": "Network Exec Type",
+					"tooltip": "UPROPERTY(BlueprintReadWrite)\nbool bAlreadyExecuted = false;",
+					"category": "Setup",
+					"type":
+					{
+						"kind": "enum",
+						"enum": "/Script/IRRMissionSystem.EIRRMissionNetworkExecType"
+					},
+					"meta":
+					{
+					}
+				},
+				{
+					"name": "Briefing",
+					"label": "Briefing",
+					"tooltip": "",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "struct",
+						"struct": "/Script/IRRMissionSystem.IRRBriefingVariants"
+					},
+					"meta":
+					{
+					}
+				},
+				{
+					"name": "AgentOverride",
+					"label": "Agent Override",
+					"tooltip": "None = the mission setup's Agent.",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "asset",
+						"class": "/Script/IRRMissionSystem.IRRAgentSetup"
+					},
+					"meta":
+					{
+					}
+				},
+				{
+					"name": "StartDelay",
+					"label": "Start Delay",
+					"tooltip": "From the event firing to the radio call.",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "float"
+					},
+					"meta":
+					{
+						"ClampMin": "0"
+					}
+				},
+				{
+					"name": "MaxRetryTime",
+					"label": "Max Retry Time",
+					"tooltip": "",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "float"
+					},
+					"meta":
+					{
+						"ClampMin": "0",
+						"AdvancedDisplay": true
+					}
+				},
+				{
+					"name": "AbilityClassOverride",
+					"label": "Ability Class Override",
+					"tooltip": "None = Project Settings > Mission System > DefaultBriefingAbilityClass, else the native ability.",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "class",
+						"base": "/Script/Test_C.SimpleGameplayAbility_PlayMissionBriefing"
+					},
+					"meta":
+					{
+						"AdvancedDisplay": true
+					}
+				}
+			],
+			"name": "IRRMissionEvent_PlayMissionBriefing",
+			"displayName": "Play Mission Briefing",
+			"tooltip": "Plays one variant of Briefing to the local player after StartDelay, through the same ability and variant\nmemory as UIRRMissionBriefingTriggerComponent (UIRRMissionBriefingLibrary). Runs on every machine with a\nlocal player; a dedicated server does nothing. A start the ability component refuses is retried for\nMaxRetryTime.\n\nSettings replicate: sequence and objective events are runtime copies sent to clients as subobjects, which\na client builds from class defaults.\n\nNative base of BP_MissionEvent_PlayMissionBriefing: its \"Briefing Data\" variable is moved into\nBriefing.Variants on load.",
+			"chain": [
+				"/Script/IRRMissionSystem.IRRMissionEvent_PlayMissionBriefing",
+				"/Script/IRRMissionSystem.IRRMissionEvent",
+				"/Script/IRREnhancedObjects.IRRReplicatedObject",
+				"/Script/IRREnhancedObjects.IRRBaseObject",
+				"/Script/CoreUObject.Object"
+			],
+			"defaults":
+			{
+				"NetworkExecType": "Both",
+				"Briefing":
+				{
+					"FirstTimeVariants": [],
+					"bPlayEachFirstTimeVariant": true,
+					"Variants": [],
+					"PickMode": "Random",
+					"MemoryKey": ""
+				},
+				"AgentOverride": "",
+				"StartDelay": 1,
+				"MaxRetryTime": 10,
+				"AbilityClassOverride": ""
 			}
 		},
 		"/Script/IRRMissionSystem.IRRMissionEvent_FailMission":
@@ -2297,17 +2467,75 @@
 					}
 				},
 				{
-					"name": "Briefing Data",
-					"label": "Briefing Data",
+					"name": "Briefing",
+					"label": "Briefing",
 					"tooltip": "",
-					"category": "Setup",
+					"category": "Briefing",
 					"type":
 					{
 						"kind": "struct",
-						"struct": "/Script/IRRMissionSystem.IRRMissionBriefing"
+						"struct": "/Script/IRRMissionSystem.IRRBriefingVariants"
 					},
 					"meta":
 					{
+					}
+				},
+				{
+					"name": "AgentOverride",
+					"label": "Agent Override",
+					"tooltip": "None = the mission setup's Agent.",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "asset",
+						"class": "/Script/IRRMissionSystem.IRRAgentSetup"
+					},
+					"meta":
+					{
+					}
+				},
+				{
+					"name": "StartDelay",
+					"label": "Start Delay",
+					"tooltip": "From the event firing to the radio call.",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "float"
+					},
+					"meta":
+					{
+						"ClampMin": "0"
+					}
+				},
+				{
+					"name": "MaxRetryTime",
+					"label": "Max Retry Time",
+					"tooltip": "",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "float"
+					},
+					"meta":
+					{
+						"ClampMin": "0",
+						"AdvancedDisplay": true
+					}
+				},
+				{
+					"name": "AbilityClassOverride",
+					"label": "Ability Class Override",
+					"tooltip": "None = Project Settings > Mission System > DefaultBriefingAbilityClass, else the native ability.",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "class",
+						"base": "/Script/Test_C.SimpleGameplayAbility_PlayMissionBriefing"
+					},
+					"meta":
+					{
+						"AdvancedDisplay": true
 					}
 				}
 			],
@@ -2316,6 +2544,7 @@
 			"tooltip": "BP Mission Event Play Mission Briefing",
 			"chain": [
 				"/Game/Blueprints/MissionSystem/Objects/Events/BP_MissionEvent_PlayMissionBriefing.BP_MissionEvent_PlayMissionBriefing_C",
+				"/Script/IRRMissionSystem.IRRMissionEvent_PlayMissionBriefing",
 				"/Script/IRRMissionSystem.IRRMissionEvent",
 				"/Script/IRREnhancedObjects.IRRReplicatedObject",
 				"/Script/IRREnhancedObjects.IRRBaseObject",
@@ -2324,14 +2553,18 @@
 			"defaults":
 			{
 				"NetworkExecType": "OnlyClient",
-				"Briefing Data":
+				"Briefing":
 				{
-					"Text": [],
-					"BriefingAudioEvent": "",
-					"Priority": 0,
-					"bCanSkip": true,
-					"Subtitles": []
-				}
+					"FirstTimeVariants": [],
+					"bPlayEachFirstTimeVariant": true,
+					"Variants": [],
+					"PickMode": "Random",
+					"MemoryKey": ""
+				},
+				"AgentOverride": "",
+				"StartDelay": 1,
+				"MaxRetryTime": 10,
+				"AbilityClassOverride": ""
 			}
 		},
 		"/Game/Blueprints/MissionSystem/Objects/Events/BP_MissionEvent_FailMission.BP_MissionEvent_FailMission_C":
@@ -2738,6 +2971,20 @@
 					"meta":
 					{
 					}
+				},
+				{
+					"name": "Text",
+					"label": "Text",
+					"tooltip": "{command} {l} {r} {user} are valid commands for full comand and left right part",
+					"category": "Payload",
+					"type":
+					{
+						"kind": "text"
+					},
+					"meta":
+					{
+						"MultiLine": "true"
+					}
 				}
 			],
 			"name": "BP_TerminalSequence_Text_C",
@@ -2754,7 +3001,12 @@
 			"defaults":
 			{
 				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-				"Events": []
+				"Events": [],
+				"Text":
+				{
+					"$text": "{Command} {l} {r} {user}",
+					"$invariant": true
+				}
 			}
 		},
 		"/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C":
@@ -2839,14 +3091,26 @@
 						{
 							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 							"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-							"Events": []
+							"Events": [],
+							"Text":
+							{
+								"$text": "Successfully logged in as [{user}].",
+								"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+								"$key": "AA4672204D5CA7F619AF6D86E228DBB5"
+							}
 						}
 					],
 					"OnFailSequences": [
 						{
 							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 							"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-							"Events": []
+							"Events": [],
+							"Text":
+							{
+								"$text": "Failed to login. Credentials do not match.",
+								"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+								"$key": "8D760DE34A7589873DD79C82F9171205"
+							}
 						}
 					]
 				}
@@ -3114,6 +3378,20 @@
 					"meta":
 					{
 					}
+				},
+				{
+					"name": "Text",
+					"label": "Text",
+					"tooltip": "{command} {l} {r} {user} are valid commands for full comand and left right part",
+					"category": "Payload",
+					"type":
+					{
+						"kind": "text"
+					},
+					"meta":
+					{
+						"MultiLine": "true"
+					}
 				}
 			],
 			"name": "BP_TerminalSequence_Dir_C",
@@ -3131,7 +3409,13 @@
 			"defaults":
 			{
 				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-				"Events": []
+				"Events": [],
+				"Text":
+				{
+					"$text": "Directory {active}\r\n{directories} {files}\r\n",
+					"$ns": "[77E2FA750C295F22B53B087B1D9F5B3C]",
+					"$key": "D37BE9D241811A536FF46BB6C21A1C4C"
+				}
 			}
 		}
 	},
@@ -3918,42 +4202,96 @@
 				"D": 0
 			}
 		},
-		"/Script/IRRMissionSystem.IRRLoyaltyByFaction":
+		"/Script/IRRMissionSystem.IRRBriefingVariants":
 		{
 			"fields": [
 				{
-					"name": "Faction",
-					"label": "Faction",
-					"tooltip": "",
-					"category": "IRRLoyaltyByFaction",
+					"name": "FirstTimeVariants",
+					"label": "First Time Variants",
+					"tooltip": "Empty = no intro, Variants from the start. Remembered in the mission save (cleared by a progress reset or wipe) under\nthe first entry's audio event, so every briefing with the same intro plays it only once in total.",
+					"category": "Briefing",
 					"type":
 					{
-						"kind": "tag"
+						"kind": "array",
+						"inner":
+						{
+							"kind": "struct",
+							"struct": "/Script/IRRMissionSystem.IRRMissionBriefing"
+						}
 					},
 					"meta":
 					{
 					}
 				},
 				{
-					"name": "Loyalty",
-					"label": "Loyalty",
-					"tooltip": "",
-					"category": "IRRLoyaltyByFaction",
+					"name": "bPlayEachFirstTimeVariant",
+					"label": "Play Each First Time Variant",
+					"tooltip": "On = each first-time variant plays once (one per briefing, picked by PickMode among the unplayed), then Variants. Off = one first-time variant plays, then Variants.",
+					"category": "Briefing",
 					"type":
 					{
-						"kind": "float"
+						"kind": "bool"
 					},
 					"meta":
 					{
 					}
+				},
+				{
+					"name": "Variants",
+					"label": "Variants",
+					"tooltip": "Empty = nothing plays once the first-time variant has (a one-off intro).",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "array",
+						"inner":
+						{
+							"kind": "struct",
+							"struct": "/Script/IRRMissionSystem.IRRMissionBriefing"
+						}
+					},
+					"meta":
+					{
+					}
+				},
+				{
+					"name": "PickMode",
+					"label": "Pick Mode",
+					"tooltip": "Applies to both lists. The last pick is remembered until the level unloads.",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "enum",
+						"enum": "/Script/IRRMissionSystem.EIRRBriefingPickMode"
+					},
+					"meta":
+					{
+					}
+				},
+				{
+					"name": "MemoryKey",
+					"label": "Memory Key",
+					"tooltip": "Overrides the name of the first-time and last-pick memory; briefings with the same key share it. None = derived from the audio events.",
+					"category": "Briefing",
+					"type":
+					{
+						"kind": "name"
+					},
+					"meta":
+					{
+						"AdvancedDisplay": true
+					}
 				}
 			],
-			"name": "IRRLoyaltyByFaction",
-			"displayName": "IRRLoyalty by Faction",
+			"name": "IRRBriefingVariants",
+			"displayName": "IRRBriefing Variants",
 			"defaults":
 			{
-				"Faction": "",
-				"Loyalty": 0
+				"FirstTimeVariants": [],
+				"bPlayEachFirstTimeVariant": true,
+				"Variants": [],
+				"PickMode": "Random",
+				"MemoryKey": ""
 			}
 		},
 		"/Script/IRRMissionSystem.IRRMissionBriefing":
@@ -4162,6 +4500,44 @@
 				"Right": 0,
 				"Bottom": 0
 			}
+		},
+		"/Script/IRRMissionSystem.IRRLoyaltyByFaction":
+		{
+			"fields": [
+				{
+					"name": "Faction",
+					"label": "Faction",
+					"tooltip": "",
+					"category": "IRRLoyaltyByFaction",
+					"type":
+					{
+						"kind": "tag"
+					},
+					"meta":
+					{
+					}
+				},
+				{
+					"name": "Loyalty",
+					"label": "Loyalty",
+					"tooltip": "",
+					"category": "IRRLoyaltyByFaction",
+					"type":
+					{
+						"kind": "float"
+					},
+					"meta":
+					{
+					}
+				}
+			],
+			"name": "IRRLoyaltyByFaction",
+			"displayName": "IRRLoyalty by Faction",
+			"defaults":
+			{
+				"Faction": "",
+				"Loyalty": 0
+			}
 		}
 	},
 	"enums":
@@ -4203,6 +4579,24 @@
 				{
 					"name": "Multiply",
 					"label": "Multiply"
+				}
+			]
+		},
+		"/Script/IRRMissionSystem.EIRRBriefingPickMode":
+		{
+			"name": "EIRRBriefingPickMode",
+			"values": [
+				{
+					"name": "Random",
+					"label": "Random"
+				},
+				{
+					"name": "RandomNoRepeat",
+					"label": "Random No Repeat"
+				},
+				{
+					"name": "Sequential",
+					"label": "Sequential"
 				}
 			]
 		}
@@ -4255,6 +4649,7 @@
 			"/Script/IRRMissionSystem.IRRMissionEvent_AddInboxEntry",
 			"/Script/IRRMissionSystem.IRRMissionEvent_AddOperationInboxEntry",
 			"/Script/IRRMissionSystem.IRRMissionEvent_FailMission",
+			"/Script/IRRMissionSystem.IRRMissionEvent_PlayMissionBriefing",
 			"/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
 			"/Script/IRRMissionSystem.IRRMissionEvent_SendWorldEvent"
 		],
@@ -4263,7 +4658,8 @@
 			"/Game/Blueprints/MissionSystem/Objects/TargetData/BP_TargetData_HideoutUnit.BP_TargetData_HideoutUnit_C",
 			"/Game/Blueprints/MissionSystem/Objects/TargetData/BP_TargetData_SoftPtr.BP_TargetData_SoftPtr_C",
 			"/Game/Blueprints/MissionSystem/Objects/TargetData/BP_TargetData_Tag.BP_TargetData_Tag_C",
-			"/Script/IRRMissionSystem.IRRTargetData"
+			"/Script/IRRMissionSystem.IRRTargetData",
+			"/Script/IRRMissionSystem.IRRTargetData_OperationActor"
 		],
 		"/Script/IRRMissionSystem.IRRTerminalTextSource": [
 			"/Script/IRRMissionSystem.IRRTerminalTextSource_DoorCodes"
@@ -4313,6 +4709,16 @@
 			{
 				"path": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 				"name": "W_TerminalResponse_Text"
+			}
+		],
+		"/Script/Test_C.SimpleGameplayAbility_PlayMissionBriefing": [
+			{
+				"path": "/Game/Blueprints/SimpleGameplayAbilitySystem/Abilities/SGA_PlayMissionBriefing.SGA_PlayMissionBriefing_C",
+				"name": "SGA_PlayMissionBriefing"
+			},
+			{
+				"path": "/Script/Test_C.SimpleGameplayAbility_PlayMissionBriefing",
+				"name": "SimpleGameplayAbility_PlayMissionBriefing"
 			}
 		]
 	},
@@ -4820,187 +5226,17 @@
 			"/Game/Environment/PLI_Sublevels/CommunicationBuilding/PLI_CommunicationBuilding_A.PLI_CommunicationBuilding_A:PersistentLevel.StaticMeshActor_UAID_D8BBC19D83A20E0603_1845446892",
 			"/Game/Environment/PLI_Sublevels/CommunicationBuilding/PLI_CommunicationBuilding_A.PLI_CommunicationBuilding_A:PersistentLevel.StaticMeshActor_UAID_D8BBC19D83A20E0603_1875024893"
 		],
-		"/Script/IRRMissionSystem.IRRMissionSetup": [
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Assassination/DA_BLUEFOR_ADLER_Challenge_Assassination_AssaultRifle.DA_BLUEFOR_ADLER_Challenge_Assassination_AssaultRifle",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Assassination/DA_BLUEFOR_ADLER_Challenge_Assassination_DMR.DA_BLUEFOR_ADLER_Challenge_Assassination_DMR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Assassination/DA_BLUEFOR_ADLER_Challenge_Assassination_Headshot.DA_BLUEFOR_ADLER_Challenge_Assassination_Headshot",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Profit/DA_BLUEFOR_ADLER_Challenge_Profit_20K.DA_BLUEFOR_ADLER_Challenge_Profit_20K",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Restock/DA_BLUEFOR_ADLER_Challenge_Restock_Collector.DA_BLUEFOR_ADLER_Challenge_Restock_Collector",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Restock/DA_BLUEFOR_ADLER_Challenge_Restock_Food.DA_BLUEFOR_ADLER_Challenge_Restock_Food",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Restock/DA_BLUEFOR_ADLER_Challenge_Restock_Fuel.DA_BLUEFOR_ADLER_Challenge_Restock_Fuel",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Survival/DA_BLUEFOR_ADLER_Challenge_Survival_GreenHorn.DA_BLUEFOR_ADLER_Challenge_Survival_GreenHorn",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Elimination/DA_BLUEFOR_ADLER_Contract_Bunker_Elimination_A.DA_BLUEFOR_ADLER_Contract_Bunker_Elimination_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Sabotage/DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_A.DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Sabotage/DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_B.DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Sabotage/DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_C.DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Sabotage/DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_D.DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_D",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/SecureAndPlace/DA_BLUEFOR_ADLER_Contract_Bunker_SecureAndPlace_A.DA_BLUEFOR_ADLER_Contract_Bunker_SecureAndPlace_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/SecureAndPlace/DA_BLUEFOR_ADLER_Contract_Bunker_SecureAndPlace_B.DA_BLUEFOR_ADLER_Contract_Bunker_SecureAndPlace_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Airdrop/DA_BLUEFOR_ADLER_Contract_Delta_Airdrop_A.DA_BLUEFOR_ADLER_Contract_Delta_Airdrop_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Airdrop/DA_BLUEFOR_ADLER_Contract_Delta_Airdrop_B.DA_BLUEFOR_ADLER_Contract_Delta_Airdrop_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Convoy/DA_BLUEFOR_ADLER_Contract_Delta_Convoy.DA_BLUEFOR_ADLER_Contract_Delta_Convoy",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Defense/DA_BLUEFOR_ADLER_Contract_Bunker_Defense_D_LEGACY.DA_BLUEFOR_ADLER_Contract_Bunker_Defense_D_LEGACY",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Defense/DA_BLUEFOR_ADLER_Contract_Delta_Defense_A.DA_BLUEFOR_ADLER_Contract_Delta_Defense_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Defense/DA_BLUEFOR_ADLER_Contract_Delta_Defense_B.DA_BLUEFOR_ADLER_Contract_Delta_Defense_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Defense/DA_BLUEFOR_ADLER_Contract_Delta_Defense_C.DA_BLUEFOR_ADLER_Contract_Delta_Defense_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Sabotage/DA_BLUEFOR_ADLER_Contract_Delta_Sabotage_Bomb_A.DA_BLUEFOR_ADLER_Contract_Delta_Sabotage_Bomb_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Sabotage/DA_BLUEFOR_ADLER_Contract_Delta_Sabotage_Bomb_B.DA_BLUEFOR_ADLER_Contract_Delta_Sabotage_Bomb_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/Convoy/DA_BLUEFOR_ADLER_Challenge_Convoy_Delta.DA_BLUEFOR_ADLER_Challenge_Convoy_Delta",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/Sabotage/DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_B.DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/Sabotage/DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_C.DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/Sabotage/DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_D.DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_D",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/SecureAndPlace/DA_BLUEFOR_ADLER_Contract_Quarry_SecureAndPlace.DA_BLUEFOR_ADLER_Contract_Quarry_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/StoryMissions/DA_BLUEFOR_ADLER_SM_1.DA_BLUEFOR_ADLER_SM_1",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/DOVE/Challenges/Restock/DA_BLUEFOR_DOVE_Challenge_Restock_Food.DA_BLUEFOR_DOVE_Challenge_Restock_Food",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/DOVE/Challenges/Survival/DA_BLUEFOR_DOVE_Challenge_Survival_GreenHorn.DA_BLUEFOR_DOVE_Challenge_Survival_GreenHorn",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/DOVE/Contracts/SecureAndPlace/DA_BLUEFOR_DOVE_Contract_SecureAndPlace.DA_BLUEFOR_DOVE_Contract_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/SAM/Challenges/Assassination/DA_BLUEFOR_SAM_Challenge_Assassination_Sniper.DA_BLUEFOR_SAM_Challenge_Assassination_Sniper",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/SAM/Challenges/Restock/DA_BLUEFOR_SAM_Challenge_Restock_Fuel.DA_BLUEFOR_SAM_Challenge_Restock_Fuel",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/SAM/Contracts/SecureAndPlace/DA_BLUEFOR_SAM_Contract_SecureAndPlace.DA_BLUEFOR_SAM_Contract_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_101_RR.DA_KIA_101_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_180_RR.DA_KIA_180_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_225_RR.DA_KIA_225_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_333_RR.DA_KIA_333_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_454_RR.DA_KIA_454_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_523_RR.DA_KIA_523_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_580_RR.DA_KIA_580_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_756_RR.DA_KIA_756_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_901_RR.DA_KIA_901_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Extraction/DA_FANG_EXT_140_RR.DA_FANG_EXT_140_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Extraction/DA_FANG_EXT_271_RR.DA_FANG_EXT_271_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Extraction/DA_FANG_EXT_665_RR.DA_FANG_EXT_665_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Operation/DA_FANG_OPR_205_RR.DA_FANG_OPR_205_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Operation/DA_FANG_OPR_453_RR.DA_FANG_OPR_453_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Operation/DA_FANG_OPR_700_RR.DA_FANG_OPR_700_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Operation/DA_FANG_OPR_999_RR.DA_FANG_OPR_999_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_266_RR.DA_FANG_RET_266_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_267_RR.DA_FANG_RET_267_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_511_RR.DA_FANG_RET_511_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_512_RR.DA_FANG_RET_512_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_622_RR.DA_FANG_RET_622_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_623_RR.DA_FANG_RET_623_RR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_Test.DA_FANG_RET_Test",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/SideMissions/DA_FANG_OBSERVER_0002_A.DA_FANG_OBSERVER_0002_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/SideMissions/DA_FANG_OBSERVER_0002_A_Test.DA_FANG_OBSERVER_0002_A_Test",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/SideMissions/DA_FANG_OBSERVER_0002_B.DA_FANG_OBSERVER_0002_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/SideMissions/DA_FANG_OBSERVER_0002_C.DA_FANG_OBSERVER_0002_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0001.DA_FANG_OBSERVER_0001",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0002.DA_FANG_OBSERVER_0002",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0003.DA_FANG_OBSERVER_0003",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0004.DA_FANG_OBSERVER_0004",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0005.DA_FANG_OBSERVER_0005",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0006.DA_FANG_OBSERVER_0006",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0007.DA_FANG_OBSERVER_0007",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0008.DA_FANG_OBSERVER_0008",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0009.DA_FANG_OBSERVER_0009",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0010.DA_FANG_OBSERVER_0010",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0011.DA_FANG_OBSERVER_0011",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0012.DA_FANG_OBSERVER_0012",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0013.DA_FANG_OBSERVER_0013",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0014.DA_FANG_OBSERVER_0014",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0015.DA_FANG_OBSERVER_0015",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0016.DA_FANG_OBSERVER_0016",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0017.DA_FANG_OBSERVER_0017",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0018.DA_FANG_OBSERVER_0018",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0019.DA_FANG_OBSERVER_0019",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0020.DA_FANG_OBSERVER_0020",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0021.DA_FANG_OBSERVER_0021",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0022.DA_FANG_OBSERVER_0022",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0023.DA_FANG_OBSERVER_0023",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Assassination/DA_GREYFOR_CIPHER_Challenge_Assassination_Headhsot.DA_GREYFOR_CIPHER_Challenge_Assassination_Headhsot",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Assassination/DA_GREYFOR_CIPHER_Challenge_Assassination_Pistol.DA_GREYFOR_CIPHER_Challenge_Assassination_Pistol",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Assassination/DA_GREYFOR_CIPHER_Challenge_Assassination_SMG.DA_GREYFOR_CIPHER_Challenge_Assassination_SMG",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Profit/DA_GREYFOR_CIPHER_Challenge_Profit_20K.DA_GREYFOR_CIPHER_Challenge_Profit_20K",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Restock/DA_GREYFOR_CIPHER_Challenge_Restock_Food.DA_GREYFOR_CIPHER_Challenge_Restock_Food",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Restock/DA_GREYFOR_CIPHER_Challenge_Restock_Fuel.DA_GREYFOR_CIPHER_Challenge_Restock_Fuel",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Restock/DA_GREYFOR_CIPHER_Challenge_Restock_OldTech.DA_GREYFOR_CIPHER_Challenge_Restock_OldTech",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Survival/DA_GREYFOR_CIPHER_Challenge_Survival_GreenHorn.DA_GREYFOR_CIPHER_Challenge_Survival_GreenHorn",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/Sabotage/DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_A.DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/Sabotage/DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_B.DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/Sabotage/DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_C.DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/Sabotage/DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_D.DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_D",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Bunker_SecureAndPlace_A.DA_GREYFOR_CIPHER_Contract_Bunker_SecureAndPlace_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Bunker_SecureAndPlace_B.DA_GREYFOR_CIPHER_Contract_Bunker_SecureAndPlace_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Delta/Sabotage/DA_GREYFOR_CIPHER_Contract_Delta_Sabotage_Jammer_A.DA_GREYFOR_CIPHER_Contract_Delta_Sabotage_Jammer_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Delta/Sabotage/DA_GREYFOR_CIPHER_Contract_Delta_Sabotage_Jammer_B.DA_GREYFOR_CIPHER_Contract_Delta_Sabotage_Jammer_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Delta/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Delta_SecureAndPlace_A.DA_GREYFOR_CIPHER_Contract_Delta_SecureAndPlace_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Delta/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Delta_SecureAndPlace_B.DA_GREYFOR_CIPHER_Contract_Delta_SecureAndPlace_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Airdrop/DA_GREYFOR_CIPHER_Contract_Quarry_Airdrop.DA_GREYFOR_CIPHER_Contract_Quarry_Airdrop",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Convoy/DA_GREYFOR_CIPHER_Contract_Quarry_Convoy.DA_GREYFOR_CIPHER_Contract_Quarry_Convoy",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_A.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_B.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_C.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_D.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_D",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_LEGACY.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_LEGACY",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_A.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_B.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_C.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_D.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_D",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_E.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_E",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Quarry_SecureAndPlace.DA_GREYFOR_CIPHER_Contract_Quarry_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/HEILONG/Challenges/Assassination/DA_GREYFOR_HEILONG_Challenge_Assassination_Shotgun.DA_GREYFOR_HEILONG_Challenge_Assassination_Shotgun",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/HEILONG/Challenges/Restock/DA_GREYFOR_HEILONG_Challenge_Restock_Fuel.DA_GREYFOR_HEILONG_Challenge_Restock_Fuel",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/HEILONG/Contracts/SecureAndPlace/DA_GREYFOR_HEILONG_Contract_SecureAndPlace.DA_GREYFOR_HEILONG_Contract_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/THE_TSAR/Challenges/Assassination/DA_GREYFOR_THE_TSAR_Challenge_Assassination_Sniper.DA_GREYFOR_THE_TSAR_Challenge_Assassination_Sniper",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/THE_TSAR/Contracts/SecureAndPlace/DA_GREYFOR_THE_TSAR_Contract_SecureAndPlace.DA_GREYFOR_THE_TSAR_Contract_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Assassination/DA_OPFOR_LY_Challenge_Assassination_Shotgun.DA_OPFOR_LY_Challenge_Assassination_Shotgun",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Assassination/DA_OPFOR_LY_Challenge_Assassination_Sniper.DA_OPFOR_LY_Challenge_Assassination_Sniper",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Profit/DA_OPFOR_LY_Challenge_Profit_20K.DA_OPFOR_LY_Challenge_Profit_20K",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Restock/DA_OPFOR_LY_Challenge_Restock_Alcohol.DA_OPFOR_LY_Challenge_Restock_Alcohol",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Restock/DA_OPFOR_LY_Challenge_Restock_Food.DA_OPFOR_LY_Challenge_Restock_Food",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Restock/DA_OPFOR_LY_Challenge_Restock_Fuel.DA_OPFOR_LY_Challenge_Restock_Fuel",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Survival/DA_OPFOR_LY_Challenge_Survival_GreenHorn.DA_OPFOR_LY_Challenge_Survival_GreenHorn",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Defense/DA_OPFOR_LY_Contract_Bunker_Defense_A.DA_OPFOR_LY_Contract_Bunker_Defense_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Defense/DA_OPFOR_LY_Contract_Bunker_Defense_B.DA_OPFOR_LY_Contract_Bunker_Defense_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Defense/DA_OPFOR_LY_Contract_Bunker_Defense_C.DA_OPFOR_LY_Contract_Bunker_Defense_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Defense/DA_OPFOR_LY_Contract_Bunker_Defense_D.DA_OPFOR_LY_Contract_Bunker_Defense_D",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Sabotage/DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_A.DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Sabotage/DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_B.DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Sabotage/DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_C.DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Sabotage/DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_D.DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_D",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/SecureAndPlace/DA_OPFOR_LY_Contract_Bunker_SecureAndPlace_A.DA_OPFOR_LY_Contract_Bunker_SecureAndPlace_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/SecureAndPlace/DA_OPFOR_LY_Contract_Bunker_SecureAndPlace_B.DA_OPFOR_LY_Contract_Bunker_SecureAndPlace_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Delta/Sabotage/DA_OPFOR_LY_Contract_Delta_Sabotage_Bug_A.DA_OPFOR_LY_Contract_Delta_Sabotage_Bug_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Delta/Sabotage/DA_OPFOR_LY_Contract_Delta_Sabotage_Bug_B.DA_OPFOR_LY_Contract_Delta_Sabotage_Bug_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Airdrop/DA_OPFOR_LY_Contract_Quarry_Airdrop.DA_OPFOR_LY_Contract_Quarry_Airdrop",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Convoy/DA_OPFOR_LY_Contract_Quarry_Convoy.DA_OPFOR_LY_Contract_Quarry_Convoy",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Elimination/DA_OPFOR_LY_Contract_Quarry_Elimination_A.DA_OPFOR_LY_Contract_Quarry_Elimination_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Elimination/DA_OPFOR_LY_Contract_Quarry_Elimination_B.DA_OPFOR_LY_Contract_Quarry_Elimination_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Elimination/DA_OPFOR_LY_Contract_Quarry_Elimination_C.DA_OPFOR_LY_Contract_Quarry_Elimination_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Sabotage/DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_A.DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_A",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Sabotage/DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_B.DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_B",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Sabotage/DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_C.DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_C",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Sabotage/DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_D.DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_D",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/SecureAndPlace/DA_OPFOR_LY_Contract_Quarry_SecureAndPlace.DA_OPFOR_LY_Contract_Quarry_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/Challenges/Assassination/DA_OPFOR_MR_NAM_Challenge_Assassination_Headshot.DA_OPFOR_MR_NAM_Challenge_Assassination_Headshot",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/Challenges/Restock/DA_OPFOR_MR_NAM_Challenge_Restock_Food.DA_OPFOR_MR_NAM_Challenge_Restock_Food",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/Challenges/Survival/DA_OPFOR_MR_NAM_Challenge_Survival_GreenHorn.DA_OPFOR_MR_NAM_Challenge_Survival_GreenHorn",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/Contracts/SecureAndPlace/DA_OPFOR_MR_NAM_Contract_SecureAndPlace.DA_OPFOR_MR_NAM_Contract_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/THANH_GIONG/Challenges/Assassination/DA_OPFOR_THANH_GIONG_Challenge_Assassination_Sniper.DA_OPFOR_THANH_GIONG_Challenge_Assassination_Sniper",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/THANH_GIONG/Challenges/Restock/DA_OPFOR_THANH_GIONG_Challenge_Restock_OldTech.DA_OPFOR_THANH_GIONG_Challenge_Restock_OldTech",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/THANH_GIONG/Contracts/SecureAndPlace/DA_OPFOR_THANH_GIONG_Contract_SecureAndPlace.DA_OPFOR_THANH_GIONG_Contract_SecureAndPlace",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/AssaultRifle/DA_TEMPLATE_Challenge_Assassination_AssaultRifle.DA_TEMPLATE_Challenge_Assassination_AssaultRifle",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/DMR/DA_TEMPLATE_Challenge_Assassination_DMR.DA_TEMPLATE_Challenge_Assassination_DMR",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/Headshot/DA_TEMPLATE_Challenge_Assassination_Headshot.DA_TEMPLATE_Challenge_Assassination_Headshot",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/Pistol/DA_TEMPLATE_Challenge_Assassination_Pistol.DA_TEMPLATE_Challenge_Assassination_Pistol",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/Shotgun/DA_TEMPLATE_Challenge_Assassination_Shotgun.DA_TEMPLATE_Challenge_Assassination_Shotgun",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/SMG/DA_TEMPLATE_Challenge_Assassination_SMG.DA_TEMPLATE_Challenge_Assassination_SMG",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/Sniper/DA_TEMPLATE_Challenge_Assassination_Sniper.DA_TEMPLATE_Challenge_Assassination_Sniper",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Profit/20K/DA_TEMPLATE_Challenge_Profit_20K.DA_TEMPLATE_Challenge_Profit_20K",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/Alcohol/DA_TEMPLATE_ChallengeAlcohol.DA_TEMPLATE_ChallengeAlcohol",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/Collector/DA_TEMPLATE_ChallengeCollector.DA_TEMPLATE_ChallengeCollector",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/Food/DA_TEMPLATE_ChallengeFood.DA_TEMPLATE_ChallengeFood",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/Fuel/DA_TEMPLATE_ChallengeFel.DA_TEMPLATE_ChallengeFel",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/OldTech/DA_TEMPLATE_ChallengeSupply_OldTech.DA_TEMPLATE_ChallengeSupply_OldTech",
-			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Survival/GreenHorn/DA_TEMPLATE_Challenge_Survival_GreenHorn.DA_TEMPLATE_Challenge_Survival_GreenHorn",
-			"/Game/Blueprints/MissionSystem/DataAssets/Test/DA_TestMission_ClearArea.DA_TestMission_ClearArea"
-		],
-		"/Game/Blueprints/MissionSystem/Convoy/BP_Convoy.BP_Convoy_C": [
-			"/Game/Maps/Gameplay/LVL_Delta.LVL_Delta:PersistentLevel.BP_Convoy_IGC_C_UAID_74563C37599F93FF02_1157054757",
-			"/Game/Maps/Gameplay/LVL_Outskirts.LVL_Outskirts:PersistentLevel.BP_Convoy_UICS_C_UAID_D843AE1E3FE3340903_1449796511",
-			"/Game/Maps/Gameplay/LVL_Quarry.LVL_Quarry:PersistentLevel.BP_Convoy_UICS_C_UAID_74563C37599F220703_1293991785",
-			"/Game/Maps/Gameplay/LVL_Quarry.LVL_Quarry:PersistentLevel.BP_Convoy_UICS_C_UAID_D843AE1E3FE38E0503_1150654528",
-			"/Game/Maps/Testing/LVL_TestConvoy_OpenWorld.LVL_TestConvoy_OpenWorld:PersistentLevel.BP_Convoy_IGC_C_UAID_74563C37599F050003_2036494896"
+		"/Script/IRRMissionSystem.IRRAgentSetup": [
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/DA_BLUEFOR_ADLER.DA_BLUEFOR_ADLER",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/DOVE/DA_BLUEFOR_DOVE.DA_BLUEFOR_DOVE",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/SAM/DA_BLUEFOR_SAM.DA_BLUEFOR_SAM",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/DA_FANG_OBSERVER.DA_FANG_OBSERVER",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/DA_GREYFOR_CIPHER.DA_GREYFOR_CIPHER",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/HEILONG/DA_GREYFOR_HEILONG.DA_GREYFOR_HEILONG",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/THE_TSAR/DA_GREYFOR_THE_TSAR.DA_GREYFOR_THE_TSAR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/DA_OPFOR_LY.DA_OPFOR_LY",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/DA_OPFOR_MR_NAM.DA_OPFOR_MR_NAM",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/THANH_GIONG/DA_OPFOR_THANH_GIONG.DA_OPFOR_THANH_GIONG"
 		],
 		"/Script/AkAudio.AkAudioEvent": [
 			"/Game/Soundbanks/Events/Default_Work_Unit/Ambience/Desert/AMBIENCE_Desert_Bed.AMBIENCE_Desert_Bed",
@@ -5503,6 +5739,191 @@
 			"/Game/WwiseAudio/Events/Default_Work_Unit/SFX/Weapons/Firearms/Assault_Rifles/Assault_Rifles/AK47/AK47_3p/AK47_Suppressed_Single_3p.AK47_Suppressed_Single_3p",
 			"/Game/WwiseAudio/Events/Default_Work_Unit/SFX/Weapons/Firearms/Assault_Rifles/Assault_Rifles/AK47/AK47_3p/AK47_Suppressed_Tail_3p.AK47_Suppressed_Tail_3p",
 			"/Game/WwiseAudio/Events/Default_Work_Unit/SFX/Weapons/Firearms/Assault_Rifles/Assault_Rifles/AK47/AK47_3p/AK74_Auto_3p.AK74_Auto_3p"
+		],
+		"/Script/IRRMissionSystem.IRRMissionSetup": [
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Assassination/DA_BLUEFOR_ADLER_Challenge_Assassination_AssaultRifle.DA_BLUEFOR_ADLER_Challenge_Assassination_AssaultRifle",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Assassination/DA_BLUEFOR_ADLER_Challenge_Assassination_DMR.DA_BLUEFOR_ADLER_Challenge_Assassination_DMR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Assassination/DA_BLUEFOR_ADLER_Challenge_Assassination_Headshot.DA_BLUEFOR_ADLER_Challenge_Assassination_Headshot",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Profit/DA_BLUEFOR_ADLER_Challenge_Profit_20K.DA_BLUEFOR_ADLER_Challenge_Profit_20K",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Restock/DA_BLUEFOR_ADLER_Challenge_Restock_Collector.DA_BLUEFOR_ADLER_Challenge_Restock_Collector",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Restock/DA_BLUEFOR_ADLER_Challenge_Restock_Food.DA_BLUEFOR_ADLER_Challenge_Restock_Food",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Restock/DA_BLUEFOR_ADLER_Challenge_Restock_Fuel.DA_BLUEFOR_ADLER_Challenge_Restock_Fuel",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Challenges/Survival/DA_BLUEFOR_ADLER_Challenge_Survival_GreenHorn.DA_BLUEFOR_ADLER_Challenge_Survival_GreenHorn",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Elimination/DA_BLUEFOR_ADLER_Contract_Bunker_Elimination_A.DA_BLUEFOR_ADLER_Contract_Bunker_Elimination_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Sabotage/DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_A.DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Sabotage/DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_B.DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Sabotage/DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_C.DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/Sabotage/DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_D.DA_BLUEFOR_ADLER_Contract_Bunker_Sabotage_Jammer_D",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/SecureAndPlace/DA_BLUEFOR_ADLER_Contract_Bunker_SecureAndPlace_A.DA_BLUEFOR_ADLER_Contract_Bunker_SecureAndPlace_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Bunker/SecureAndPlace/DA_BLUEFOR_ADLER_Contract_Bunker_SecureAndPlace_B.DA_BLUEFOR_ADLER_Contract_Bunker_SecureAndPlace_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Airdrop/DA_BLUEFOR_ADLER_Contract_Delta_Airdrop.DA_BLUEFOR_ADLER_Contract_Delta_Airdrop",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Convoy/DA_BLUEFOR_ADLER_Contract_Delta_Convoy.DA_BLUEFOR_ADLER_Contract_Delta_Convoy",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Defense/DA_BLUEFOR_ADLER_Contract_Bunker_Defense_D_LEGACY.DA_BLUEFOR_ADLER_Contract_Bunker_Defense_D_LEGACY",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Defense/DA_BLUEFOR_ADLER_Contract_Delta_Defense_A.DA_BLUEFOR_ADLER_Contract_Delta_Defense_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Defense/DA_BLUEFOR_ADLER_Contract_Delta_Defense_B.DA_BLUEFOR_ADLER_Contract_Delta_Defense_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Defense/DA_BLUEFOR_ADLER_Contract_Delta_Defense_C.DA_BLUEFOR_ADLER_Contract_Delta_Defense_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Sabotage/DA_BLUEFOR_ADLER_Contract_Delta_Sabotage_Bomb_A.DA_BLUEFOR_ADLER_Contract_Delta_Sabotage_Bomb_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Delta/Sabotage/DA_BLUEFOR_ADLER_Contract_Delta_Sabotage_Bomb_B.DA_BLUEFOR_ADLER_Contract_Delta_Sabotage_Bomb_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/Sabotage/DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_B.DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/Sabotage/DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_C.DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/Sabotage/DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_D.DA_BLUEFOR_ADLER_Contract_Quarry_Sabotage_Bug_D",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/Contracts/Quarry/SecureAndPlace/DA_BLUEFOR_ADLER_Contract_Quarry_SecureAndPlace.DA_BLUEFOR_ADLER_Contract_Quarry_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/ADLER/StoryMissions/DA_BLUEFOR_ADLER_SM_1.DA_BLUEFOR_ADLER_SM_1",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/DOVE/Challenges/Restock/DA_BLUEFOR_DOVE_Challenge_Restock_Food.DA_BLUEFOR_DOVE_Challenge_Restock_Food",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/DOVE/Challenges/Survival/DA_BLUEFOR_DOVE_Challenge_Survival_GreenHorn.DA_BLUEFOR_DOVE_Challenge_Survival_GreenHorn",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/DOVE/Contracts/SecureAndPlace/DA_BLUEFOR_DOVE_Contract_SecureAndPlace.DA_BLUEFOR_DOVE_Contract_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/SAM/Challenges/Assassination/DA_BLUEFOR_SAM_Challenge_Assassination_Sniper.DA_BLUEFOR_SAM_Challenge_Assassination_Sniper",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/SAM/Challenges/Restock/DA_BLUEFOR_SAM_Challenge_Restock_Fuel.DA_BLUEFOR_SAM_Challenge_Restock_Fuel",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/BLUEFOR/SAM/Contracts/SecureAndPlace/DA_BLUEFOR_SAM_Contract_SecureAndPlace.DA_BLUEFOR_SAM_Contract_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_101_RR.DA_KIA_101_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_180_RR.DA_KIA_180_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_225_RR.DA_KIA_225_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_333_RR.DA_KIA_333_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_454_RR.DA_KIA_454_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_523_RR.DA_KIA_523_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_580_RR.DA_KIA_580_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_756_RR.DA_KIA_756_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Elimination/DA_KIA_901_RR.DA_KIA_901_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Extraction/DA_FANG_EXT_140_RR.DA_FANG_EXT_140_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Extraction/DA_FANG_EXT_271_RR.DA_FANG_EXT_271_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Extraction/DA_FANG_EXT_665_RR.DA_FANG_EXT_665_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Operation/DA_FANG_OPR_205_RR.DA_FANG_OPR_205_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Operation/DA_FANG_OPR_453_RR.DA_FANG_OPR_453_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Operation/DA_FANG_OPR_700_RR.DA_FANG_OPR_700_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Operation/DA_FANG_OPR_999_RR.DA_FANG_OPR_999_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_266_RR.DA_FANG_RET_266_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_267_RR.DA_FANG_RET_267_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_511_RR.DA_FANG_RET_511_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_512_RR.DA_FANG_RET_512_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_622_RR.DA_FANG_RET_622_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_623_RR.DA_FANG_RET_623_RR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/Assignments/Retrieve/DA_FANG_RET_Test.DA_FANG_RET_Test",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/SideMissions/DA_FANG_OBSERVER_0002_A.DA_FANG_OBSERVER_0002_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/SideMissions/DA_FANG_OBSERVER_0002_A_Test.DA_FANG_OBSERVER_0002_A_Test",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/SideMissions/DA_FANG_OBSERVER_0002_B.DA_FANG_OBSERVER_0002_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/SideMissions/DA_FANG_OBSERVER_0002_C.DA_FANG_OBSERVER_0002_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0000x5.DA_FANG_OBSERVER_0000x5",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0000x75.DA_FANG_OBSERVER_0000x75",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0001.DA_FANG_OBSERVER_0001",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0002.DA_FANG_OBSERVER_0002",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0003.DA_FANG_OBSERVER_0003",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0004.DA_FANG_OBSERVER_0004",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0005.DA_FANG_OBSERVER_0005",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0006.DA_FANG_OBSERVER_0006",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0007.DA_FANG_OBSERVER_0007",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0008.DA_FANG_OBSERVER_0008",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0008x5.DA_FANG_OBSERVER_0008x5",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0009.DA_FANG_OBSERVER_0009",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0010.DA_FANG_OBSERVER_0010",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0011.DA_FANG_OBSERVER_0011",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0012.DA_FANG_OBSERVER_0012",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0013.DA_FANG_OBSERVER_0013",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0014.DA_FANG_OBSERVER_0014",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0015.DA_FANG_OBSERVER_0015",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0016.DA_FANG_OBSERVER_0016",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0017.DA_FANG_OBSERVER_0017",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0018.DA_FANG_OBSERVER_0018",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0019.DA_FANG_OBSERVER_0019",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0020.DA_FANG_OBSERVER_0020",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0021.DA_FANG_OBSERVER_0021",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0022.DA_FANG_OBSERVER_0022",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0023.DA_FANG_OBSERVER_0023",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Assassination/DA_GREYFOR_CIPHER_Challenge_Assassination_Headhsot.DA_GREYFOR_CIPHER_Challenge_Assassination_Headhsot",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Assassination/DA_GREYFOR_CIPHER_Challenge_Assassination_Pistol.DA_GREYFOR_CIPHER_Challenge_Assassination_Pistol",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Assassination/DA_GREYFOR_CIPHER_Challenge_Assassination_SMG.DA_GREYFOR_CIPHER_Challenge_Assassination_SMG",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Profit/DA_GREYFOR_CIPHER_Challenge_Profit_20K.DA_GREYFOR_CIPHER_Challenge_Profit_20K",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Restock/DA_GREYFOR_CIPHER_Challenge_Restock_Food.DA_GREYFOR_CIPHER_Challenge_Restock_Food",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Restock/DA_GREYFOR_CIPHER_Challenge_Restock_Fuel.DA_GREYFOR_CIPHER_Challenge_Restock_Fuel",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Restock/DA_GREYFOR_CIPHER_Challenge_Restock_OldTech.DA_GREYFOR_CIPHER_Challenge_Restock_OldTech",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Challenges/Survival/DA_GREYFOR_CIPHER_Challenge_Survival_GreenHorn.DA_GREYFOR_CIPHER_Challenge_Survival_GreenHorn",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/Sabotage/DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_A.DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/Sabotage/DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_B.DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/Sabotage/DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_C.DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/Sabotage/DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_D.DA_GREYFOR_CIPHER_Contract_Bunker_Sabotage_Bug_D",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Bunker_SecureAndPlace_A.DA_GREYFOR_CIPHER_Contract_Bunker_SecureAndPlace_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Bunker/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Bunker_SecureAndPlace_B.DA_GREYFOR_CIPHER_Contract_Bunker_SecureAndPlace_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Delta/Sabotage/DA_GREYFOR_CIPHER_Contract_Delta_Sabotage_Jammer_A.DA_GREYFOR_CIPHER_Contract_Delta_Sabotage_Jammer_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Delta/Sabotage/DA_GREYFOR_CIPHER_Contract_Delta_Sabotage_Jammer_B.DA_GREYFOR_CIPHER_Contract_Delta_Sabotage_Jammer_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Delta/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Delta_SecureAndPlace_A.DA_GREYFOR_CIPHER_Contract_Delta_SecureAndPlace_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Delta/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Delta_SecureAndPlace_B.DA_GREYFOR_CIPHER_Contract_Delta_SecureAndPlace_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Outskirts/DA_GREYFOR_CIPHER_Contract_Outskirts_Convoy.DA_GREYFOR_CIPHER_Contract_Outskirts_Convoy",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Airdrop/DA_GREYFOR_CIPHER_Contract_Quarry_Airdrop.DA_GREYFOR_CIPHER_Contract_Quarry_Airdrop",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_A.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_B.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_C.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_D.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_D",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Defense/DA_GREYFOR_CIPHER_Contract_Quarry_Defense_LEGACY.DA_GREYFOR_CIPHER_Contract_Quarry_Defense_LEGACY",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_A.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_B.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_C.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_D.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_D",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/Sabotage/DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_E.DA_GREYFOR_CIPHER_Contract_Quarry_Sabotage_Bomb_E",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/CIPHER/Contracts/Quarry/SecureAndPlace/DA_GREYFOR_CIPHER_Contract_Quarry_SecureAndPlace.DA_GREYFOR_CIPHER_Contract_Quarry_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/HEILONG/Challenges/Assassination/DA_GREYFOR_HEILONG_Challenge_Assassination_Shotgun.DA_GREYFOR_HEILONG_Challenge_Assassination_Shotgun",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/HEILONG/Challenges/Restock/DA_GREYFOR_HEILONG_Challenge_Restock_Fuel.DA_GREYFOR_HEILONG_Challenge_Restock_Fuel",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/HEILONG/Contracts/SecureAndPlace/DA_GREYFOR_HEILONG_Contract_SecureAndPlace.DA_GREYFOR_HEILONG_Contract_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/THE_TSAR/Challenges/Assassination/DA_GREYFOR_THE_TSAR_Challenge_Assassination_Sniper.DA_GREYFOR_THE_TSAR_Challenge_Assassination_Sniper",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/GREYFOR/THE_TSAR/Contracts/SecureAndPlace/DA_GREYFOR_THE_TSAR_Contract_SecureAndPlace.DA_GREYFOR_THE_TSAR_Contract_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Assassination/DA_OPFOR_LY_Challenge_Assassination_Shotgun.DA_OPFOR_LY_Challenge_Assassination_Shotgun",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Assassination/DA_OPFOR_LY_Challenge_Assassination_Sniper.DA_OPFOR_LY_Challenge_Assassination_Sniper",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Profit/DA_OPFOR_LY_Challenge_Profit_20K.DA_OPFOR_LY_Challenge_Profit_20K",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Restock/DA_OPFOR_LY_Challenge_Restock_Alcohol.DA_OPFOR_LY_Challenge_Restock_Alcohol",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Restock/DA_OPFOR_LY_Challenge_Restock_Food.DA_OPFOR_LY_Challenge_Restock_Food",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Restock/DA_OPFOR_LY_Challenge_Restock_Fuel.DA_OPFOR_LY_Challenge_Restock_Fuel",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Challenges/Survival/DA_OPFOR_LY_Challenge_Survival_GreenHorn.DA_OPFOR_LY_Challenge_Survival_GreenHorn",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Defense/DA_OPFOR_LY_Contract_Bunker_Defense_A.DA_OPFOR_LY_Contract_Bunker_Defense_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Defense/DA_OPFOR_LY_Contract_Bunker_Defense_B.DA_OPFOR_LY_Contract_Bunker_Defense_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Defense/DA_OPFOR_LY_Contract_Bunker_Defense_C.DA_OPFOR_LY_Contract_Bunker_Defense_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Defense/DA_OPFOR_LY_Contract_Bunker_Defense_D.DA_OPFOR_LY_Contract_Bunker_Defense_D",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Sabotage/DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_A.DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Sabotage/DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_B.DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Sabotage/DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_C.DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/Sabotage/DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_D.DA_OPFOR_LY_Contract_Bunker_Sabotage_Bomb_D",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/SecureAndPlace/DA_OPFOR_LY_Contract_Bunker_SecureAndPlace_A.DA_OPFOR_LY_Contract_Bunker_SecureAndPlace_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Bunker/SecureAndPlace/DA_OPFOR_LY_Contract_Bunker_SecureAndPlace_B.DA_OPFOR_LY_Contract_Bunker_SecureAndPlace_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Delta/Sabotage/DA_OPFOR_LY_Contract_Delta_Sabotage_Bug_A.DA_OPFOR_LY_Contract_Delta_Sabotage_Bug_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Delta/Sabotage/DA_OPFOR_LY_Contract_Delta_Sabotage_Bug_B.DA_OPFOR_LY_Contract_Delta_Sabotage_Bug_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Outskirts/Airdrop/DA_OPFOR_LY_Contract_Outskirts_Airdrop.DA_OPFOR_LY_Contract_Outskirts_Airdrop",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Airdrop/DA_OPFOR_LY_Contract_Quarry_Airdrop.DA_OPFOR_LY_Contract_Quarry_Airdrop",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Convoy/DA_OPFOR_LY_Contract_Quarry_Convoy.DA_OPFOR_LY_Contract_Quarry_Convoy",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Elimination/DA_OPFOR_LY_Contract_Quarry_Elimination_A.DA_OPFOR_LY_Contract_Quarry_Elimination_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Elimination/DA_OPFOR_LY_Contract_Quarry_Elimination_B.DA_OPFOR_LY_Contract_Quarry_Elimination_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Elimination/DA_OPFOR_LY_Contract_Quarry_Elimination_C.DA_OPFOR_LY_Contract_Quarry_Elimination_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Sabotage/DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_A.DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_A",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Sabotage/DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_B.DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_B",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Sabotage/DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_C.DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_C",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/Sabotage/DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_D.DA_OPFOR_LY_Contract_Quarry_Sabotage_Jammer_D",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/LY/Contracts/Quarry/SecureAndPlace/DA_OPFOR_LY_Contract_Quarry_SecureAndPlace.DA_OPFOR_LY_Contract_Quarry_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/Challenges/Assassination/DA_OPFOR_MR_NAM_Challenge_Assassination_Headshot.DA_OPFOR_MR_NAM_Challenge_Assassination_Headshot",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/Challenges/Restock/DA_OPFOR_MR_NAM_Challenge_Restock_Food.DA_OPFOR_MR_NAM_Challenge_Restock_Food",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/Challenges/Survival/DA_OPFOR_MR_NAM_Challenge_Survival_GreenHorn.DA_OPFOR_MR_NAM_Challenge_Survival_GreenHorn",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/MR_NAM/Contracts/SecureAndPlace/DA_OPFOR_MR_NAM_Contract_SecureAndPlace.DA_OPFOR_MR_NAM_Contract_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/THANH_GIONG/Challenges/Assassination/DA_OPFOR_THANH_GIONG_Challenge_Assassination_Sniper.DA_OPFOR_THANH_GIONG_Challenge_Assassination_Sniper",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/THANH_GIONG/Challenges/Restock/DA_OPFOR_THANH_GIONG_Challenge_Restock_OldTech.DA_OPFOR_THANH_GIONG_Challenge_Restock_OldTech",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/OPFOR/THANH_GIONG/Contracts/SecureAndPlace/DA_OPFOR_THANH_GIONG_Contract_SecureAndPlace.DA_OPFOR_THANH_GIONG_Contract_SecureAndPlace",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/AssaultRifle/DA_TEMPLATE_Challenge_Assassination_AssaultRifle.DA_TEMPLATE_Challenge_Assassination_AssaultRifle",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/DMR/DA_TEMPLATE_Challenge_Assassination_DMR.DA_TEMPLATE_Challenge_Assassination_DMR",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/Headshot/DA_TEMPLATE_Challenge_Assassination_Headshot.DA_TEMPLATE_Challenge_Assassination_Headshot",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/Pistol/DA_TEMPLATE_Challenge_Assassination_Pistol.DA_TEMPLATE_Challenge_Assassination_Pistol",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/Shotgun/DA_TEMPLATE_Challenge_Assassination_Shotgun.DA_TEMPLATE_Challenge_Assassination_Shotgun",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/SMG/DA_TEMPLATE_Challenge_Assassination_SMG.DA_TEMPLATE_Challenge_Assassination_SMG",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Elimination/Sniper/DA_TEMPLATE_Challenge_Assassination_Sniper.DA_TEMPLATE_Challenge_Assassination_Sniper",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Profit/20K/DA_TEMPLATE_Challenge_Profit_20K.DA_TEMPLATE_Challenge_Profit_20K",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/Alcohol/DA_TEMPLATE_ChallengeAlcohol.DA_TEMPLATE_ChallengeAlcohol",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/Collector/DA_TEMPLATE_ChallengeCollector.DA_TEMPLATE_ChallengeCollector",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/Food/DA_TEMPLATE_ChallengeFood.DA_TEMPLATE_ChallengeFood",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/Fuel/DA_TEMPLATE_ChallengeFel.DA_TEMPLATE_ChallengeFel",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Supply/OldTech/DA_TEMPLATE_ChallengeSupply_OldTech.DA_TEMPLATE_ChallengeSupply_OldTech",
+			"/Game/Blueprints/MissionSystem/DataAssets/Factions/SHARED/Challenges/Survival/GreenHorn/DA_TEMPLATE_Challenge_Survival_GreenHorn.DA_TEMPLATE_Challenge_Survival_GreenHorn",
+			"/Game/Blueprints/MissionSystem/DataAssets/Test/DA_TestMission_ClearArea.DA_TestMission_ClearArea"
+		],
+		"/Game/Blueprints/MissionSystem/Convoy/BP_Convoy.BP_Convoy_C": [
+			"/Game/Maps/Gameplay/LVL_Delta.LVL_Delta:PersistentLevel.BP_Convoy_IGC_C_UAID_74563C37599F93FF02_1157054757",
+			"/Game/Maps/Gameplay/LVL_Outskirts.LVL_Outskirts:PersistentLevel.BP_Convoy_UICS_C_UAID_74563C37599F990A03_1141733350",
+			"/Game/Maps/Gameplay/LVL_Outskirts.LVL_Outskirts:PersistentLevel.BP_Convoy_UICS_C_UAID_D843AE1E3FE3340903_1449796511",
+			"/Game/Maps/Gameplay/LVL_Quarry.LVL_Quarry:PersistentLevel.BP_Convoy_UICS_C_UAID_74563C37599F220703_1293991785",
+			"/Game/Maps/Gameplay/LVL_Quarry.LVL_Quarry:PersistentLevel.BP_Convoy_UICS_C_UAID_D843AE1E3FE38E0503_1150654528",
+			"/Game/Maps/Testing/LVL_TestConvoy_OpenWorld.LVL_TestConvoy_OpenWorld:PersistentLevel.BP_Convoy_IGC_C_UAID_74563C37599F050003_2036494896"
 		]
 	},
 	"tags": [
@@ -5755,12 +6176,15 @@
 		"Chassis.Wildlife.Predator",
 		"Chassis.Wildlife.Prey",
 		"Clothing",
-		"Clothing.Balaclava",
 		"Clothing.Body",
+		"Clothing.Eyewear",
 		"Clothing.Face",
 		"Clothing.Footwear",
 		"Clothing.Gloves",
+		"Clothing.Headset",
+		"Clothing.Headwear",
 		"Clothing.Legs",
+		"Clothing.Mask",
 		"Clothing.Misc",
 		"Clothing.Torso",
 		"Editor",
@@ -6302,6 +6726,7 @@
 		"Inventory.Items.Attachments.Sight.M2 Tactical Rear Sight",
 		"Inventory.Items.Attachments.Sight.M9A3 Short Sights",
 		"Inventory.Items.Attachments.Sight.M9A3 Tall Sights",
+		"Inventory.Items.Attachments.Sight.Nightforce ATACR 4-16x42 Scope",
 		"Inventory.Items.Attachments.Sight.OKP-7 Reflex Sight",
 		"Inventory.Items.Attachments.Sight.OKP-77 Reflex Sight",
 		"Inventory.Items.Attachments.Sight.PSO-1 4x24 Scope",
@@ -6875,6 +7300,8 @@
 		"Mission.Terminal.Users.Admin",
 		"Mission.Terminal.Users.Guest",
 		"Mission.Terminal.Users.Meteorologist",
+		"Mission.Terminal.Users.Operator",
+		"Mission.Terminal.Users.Quartermaster",
 		"Mission.Type",
 		"Mission.Type.Challenge",
 		"Mission.Type.Challenge.Assassination",
