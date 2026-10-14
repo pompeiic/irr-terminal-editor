@@ -3,7 +3,7 @@
 	"schemaHardVersion": 1,
 	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_UICS.DA_Terminal_UICS",
 	"name": "DA_Terminal_UICS",
-	"sourceHash": "0eda6c89d0e4471aad045d2c238e2e0a",
+	"sourceHash": "2a2fc1317c6a27f047f7c2a6008309e4",
 	"data":
 	{
 		"VersionInfo":
@@ -28,14 +28,26 @@
 			{
 				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-				"Events": []
+				"Events": [],
+				"Text":
+				{
+					"$text": "{Command} {l} {r} {user}",
+					"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+					"$key": "06573F344791D2CAC87F05BFEC766E10"
+				}
 			}
 		],
 		"ErrorSequence":
 		{
 			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 			"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-			"Events": []
+			"Events": [],
+			"Text":
+			{
+				"$text": "Error: Command \"{command}\" not recognized. Please enter a valid command. Or type \"help\" for a list of available commands.",
+				"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+				"$key": "8E5B7B254BC742EAF79A62A51A008FEC"
+			}
 		},
 		"CharacterDelay": 0.0050000000000000001,
 		"ResponseDelay": 0.5,
@@ -75,7 +87,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "# UICS TERMINAL SYSTEM – README\r\n\r\nWelcome to the Unified Intercontinental Command Structure (UICS) Secure Terminal.\r\n\r\nThis terminal is part of the authorized network infrastructure under UICS Directive GridNet-4B. It is designed for use by certified personnel only. Access is monitored, logged, and subject to review by Central Systems Authority (CSA).\r\n\r\n## SYSTEM FUNCTIONS\r\n\r\n- **read** – Open and view a file's contents  \r\n- **run** – Execute a script or terminal-compatible file  \r\n- **scan** – Check a file for security classification or hidden data  \r\n- **download** – Save a file from the terminal to your local device  \r\n\r\nNeed more info? Use the `help` command at any time for detailed usage.\r\n## USER LEVELS\r\n\r\n- Guest: View-only access to non-sensitive bulletins and maintenance schedules\r\n- Admin: Full terminal control, including configuration management and override protocols\r\n\r\n## CODE OF CONDUCT\r\n\r\n- Always verify your clearance level before executing commands.\r\n- Do not share access credentials under any circumstance.\r\n- Report any system anomalies or suspicious activity using form 11-17A (System Irregularity Report).\r\n- In case of compromised access, initiate Lockdown Sequence Alpha and disconnect from the local grid.\r\n\r\n## SUPPORT CONTACT\r\n\r\nFor technical assistance, contact Central Systems Authority via secure channel [Node U-91].\r\n\r\n## FINAL NOTICE\r\n\r\nThis terminal is property of the UICS. Unauthorized use is a breach of intercontinental security law and may result in disciplinary action, including confinement and clearance revocation.\r\n\r\nUICS — Order. Stability. Control.\r\n\r\n> END OF FILE",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "3AB435444ACE229D91EC81AB1F18559B"
+										}
 									}
 								]
 							}
@@ -94,7 +112,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "# UICS Secure Terminal Access Credentials\r\n\r\n## Authorized Users List\r\n\r\n- **Guest**\r\n  - Username: Guest\r\n  - Password: accessUICS\r\n  - Note: Restricted view-only access. Permitted to read non-sensitive operational bulletins and public directives.\r\n\r\n- **Meteorologist**\r\n  - Username: Meteorologist\r\n  - Password: METEO_UICS@Quarry\r\n  - Note: Exclusive access to all weather data collected over the past view month. Otherwise same access level as guest.\r\n\r\n- **Admin**\r\n  - Username: Admin\r\n  - Password: UICS@Root1\r\n  - Note: Full administrative control. Grants access to secure command functions, encrypted channels, and terminal override capabilities.",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "4A41F9E64B9315D3B8F66C92A9147120"
+										}
 									}
 								]
 							}
@@ -113,7 +137,13 @@
 							{
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-								"Events": []
+								"Events": [],
+								"Text":
+								{
+									"$text": "{user} has not access to this directory.",
+									"$ns": "[94C1237E4409FBDE2491BD34F82176A9]",
+									"$key": "9A48A7124A627645EAFA4F8605C7BD65"
+								}
 							}
 						],
 						"RequiredUserTag": "Mission.Terminal.Users.Admin"
@@ -133,7 +163,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating scan of classified document...\r\nPlease wait, retrieving data...",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "B4453CE541F3796C1B1CB0AA72EA49FB"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -159,7 +195,13 @@
 													"StringPayload": "OperationOmega.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"OPERATION OMEGA – Infiltration Orders\"  \r\nDate: 2024-11-30  \r\nClassification: Top Secret\r\n\r\nDocument successfully scanned and secured.  \r\nPreview of Document Content:\r\n-----------------------------------------------------\r\n\"OPERATION OMEGA:  \r\nUICS strike elements are to initiate a rapid-entry operation targeting the bunker complex currently occupied by VLF-aligned forces. Primary objectives include clearing the command room and securing access to active data terminals. Secondary target is the adjacent cave structure—believed to serve as a fallback and storage zone for insurgent operatives.\r\n\r\nMedical bay is to be isolated and swept for potential detainees or intel caches. Operation is time-sensitive. A brief communications blackout window has been scheduled to allow for silent breach and coordinated movement through critical access points...\"\r\n\r\n-----------------------------------------------------\r\n\r\nFull document secured for further review and action.",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "C85AED4546D086F729B614BFD395CBF8"
+										}
 									}
 								]
 							},
@@ -170,7 +212,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "3B75AF3F4DA0030DF5FB0A881C94B0A8"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -196,7 +244,13 @@
 													"StringPayload": "OperationOmega.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "{r} downloaded file successfully. ",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "F9C291504A20EFF1264A309041F33213"
+										}
 									}
 								]
 							}
@@ -215,7 +269,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "ED540A3E44054560003AE4AAD5F890CD"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -241,7 +301,13 @@
 													"StringPayload": "OperationSketch.png"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "{r} downloaded file successfully. ",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "F2CA376C4AF34822D075FD9599A227C4"
+										}
 									}
 								]
 							}
@@ -266,7 +332,13 @@
 							{
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-								"Events": []
+								"Events": [],
+								"Text":
+								{
+									"$text": "{user} has not access to this directory.",
+									"$ns": "[94C1237E4409FBDE2491BD34F82176A9]",
+									"$key": "9A48A7124A627645EAFA4F8605C7BD65"
+								}
 							}
 						],
 						"RequiredUserTag": "Mission.Terminal.Users.Meteorologist"
@@ -286,7 +358,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "0933AF404A36BCFC9AE36180C931EDFB"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -312,7 +390,13 @@
 													"StringPayload": "UICS_WeatherData.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"Quarry – Weather Data\"  \r\nClassification: Confidential – Internal Distribution Only\r\n\r\nDocument successfully downloaded.",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "130F0B504FDF228E277E1CAAF2C64A85"
+										}
 									}
 								]
 							}
@@ -345,7 +429,13 @@
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-										"Events": []
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "0933AF404A36BCFC9AE36180C931EDFB"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -371,7 +461,13 @@
 													"StringPayload": "DeltaCameraFootage.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Downloaded DeltaCameraFootage.zip successfully.",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "3C360B934728E9FEC06FD7931A093212"
+										}
 									}
 								]
 							}
@@ -413,7 +509,13 @@
 												"NetworkExecType": "OnlyServer",
 												"Target Tag": "Terminal"
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Initiating scan of classified document...\r\nPlease wait, retrieving data...",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "B4453CE541F3796C1B1CB0AA72EA49FB"
+										}
 									},
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
@@ -439,7 +541,13 @@
 													"StringPayload": "Factories.zip"
 												}
 											}
-										]
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"Factories – Site Overview\"  \r\nDate: 2024-11-28  \r\nClassification: Confidential – Internal Distribution Only\r\n\r\nDocument successfully scanned and archived.  \r\nPreview of Document Content:\r\n-----------------------------------------------------\r\n\"FACILITY OVERVIEW – SITE BLOCK-7:  \r\nThe factory installation adjacent to the quarry remains fully operational and is responsible for high-volume processing of marble and composite concrete. The materials produced are used in structural reinforcement, subterranean encasement, and modular defensive installations.\r\n\r\nKey operations include rotary crushing, thermal curing, and form compression. Automated batching units maintain a 24/7 output cycle. All export shipments are routed through controlled rail access under GridSec Protocol 6C.\r\n\r\nPersonnel clearance checks are enforced at two entry gates. Observation drones perform perimeter sweeps at 20-minute intervals. While the site is not classified as a high-risk zone, patrols have been increased following recent interference reports from nearby sectors.\r\n\r\nFacility status: STABLE  \r\nOutput capacity: 91%  \r\nSecurity recommendation: Maintain current protocols. Escalation unnecessary unless actionable intel is confirmed.\"\r\n-----------------------------------------------------\r\n\r\nFull document secured for reference and compliance logging.",
+											"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+											"$key": "F4761C864CE820329107BC8838CDDAE1"
+										}
 									}
 								]
 							}
@@ -458,7 +566,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "Available Commands:\r\n\r\n1. help - Display available commands and their descriptions.\r\n2. dir - Display all of the files and folders in the current directory.\r\n3. pop - Switch back to previous directory (e.g. go back).\r\n4. login - Enter new login credentials to change the user & permissions.\r\n5. cd <directory> - Change directory to navigate within the terminal system.\r\n6. run <file_id> - Execute the exe file.\r\n7. download <file_id> - Download content from target file.\r\n8. scan <file_id> - Scan content from file.\r\n9. read <file_id> - Reading content of file.\r\n10. shutdown - Shutdown the terminal.\r\n\r\n**Additional help**\r\n\r\n> To find a file, try changing directories via cd <directory> and us the dir command to display all available files at the current level\r\n> Some directories require special access. Use the login command to get Admin access. You may have to take a look at the users file to find the credentials.",
+							"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+							"$key": "96C1135E4FD8929100FF03A42651F45A"
+						}
 					}
 				],
 				"OnFailSequences": []
@@ -500,7 +614,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "Directory {active}\r\n{directories} {files}\r\n",
+							"$ns": "[77E2FA750C295F22B53B087B1D9F5B3C]",
+							"$key": "D37BE9D241811A536FF46BB6C21A1C4C"
+						}
 					}
 				],
 				"OnFailSequences": []
@@ -514,7 +634,13 @@
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-						"Events": []
+						"Events": [],
+						"Text":
+						{
+							"$text": "VLF Secure Operations Terminal\r\n\r\nUnauthorized access or misuse of this system is strictly prohibited and may be punishable under VLF regulations.\r\n\r\nSecurity Clearance Required",
+							"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+							"$key": "69C026974AC1E2E7C50219B03E36692B"
+						}
 					},
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C",
@@ -536,14 +662,26 @@
 								{
 									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-									"Events": []
+									"Events": [],
+									"Text":
+									{
+										"$text": "Successfully logged in as [{user}].",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "AA4672204D5CA7F619AF6D86E228DBB5"
+									}
 								}
 							],
 							"OnFailSequences": [
 								{
 									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
-									"Events": []
+									"Events": [],
+									"Text":
+									{
+										"$text": "Failed to login. Credentials do not match.",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "8D760DE34A7589873DD79C82F9171205"
+									}
 								}
 							]
 						}
@@ -661,7 +799,13 @@
 									"StringPayload": "Terminal"
 								}
 							}
-						]
+						],
+						"Text":
+						{
+							"$text": "Shutting down the terminal...\r\nTerminal secure. You may now extract safely.",
+							"$ns": "[EDEA91DBFF622C1EEAB23118EB536A48]",
+							"$key": "445228434D598CF020EFB4A8BBC57B34"
+						}
 					}
 				],
 				"OnFailSequences": []
