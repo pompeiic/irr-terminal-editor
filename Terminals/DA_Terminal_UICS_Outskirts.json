@@ -108,7 +108,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "# UICS COASTAL NETWORK â€“ PORT NODE OSK-3 â€“ README\n\nYou are connected to Port Node OSK-3, the UICS terminal for the ports of Outskirts island.\n\nWhen government control collapsed, every faction took a piece of the island. The UICS holds the ports, and from here the coastal network is meant to expand inland. This node coordinates harbor traffic, the UICS general supply warehouses and the coastal patrols. Its uplink runs through the Comms Building complex on the hill.\n\n## SYSTEM FUNCTIONS\n\n- **read** Open and view a file's contents\n- **run** Execute a terminal-compatible program\n- **scan** Check a file for classification markers or hidden data\n- **download** â€“ Copy a file from the node to your local device\n\nUse `help` at any time for the full command list.\n\n## CLEARANCE LEVELS\n\n- Guest: Bulletins and public notices only\n- Quartermaster: Warehouse stock, harbor and vehicle maintenance records\n- Admin: Port command, defense orders and node configuration\n\n## STANDING ORDERS\n\n- Credentials are personal. Every session is logged against the account that opened it.\n- Encrypted intercept volumes open only with a matching Defense intel key. The node reports every failed attempt to Port Command.\n- If the node is compromised, shut it down and fall back to the harbor gate.\n\nUICS Order. Stability. Control.\n\n> END OF FILE",
+											"$text": "# UICS COASTAL NETWORK - PORT NODE OSK-3 - README\n\nYou are connected to Port Node OSK-3, the UICS terminal for the ports of Outskirts island.\n\nWhen government control collapsed, every faction took a piece of the island. The UICS holds the ports, and from here the coastal network is meant to expand inland. This node coordinates harbor traffic, the UICS general supply warehouses and the coastal patrols. Its uplink runs through the Comms Building complex on the hill.\n\n## SYSTEM FUNCTIONS\n\n- **read** Open and view a file's contents\n- **run** Execute a terminal-compatible program\n- **scan** Check a file for classification markers or hidden data\n- **download** - Copy a file from the node to your local device\n\nUse `help` at any time for the full command list.\n\n## CLEARANCE LEVELS\n\n- Guest: Bulletins and public notices only\n- Quartermaster: Warehouse stock, harbor and vehicle maintenance records\n- Admin: Port command, defense orders and node configuration\n\n## STANDING ORDERS\n\n- Credentials are personal. Every session is logged against the account that opened it.\n- Encrypted intercept volumes open only with a matching Defense intel key. The node reports every failed attempt to Port Command.\n- If the node is compromised, shut it down and fall back to the harbor gate.\n\nUICS Order. Stability. Control.\n\n> END OF FILE",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "88E1B74F4958E427F41D64B3B2D05490"
 										}
@@ -158,7 +158,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "# PORT BULLETIN â€“ OUTSKIRTS\r\n\r\nEffective immediately:\r\n\r\n1. Curfew on the harbor road runs 21:00â€“05:00. Anyone moving between the ports and the coastal apartments after curfew is stopped and searched.\r\n2. The processing plant is still under construction. There is next to no cover on the site. Do not cross it in daylight.\r\n3. The locked warehouses at the old quay belong to VCUP and the old IGC. Leave them shut. They are not ours to open.\r\n4. The resort is VLF ground. Patrols turn back at the beach road.\r\n5. Aircraft over the island are IGC traffic for the airstrip. Do not engage unless fired upon.\r\n6. Ration distribution for the coastal apartments moves to the small village hall on Thursdays.\r\n\r\nThe western money is gone, but the ports still matter. Hold them.",
+											"$text": "# PORT BULLETIN - OUTSKIRTS\r\n\r\nEffective immediately:\r\n\r\n1. Curfew on the harbor road runs 21:00-05:00. Anyone moving between the ports and the coastal apartments after curfew is stopped and searched.\r\n2. The processing plant is still under construction. There is next to no cover on the site. Do not cross it in daylight.\r\n3. The locked warehouses at the old quay belong to VCUP and the old IGC. Leave them shut. They are not ours to open.\r\n4. The resort is VLF ground. Patrols turn back at the beach road.\r\n5. Aircraft over the island are IGC traffic for the airstrip. Do not engage unless fired upon.\r\n6. Ration distribution for the coastal apartments moves to the small village hall on Thursdays.\r\n\r\nThe western money is gone, but the ports still matter. Hold them.",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "36E3D2114ADEBE44654480B455062FA5"
 										}
@@ -209,7 +209,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "WAREHOUSE,ITEM,QTY,UNIT,STATUS\r\nUICS Warehouse 1,Ration Packs,1340,pcs,OK\r\nUICS Warehouse 1,Diesel,4200,L,OK\r\nUICS Warehouse 2,Petrol,900,L,LOW\r\nUICS Warehouse 2,Medical Kits,85,pcs,OK\r\nUICS Warehouse 4,Ammunition 5.56,0,crates,EMPTY â€“ theft reported 03/11\r\nUICS Warehouse 4,Boat Engine Parts,6,crates,OK\r\nBike Shop (village road),Chains / Tyres / Tools,â€”,lot,REQUISITION PENDING\r\nComms Building,Generator Fuel,240,L,AWAITING ESCORT\r\n\r\n> Warehouse 4 losses exceed tolerance for the third week. The locked IGC warehouses next door show fresh tyre tracks. Recommend a night watch on the quay.",
+											"$text": "WAREHOUSE,ITEM,QTY,UNIT,STATUS\r\nUICS Warehouse 1,Ration Packs,1340,pcs,OK\r\nUICS Warehouse 1,Diesel,4200,L,OK\r\nUICS Warehouse 2,Petrol,900,L,LOW\r\nUICS Warehouse 2,Medical Kits,85,pcs,OK\r\nUICS Warehouse 4,Ammunition 5.56,0,crates,EMPTY - theft reported 03/11\r\nUICS Warehouse 4,Boat Engine Parts,6,crates,OK\r\nBike Shop (village road),Chains / Tyres / Tools,-,lot,REQUISITION PENDING\r\nComms Building,Generator Fuel,240,L,AWAITING ESCORT\r\n\r\n> Warehouse 4 losses exceed tolerance for the third week. The locked IGC warehouses next door show fresh tyre tracks. Recommend a night watch on the quay.",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "B32BCD16423F2923FF24BE87F55BFEA4"
 										}
@@ -234,7 +234,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "# HARBOR & NODE MAINTENANCE LOG â€“ OSK-3\r\n\r\n[02/11 06:40] Harbor gate barrier motor replaced. Hydraulics still leaking.\r\n[02/11 14:15] Patrol boat UICS-P-07 returned with a fouled intake. Grounded.\r\n[03/11 09:02] Node OSK-3 rebooted after the power cut. Admin account reset by signals.\r\n              Temporary admin credential issued to the duty officer: Admin / UICS@Outskirts-7\r\n              REMINDER: rotate before the next inspection. (Still not rotated â€“ QM)\r\n[04/11 18:30] Comms Building generator down to its last filter. Fuel waiting in the store, needs an escort up the hill.\r\n[05/11 07:55] Dish on the Comms Building realigned. Uplink to the coastal network restored.\r\n[06/11 11:20] Bike shop on the village road is untouched. Sent a list of parts we can use.",
+											"$text": "# HARBOR & NODE MAINTENANCE LOG - OSK-3\r\n\r\n[02/11 06:40] Harbor gate barrier motor replaced. Hydraulics still leaking.\r\n[02/11 14:15] Patrol boat UICS-P-07 returned with a fouled intake. Grounded.\r\n[03/11 09:02] Node OSK-3 rebooted after the power cut. Admin account reset by signals.\r\n              Temporary admin credential issued to the duty officer: Admin / UICS@Outskirts-7\r\n              REMINDER: rotate before the next inspection. (Still not rotated - QM)\r\n[04/11 18:30] Comms Building generator down to its last filter. Fuel waiting in the store, needs an escort up the hill.\r\n[05/11 07:55] Dish on the Comms Building realigned. Uplink to the coastal network restored.\r\n[06/11 11:20] Bike shop on the village road is untouched. Sent a list of parts we can use.",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "F919C8AB4396E5F63687459FDC7F15CA"
 										}
@@ -284,7 +284,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "Uplink: Coastal Network ....... OK (Comms Building dish)\r\nRelay: Harbor Gate ............ OK\r\nRelay: Coastal Apartments ..... WEAK (-87 dBm)\r\nRelay: Small Village .......... NO RESPONSE\r\nForeign traffic: IGC airstrip approach control on 121.3 MHz.\r\nLocal jamming detected on 412.5 MHz â€“ source bearing 070Â°, resort direction.\r\n\r\nRecommendation: secure the Comms Building. Without it this node is deaf.",
+											"$text": "Uplink: Coastal Network ....... OK (Comms Building dish)\r\nRelay: Harbor Gate ............ OK\r\nRelay: Coastal Apartments ..... WEAK (-87 dBm)\r\nRelay: Small Village .......... NO RESPONSE\r\nForeign traffic: IGC airstrip approach control on 121.3 MHz.\r\nLocal jamming detected on 412.5 MHz - source bearing 070, resort direction.\r\n\r\nRecommendation: secure the Comms Building. Without it this node is deaf.",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "EAC6696C4C87C480BEEB599F72CB79B4"
 										}
@@ -392,7 +392,7 @@
 										],
 										"Text":
 										{
-											"$text": "Document Title: \"OUTSKIRTS â€“ Coastal Defense Plan\"\r\nDate: 2024-12-04\r\nClassification: Secret â€“ Port Command\r\n\r\nDocument successfully downloaded.",
+											"$text": "Document Title: \"OUTSKIRTS - Coastal Defense Plan\"\r\nDate: 2024-12-04\r\nClassification: Secret - Port Command\r\n\r\nDocument successfully downloaded.",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "D2CAAA4C45425B44C2458AA9140CF3B5"
 										}
@@ -496,7 +496,7 @@
 										],
 										"Text":
 										{
-											"$text": "Document Title: \"INTERCEPT 0711 â€“ Resort Net\"\r\nDate: 2024-12-02\r\nClassification: Top Secret â€“ Signals\r\n\r\nDecryption with Defense key A complete. Preview of recovered traffic:\r\n-----------------------------------------------------\r\n\"[02:14] RESORT-1: Shipment lands at the airstrip Thursday. IGC take their cut, we take the rest.\r\n[02:15] HUT-3: Then we store it in the locked warehouses on the quay. The old VCUP keys still work.\r\n[02:17] RESORT-1: Good. Port watch changes at 05:00. Don't cross the processing plant, there's no cover. Go through the village.\r\n[02:18] HUT-3: And the comms building?\r\n[02:18] RESORT-1: Last. Once it goes dark, the ports are deaf.\"\r\n-----------------------------------------------------\r\nAnalysis: a VLF cell from the resort is using the nature huts as a forward post and moving goods through the IGC airstrip into the locked VCUP/IGC warehouses next to our own. The end goal is the Comms Building.\r\n\r\nFull intercept secured for Port Command.",
+											"$text": "Document Title: \"INTERCEPT 0711 - Resort Net\"\r\nDate: 2024-12-02\r\nClassification: Top Secret - Signals\r\n\r\nDecryption with Defense key A complete. Preview of recovered traffic:\r\n-----------------------------------------------------\r\n\"[02:14] RESORT-1: Shipment lands at the airstrip Thursday. IGC take their cut, we take the rest.\r\n[02:15] HUT-3: Then we store it in the locked warehouses on the quay. The old VCUP keys still work.\r\n[02:17] RESORT-1: Good. Port watch changes at 05:00. Don't cross the processing plant, there's no cover. Go through the village.\r\n[02:18] HUT-3: And the comms building?\r\n[02:18] RESORT-1: Last. Once it goes dark, the ports are deaf.\"\r\n-----------------------------------------------------\r\nAnalysis: a VLF cell from the resort is using the nature huts as a forward post and moving goods through the IGC airstrip into the locked VCUP/IGC warehouses next to our own. The end goal is the Comms Building.\r\n\r\nFull intercept secured for Port Command.",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "D68D1441431D286D512B13B786415089"
 										}
@@ -528,7 +528,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "# PATROL ROSTER â€“ WEEK 44 (ARCHIVED)\r\n\r\nHarbor Gate ............ Squad Kestrel (day) / Squad Heron (night)\r\nUICS Warehouses ........ Squad Marten (day) / understrength (night)\r\nCoastal Apartments ..... Squad Kestrel, 10:00 daily\r\nComms Building ......... Signals detachment, escort on request\r\n\r\n> Squad Heron was reassigned to the Quarry on 29/10. The night watch on the warehouses has run short since.",
+											"$text": "# PATROL ROSTER - WEEK 44 (ARCHIVED)\r\n\r\nHarbor Gate ............ Squad Kestrel (day) / Squad Heron (night)\r\nUICS Warehouses ........ Squad Marten (day) / understrength (night)\r\nCoastal Apartments ..... Squad Kestrel, 10:00 daily\r\nComms Building ......... Signals detachment, escort on request\r\n\r\n> Squad Heron was reassigned to the Quarry on 29/10. The night watch on the warehouses has run short since.",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "B6C861B54FEE655C347A16908F64AFD6"
 										}
@@ -578,7 +578,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "# CIVIL NOTICE â€“ FERRY SERVICE (ARCHIVED)\r\n\r\nResidents of the coastal apartments and the small village may leave the island on the civilian ferry from the ports between 06:00 and 18:00 with a valid ration card.\r\n\r\nDepartures through the airstrip are not available to civilians.\r\n\r\nThis notice was withdrawn on 01/11. Civilian departures are suspended until further notice.",
+											"$text": "# CIVIL NOTICE - FERRY SERVICE (ARCHIVED)\r\n\r\nResidents of the coastal apartments and the small village may leave the island on the civilian ferry from the ports between 06:00 and 18:00 with a valid ration card.\r\n\r\nDepartures through the airstrip are not available to civilians.\r\n\r\nThis notice was withdrawn on 01/11. Civilian departures are suspended until further notice.",
 											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 											"$key": "3D23D82442AE3ACFD854BEA01798FF7A"
 										}
@@ -701,7 +701,7 @@
 						"Events": [],
 						"Text":
 						{
-							"$text": "UICS Coastal Network â€“ Port Node OSK-3\r\n\r\nAll sessions are logged and reviewed by Port Command.\r\n\r\nSecurity Clearance Required",
+							"$text": "UICS Coastal Network - Port Node OSK-3\r\n\r\nAll sessions are logged and reviewed by Port Command.\r\n\r\nSecurity Clearance Required",
 							"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
 							"$key": "61B2635949B95CA8FD5BCA8984240DDB"
 						}
