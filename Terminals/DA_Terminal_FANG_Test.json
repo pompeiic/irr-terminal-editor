@@ -3,7 +3,7 @@
 	"schemaHardVersion": 1,
 	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_FANG_Test.DA_Terminal_FANG_Test",
 	"name": "DA_Terminal_FANG_Test",
-	"sourceHash": "b02970e7613a82e6876822c475a2b2bc",
+	"sourceHash": "e3e570ada95364c7cb65fac8c588647f",
 	"data":
 	{
 		"VersionInfo":
@@ -23,7 +23,7 @@
 			"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
 			"$key": "4EAAEA94482C08F71D965C8007498308"
 		},
-		"bBootSequence": true,
+		"bBootSequence": false,
 		"BootSequences": [
 			{
 				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
