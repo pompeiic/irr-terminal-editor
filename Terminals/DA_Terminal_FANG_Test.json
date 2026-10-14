@@ -113,7 +113,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "HIDEOUT-01 TEST TERMINAL\n-----------------------------------------------------\nThis node exists to exercise every terminal feature.\n\n  fang\\Briefings     locked to Operator\n  fang\\Logistics     locked to Quartermaster\n  fang\\Archive       open; Classified inside needs INTEL\n  fang\\Admin         locked to Admin\n\nLogins are in Credentials.txt. Encrypted.dat only opens with the INTEL D  in your inventory. It should be on the table next to the terminal.\n\nTry: dir, cd Briefings, login, read, scan, download, run, pop, hack.",
+											"$text": "HIDEOUT-01 TEST TERMINAL\n-----------------------------------------------------\nThis node exists to exercise every terminal feature.\n\n  fang\\Briefings     locked to Operator\n  fang\\Logistics     locked to Quartermaster\n  fang\\Archive       open; Classified inside needs INTEL\n  fang\\Admin         locked to Admin\n\nLogins are in Credentials.txt. Encrypted.txt only opens with the INTEL D  in your inventory. It should be on the table next to the terminal.\n\nTry: dir, cd Briefings, login, read, scan, download, run, pop, hack.",
 											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
 											"$key": "CD4C91C94EA82B18A873A0A4AC62D490"
 										}
@@ -355,7 +355,7 @@
 					},
 					{
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
-						"Name": "Intercept_0412.log",
+						"Name": "Intercept_0412.txt",
 						"bAutoHack": false,
 						"Responses":
 						{
@@ -406,7 +406,7 @@
 				"Files": [
 					{
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
-						"Name": "Supply_Ledger.csv",
+						"Name": "Supply_Ledger.txt",
 						"bAutoHack": false,
 						"Responses":
 						{
@@ -520,7 +520,7 @@
 					},
 					{
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
-						"Name": "Encrypted.dat",
+						"Name": "Encrypted.txt",
 						"bAutoHack": false,
 						"Responses":
 						{
@@ -541,7 +541,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "USB key detected. Decrypting Encrypted.dat...",
+											"$text": "USB key detected. Decrypting Encrypted.txt...",
 											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
 											"$key": "47F091B6472255DB2FE200BECFF44C54"
 										}
@@ -700,7 +700,7 @@
 				"Files": [
 					{
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
-						"Name": "System.log",
+						"Name": "System.txt",
 						"bAutoHack": false,
 						"Responses":
 						{

@@ -195,7 +195,7 @@
 				"Files": [
 					{
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
-						"Name": "Warehouse_Inventory.csv",
+						"Name": "Warehouse_Inventory.txt",
 						"bAutoHack": false,
 						"Responses":
 						{
