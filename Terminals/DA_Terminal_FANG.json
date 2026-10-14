@@ -1,0 +1,775 @@
+{
+	"schemaSoftVersion": 1,
+	"schemaHardVersion": 1,
+	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_FANG.DA_Terminal_FANG",
+	"name": "DA_Terminal_FANG",
+	"sourceHash": "57eff11e7df6f3ed8bfd6c4d850f1cba",
+	"data":
+	{
+		"VersionInfo":
+		{
+			"$text": "UICS TRAINING NETWORK – AUTHORIZED PERSONNEL ONLY",
+			"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+			"$key": "ACA8781C489A6B0A6DF34A8DD4DCB53E"
+		},
+		"SystemArt":
+		{
+			"$text": "\r\n██╗   ██╗██╗ ██████╗███████╗                                     \r\n██║   ██║██║██╔════╝██╔════╝                                     \r\n██║   ██║██║██║     ███████╗                                     \r\n██║   ██║██║██║     ╚════██║                                     \r\n╚██████╔╝██║╚██████╗███████║                                     \r\n ╚═════╝ ╚═╝ ╚═════╝╚══════╝                                     \r\n                                                                 \r\n████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗     \r\n╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║     \r\n   ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║     \r\n   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║     \r\n   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗\r\n   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝\r\n                                                                 ",
+			"$invariant": true
+		},
+		"GuidePrompt":
+		{
+			"$text": "Type \"help\" for a list of available commands. This unit is provided for training purposes. \r\n\r\nUnlike field terminals encountered in raid, the \"hack\" command requires no intrusion device here.",
+			"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+			"$key": "A454D10E465456F2DB435BB80B2D2740"
+		},
+		"bBootSequence": false,
+		"BootSequences": [
+			{
+				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+				"Events": [],
+				"Text":
+				{
+					"$text": "{Command} {l} {r} {user}",
+					"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+					"$key": "E5D2434E48B88944625F518BAD92D795"
+				}
+			}
+		],
+		"ErrorSequence":
+		{
+			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+			"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+			"Events": [],
+			"Text":
+			{
+				"$text": "Error: Command \"{command}\" not recognized. Please enter a valid command. Or type \"help\" for a list of available commands.",
+				"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+				"$key": "EEEB59C44877C540399AE58055DEEA4A"
+			}
+		},
+		"CharacterDelay": 0.0050000000000000001,
+		"ResponseDelay": 0.5,
+		"Users": [
+			{
+				"Tag": "Mission.Terminal.Users.Guest",
+				"Name": "Guest",
+				"Password": "accessUICS"
+			},
+			{
+				"Tag": "Mission.Terminal.Users.Admin",
+				"Name": "Admin",
+				"Password": "UICS_Test"
+			}
+		],
+		"Directories": [
+			{
+				"MotherDirectoryName": "",
+				"DirectoryName": "sys",
+				"Requirements": [],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Readme.txt",
+						"bAutoHack": false,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text":
+										{
+											"$text": "# UICS TERMINAL SYSTEM – README\r\n\r\nWelcome to the Unified Intercontinental Command Structure (UICS) Secure Terminal.\r\n\r\nThis terminal is part of the authorized network infrastructure under UICS Directive GridNet-4B. It is designed for use by certified personnel only. Access is monitored, logged, and subject to review by Central Systems Authority (CSA).\r\n\r\n## SYSTEM FUNCTIONS\r\n\r\n- **read** – Open and view a file's contents  \r\n- **run** – Execute a script or terminal-compatible file  \r\n- **scan** – Check a file for security classification or hidden data  \r\n- **download** – Save a file from the terminal to your local device  \r\n\r\nNeed more info? Use the `help` command at any time for detailed usage.\r\n## USER LEVELS\r\n\r\n- Guest: View-only access to non-sensitive bulletins and maintenance schedules\r\n- Admin: Full terminal control, including configuration management and override protocols\r\n\r\n## CODE OF CONDUCT\r\n\r\n- Always verify your clearance level before executing commands.\r\n- Do not share access credentials under any circumstance.\r\n- Report any system anomalies or suspicious activity using form 11-17A (System Irregularity Report).\r\n- In case of compromised access, initiate Lockdown Sequence Alpha and disconnect from the local grid.\r\n\r\n## SUPPORT CONTACT\r\n\r\nFor technical assistance, contact Central Systems Authority via secure channel [Node U-91].\r\n\r\n## FINAL NOTICE\r\n\r\nThis terminal is property of the UICS. Unauthorized use is a breach of intercontinental security law and may result in disciplinary action, including confinement and clearance revocation.\r\n\r\nUICS — Order. Stability. Control.\r\n\r\n> END OF FILE",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "45567F584B88595B5F13288C03C5B41E"
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Users.txt",
+						"bAutoHack": false,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text":
+										{
+											"$text": "# UICS Secure Terminal Access Credentials\r\n\r\n## Authorized Users List\r\n\r\n- **Guest**\r\n  - Username: Guest\r\n  - Password: accessUICS\r\n  - Note: Restricted view-only access. Permitted to read non-sensitive operational bulletins and public directives.\r\n\r\n- **Admin**\r\n  - Username: Admin\r\n  - Password: UICS_Test+\r\n  - Note: Full administrative control. Grants access to secure command functions, encrypted channels, and terminal override capabilities.",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "1DED565C4242359B4B1E7D86245ACF33"
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Operations",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [
+							{
+								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+								"Events": [],
+								"Text":
+								{
+									"$text": "{user} has not access to this directory.",
+									"$ns": "[94C1237E4409FBDE2491BD34F82176A9]",
+									"$key": "9A48A7124A627645EAFA4F8605C7BD65"
+								}
+							}
+						],
+						"RequiredUserTag": "Mission.Terminal.Users.Admin"
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "OperationOmega.zip",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Scan":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating scan of classified document...\r\nPlease wait, retrieving data...",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "E940631049F678C39E8D21AF8E6E44CA"
+										}
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Scanned",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "OperationOmega.zip"
+												}
+											}
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"OPERATION OMEGA – Infiltration Orders\"  \r\nDate: 2024-11-30  \r\nClassification: Top Secret\r\n\r\nDocument successfully scanned and secured.  \r\nPreview of Document Content:\r\n-----------------------------------------------------\r\n\"OPERATION OMEGA:  \r\nUICS strike elements are to initiate a rapid-entry operation targeting the bunker complex currently occupied by VLF-aligned forces. Primary objectives include clearing the command room and securing access to active data terminals. Secondary target is the adjacent cave structure—believed to serve as a fallback and storage zone for insurgent operatives.\r\n\r\nMedical bay is to be isolated and swept for potential detainees or intel caches. Operation is time-sensitive. A brief communications blackout window has been scheduled to allow for silent breach and coordinated movement through critical access points...\"\r\n\r\n-----------------------------------------------------\r\n\r\nFull document secured for further review and action.",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "536D227C4F36E852EF17CCBF8358E46C"
+										}
+									}
+								]
+							},
+							"Mission.Terminal.Commands.Download":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "E0DA78464F94EFEF64C8EDBADBBDC426"
+										}
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Downloaded",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "OperationOmega.zip"
+												}
+											}
+										],
+										"Text":
+										{
+											"$text": "{r} downloaded file successfully. ",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "AAB0D6234284A37C2C995897FD1CE36E"
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "OperationSketch.png",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Download":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "ED5DD36043E1289C3207FBAEA5919176"
+										}
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Downloaded",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "OperationSketch.png"
+												}
+											}
+										],
+										"Text":
+										{
+											"$text": "{r} downloaded file successfully. ",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "6912A9104EA089A2264D84B2FA13E2AB"
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Programs",
+				"Requirements": [],
+				"Files": []
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Footage",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_MissionTracked.BP_TerminalDirectoryRequirement_MissionTracked_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [],
+						"TrackedMission": "/Game/Blueprints/MissionSystem/DataAssets/Factions/FANG/DAWN/StoryMissions/DA_FANG_OBSERVER_0016.DA_FANG_OBSERVER_0016"
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "DeltaCameraFootage.zip",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Download":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "5BF126CB481C57DFE03487863DDC42C9"
+										}
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 2,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Downloaded",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "DeltaCameraFootage.zip"
+												}
+											}
+										],
+										"Text":
+										{
+											"$text": "Downloaded DeltaCameraFootage.zip successfully.",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "176CF4464D10F536F55FFBA6AF27255F"
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "External",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_HasItem.BP_TerminalDirectoryRequirement_HasItem_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [],
+						"Items": [
+							"Inventory.Items.Quest.Defense.Intel A"
+						],
+						"Container Indexes": []
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Factories.zip",
+						"bAutoHack": true,
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Scan":
+							{
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Game/Blueprints/MissionSystem/Objects/Events/BP_MissionEvent_TriggerReinforcement.BP_MissionEvent_TriggerReinforcement_C",
+												"NetworkExecType": "OnlyServer",
+												"Target Tag": "Terminal"
+											}
+										],
+										"Text":
+										{
+											"$text": "Initiating scan of classified document...\r\nPlease wait, retrieving data...",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "0B263B8A448FAD88AA6B1F99A2A4C616"
+										}
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Scanned",
+												"TargetData": null,
+												"Payload":
+												{
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "Factories.zip"
+												}
+											}
+										],
+										"Text":
+										{
+											"$text": "Document Title: \"Factories – Site Overview\"  \r\nDate: 2024-11-28  \r\nClassification: Confidential – Internal Distribution Only\r\n\r\nDocument successfully scanned and archived.  \r\nPreview of Document Content:\r\n-----------------------------------------------------\r\n\"FACILITY OVERVIEW – SITE BLOCK-7:  \r\nThe factory installation adjacent to the quarry remains fully operational and is responsible for high-volume processing of marble and composite concrete. The materials produced are used in structural reinforcement, subterranean encasement, and modular defensive installations.\r\n\r\nKey operations include rotary crushing, thermal curing, and form compression. Automated batching units maintain a 24/7 output cycle. All export shipments are routed through controlled rail access under GridSec Protocol 6C.\r\n\r\nPersonnel clearance checks are enforced at two entry gates. Observation drones perform perimeter sweeps at 20-minute intervals. While the site is not classified as a high-risk zone, patrols have been increased following recent interference reports from nearby sectors.\r\n\r\nFacility status: STABLE  \r\nOutput capacity: 91%  \r\nSecurity recommendation: Maintain current protocols. Escalation unnecessary unless actionable intel is confirmed.\"\r\n-----------------------------------------------------\r\n\r\nFull document secured for reference and compliance logging.",
+											"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+											"$key": "395751404ABDCD59FA4E75B8C79584E8"
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		],
+		"Commands": [
+			{
+				"Keyword": "help",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Help",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [],
+						"Text":
+						{
+							"$text": "Available Commands:\r\n\r\n1. help - Display available commands and their descriptions.\r\n2. dir - Display all of the files and folders in the current directory.\r\n3. pop - Switch back to previous directory (e.g. go back).\r\n4. login - Enter new login credentials to change the user & permissions.\r\n5. cd <directory> - Change directory to navigate within the terminal system.\r\n6. run <file_id> - Execute the exe file.\r\n7. download <file_id> - Download content from target file.\r\n8. scan <file_id> - Scan content from file.\r\n9. read <file_id> - Reading content of file.\r\n10. shutdown - Shutdown the terminal.\r\n\r\n**Additional help**\r\n\r\n> To find a file, try changing directories via cd <directory> and us the dir command to display all available files at the current level\r\n> Some directories require special access. Use the login command to get Admin access. You may have to take a look at the users file to find the credentials.",
+							"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+							"$key": "E193455E45AF20844A71F7B13B81CF18"
+						}
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "cd",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.ChangeDirectory",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_ChangeDirectory",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": []
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "pop",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.GoBack",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_GoBack",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": []
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "dir",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Dir",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [],
+						"Text":
+						{
+							"$text": "Directory {active}\r\n{directories} {files}\r\n",
+							"$ns": "[77E2FA750C295F22B53B087B1D9F5B3C]",
+							"$key": "D37BE9D241811A536FF46BB6C21A1C4C"
+						}
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "login",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Login",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [],
+						"Text":
+						{
+							"$text": "VLF Secure Operations Terminal\r\n\r\nUnauthorized access or misuse of this system is strictly prohibited and may be punishable under VLF regulations.\r\n\r\nSecurity Clearance Required",
+							"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+							"$key": "806E0C1648AB97C49156D4BFB81B8733"
+						}
+					},
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_RequestLogin.W_TerminalResponse_RequestLogin_C",
+						"Events": [],
+						"Command":
+						{
+							"Keyword": "",
+							"Aliases": [],
+							"CommandTag": "",
+							"Argument":
+							{
+								"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Login",
+								"bPredictable": false,
+								"OnSuccessSequences": [],
+								"OnFailureSequences": []
+							},
+							"OnSuccessSequences": [
+								{
+									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+									"Events": [],
+									"Text":
+									{
+										"$text": "Successfully logged in as [{user}].",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "AA4672204D5CA7F619AF6D86E228DBB5"
+									}
+								}
+							],
+							"OnFailSequences": [
+								{
+									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+									"Events": [],
+									"Text":
+									{
+										"$text": "Failed to login. Credentials do not match.",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "8D760DE34A7589873DD79C82F9171205"
+									}
+								}
+							]
+						}
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "run",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Run",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Run",
+					"OnFailText":
+					{
+						"$text": "Cannot run {file}.",
+						"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+						"$key": "BCAA743D4E71648DA6D7C2B5A10A6CB9"
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "read",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Read",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Read",
+					"OnFailText":
+					{
+						"$text": "Cannot read {file}.",
+						"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+						"$key": "26EA241140FAAAE5BE16AFAC02868E66"
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "scan",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Scan",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Scan",
+					"OnFailText":
+					{
+						"$text": "Cannot scan {file}.",
+						"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+						"$key": "AD8FADF4467CD211087006B2897C5083"
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "download",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Download",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Download",
+					"OnFailText":
+					{
+						"$text": "Cannot download {file}.",
+						"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+						"$key": "D22C89144502EBB0DCE1D2B6C97C31F1"
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "shutdown",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Shutdown",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [
+							{
+								"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendWorldEvent",
+								"NetworkExecType": "Both",
+								"MessageTag": "Mission.Messages.Shutdown",
+								"Payload":
+								{
+									"IntegerValue": 0,
+									"FloatValue": 0,
+									"BoolValue": true,
+									"StringPayload": "Terminal"
+								}
+							}
+						],
+						"Text":
+						{
+							"$text": "Shutting down the terminal...\r\nTerminal secure. You may now extract safely.",
+							"$ns": "[EBB74646E28D9D9D14CF5E1672823B8B]",
+							"$key": "DE67990443AD9C9AA2D24BBC0CD35E70"
+						}
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "hack",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Hack",
+				"Argument":
+				{
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Hack",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": []
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			}
+		],
+		"HackDelay": 0.5,
+		"RequiredHackDevice": "",
+		"HackCommandCost": 2,
+		"HackBypassCost": 8,
+		"HackInterruptedSequences": [
+			{
+				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_HackStatus.BP_TerminalSequence_HackStatus_C",
+				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+				"Events": [],
+				"bUseInterruptReason": false,
+				"ReadyText":
+				{
+					"$text": "Intrusion device {Device} connected. Battery {Battery}%. Estimated cost {Cost}%. Type \"hack\" to start.",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "Ready"
+				},
+				"NoDeviceText":
+				{
+					"$text": "No intrusion device connected.",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "NoDevice"
+				},
+				"DepletedText":
+				{
+					"$text": "Intrusion device {Device}: battery depleted ({Battery}%).",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "Depleted"
+				},
+				"NoDeviceRequiredText":
+				{
+					"$text": ""
+				}
+			}
+		]
+	}
+}
