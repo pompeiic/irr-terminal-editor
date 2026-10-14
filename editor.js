@@ -26,6 +26,7 @@ let ghUser = null;
 let tagSet = new Set();
 let search = "";
 const collapsed = new Set();     // card paths the user folded
+const expandedLists = new Set(); // object-list paths the user unfolded (they start folded)
 const foldedDirs = new Set();    // lower-case folder names folded in the tree
 let con = null;                  // console simulator state
 
@@ -1079,6 +1080,7 @@ function objPreview(obj) {
     if (f.type.kind === "text" && textOf(v)) return textOf(v).replace(/\s+/g, " ");
     if ((f.type.kind === "string" || f.type.kind === "name") && v) return String(v);
     if (f.type.kind === "tag" && v) return leaf(v);
+    if (f.type.kind === "tags" && Array.isArray(v) && v.length) return v.map(leaf).join(", ");
   }
   return "";
 }
@@ -1105,8 +1107,27 @@ function instancedEditor(holder, key, type, ctx, tools) {
     if (!info) { b.append(el("div", { class: "note warn" }, "This class is not in the schema — run a sync in Unreal."), el("div", { class: "raw" }, JSON.stringify(val, null, 2))); return; }
     if (info.tooltip && info.tooltip !== info.name) b.append(el("div", { class: "note" }, info.tooltip));
     if (!info.fields.length) b.append(el("div", { class: "note" }, "No editable settings."));
-    renderFields(b, val, info.fields, ctx);
+    // The object's own settings first; nested object lists (feedback sequences, events) fold up below them.
+    const lists = info.fields.filter(isObjectList);
+    renderFields(b, val, info.fields.filter(f => !isObjectList(f)), ctx);
+    for (const f of lists) b.append(objectListFold(val, f, ctx));
   });
+}
+function isObjectList(f) {
+  return (f.type.kind === "array" || f.type.kind === "set") && f.type.inner?.kind === "instanced" && !f.meta?.AdvancedDisplay;
+}
+function objectListFold(obj, f, ctx) {
+  const path = ctx.path + "." + f.name;
+  if (!Array.isArray(obj[f.name])) obj[f.name] = defaultFor(f.type);
+  const items = obj[f.name].filter(Boolean);
+  const d = el("details", { class: "sub" });
+  d.open = expandedLists.has(path);
+  d.ontoggle = () => { d.open ? expandedLists.add(path) : expandedLists.delete(path); };
+  d.append(el("summary", { title: f.tooltip },
+    el("span", {}, f.label), el("span", { class: "n" }, `(${items.length})`),
+    el("span", { class: "pv" }, items.map(objPreview).filter(Boolean).join(" · "))));
+  d.append(el("div", { class: "sub-b" }, editor(obj, f.name, f.type, f.meta || {}, { ...ctx, path })));
+  return d;
 }
 
 function arrayEditor(holder, key, type, meta, ctx) {
@@ -1653,4 +1674,29 @@ $("overlayClose").onclick = closeModal;
 $("overlay").onclick = e => { if (e.target === $("overlay")) closeModal(); };
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
 window.addEventListener("beforeunload", e => { if (terms.some(isDirty) || deletedTerms.length) { e.preventDefault(); e.returnValue = ""; } });
+setupPanelResize();
 load();
+
+function setupPanelResize() {
+  const KEY = "irr_terminal_panel_width", DEFAULT = 460, MIN = 340;
+  const panel = $("panel"), grip = $("panelResize");
+  const clamp = w => Math.round(Math.max(MIN, Math.min(w, window.innerWidth - 520)));
+  const apply = w => { panel.style.width = clamp(w) + "px"; };
+  apply(+localStorage.getItem(KEY) || DEFAULT);
+  grip.onmousedown = e => {
+    e.preventDefault();
+    const right = panel.getBoundingClientRect().right;
+    document.body.classList.add("resizing");
+    const move = ev => apply(right - ev.clientX);
+    const up = () => {
+      document.body.classList.remove("resizing");
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("mouseup", up);
+      localStorage.setItem(KEY, parseInt(panel.style.width, 10));
+    };
+    window.addEventListener("mousemove", move);
+    window.addEventListener("mouseup", up);
+  };
+  grip.ondblclick = () => { localStorage.removeItem(KEY); apply(DEFAULT); };
+  window.addEventListener("resize", () => apply(parseInt(panel.style.width, 10) || DEFAULT));
+}
