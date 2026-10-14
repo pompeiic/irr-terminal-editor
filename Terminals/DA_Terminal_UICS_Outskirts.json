@@ -1,19 +1,27 @@
 {
 	"schemaSoftVersion": 1,
 	"schemaHardVersion": 1,
-	"asset": "",
+	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_UICS_Outskirts.DA_Terminal_UICS_Outskirts",
 	"name": "DA_Terminal_UICS_Outskirts",
-	"sourceHash": "",
-	"data": {
-		"VersionInfo": {
-			"$text": "UICS Coastal Network - Port Node OSK-3 (Outskirts) - Secure Access at uics-network.org"
+	"sourceHash": "ec60fe18c7e1d75c5c76acc051cecbb8",
+	"data":
+	{
+		"VersionInfo":
+		{
+			"$text": "UICS Coastal Network - Port Node OSK-3 (Outskirts) - Secure Access at uics-network.org",
+			"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+			"$key": "E4087A4B4F14C27F98E1889F513CE5BF"
 		},
-		"SystemArt": {
+		"SystemArt":
+		{
 			"$text": "\r\n██╗   ██╗██╗ ██████╗███████╗                                     \r\n██║   ██║██║██╔════╝██╔════╝                                     \r\n██║   ██║██║██║     ███████╗                                     \r\n██║   ██║██║██║     ╚════██║                                     \r\n╚██████╔╝██║╚██████╗███████║                                     \r\n ╚═════╝ ╚═╝ ╚═════╝╚══════╝                                     \r\n                                                                 \r\n████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗     \r\n╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║     \r\n   ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║     \r\n   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║     \r\n   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗\r\n   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝\r\n                                                                 ",
 			"$invariant": true
 		},
-		"GuidePrompt": {
-			"$text": "Type \"help\" for a list of available commands."
+		"GuidePrompt":
+		{
+			"$text": "Type \"help\" for a list of available commands.",
+			"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+			"$key": "ED77A37A4583CAAEA730AD8F7EEE15D0"
 		},
 		"bBootSequence": true,
 		"BootSequences": [
@@ -21,8 +29,11 @@
 				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 				"Events": [],
-				"Text": {
-					"$text": "Establishing secure uplink to the UICS coastal network..."
+				"Text":
+				{
+					"$text": "Establishing secure uplink to the UICS coastal network...",
+					"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+					"$key": "64BC96B3435C46ABB268578135186269"
 				}
 			},
 			{
@@ -36,20 +47,27 @@
 				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 				"Events": [],
-				"Text": {
-					"$text": "Uplink established via the Comms Building. Port Node OSK-3 online."
+				"Text":
+				{
+					"$text": "Uplink established via the Comms Building. Port Node OSK-3 online.",
+					"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+					"$key": "26252B2A43207B6135BD9FB0B6684499"
 				}
 			}
 		],
-		"ErrorSequence": {
+		"ErrorSequence":
+		{
 			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 			"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 			"Events": [],
-			"Text": {
-				"$text": "Error: Command \"{command}\" not recognized. Type \"help\" for a list of available commands."
+			"Text":
+			{
+				"$text": "Error: Command \"{command}\" not recognized. Type \"help\" for a list of available commands.",
+				"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+				"$key": "94C25BD64F2EBEEEE03D06916F669930"
 			}
 		},
-		"CharacterDelay": 0.005,
+		"CharacterDelay": 0.0050000000000000001,
 		"ResponseDelay": 0.5,
 		"Users": [
 			{
@@ -78,16 +96,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Readme.txt",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "# UICS COASTAL NETWORK â€“ PORT NODE OSK-3 â€“ README\n\nYou are connected to Port Node OSK-3, the UICS terminal for the ports of Outskirts island.\n\nWhen government control collapsed, every faction took a piece of the island. The UICS holds the ports, and from here the coastal network is meant to expand inland. This node coordinates harbor traffic, the UICS general supply warehouses and the coastal patrols. Its uplink runs through the Comms Building complex on the hill.\n\n## SYSTEM FUNCTIONS\n\n- **read** Open and view a file's contents\n- **run** Execute a terminal-compatible program\n- **scan** Check a file for classification markers or hidden data\n- **download** â€“ Copy a file from the node to your local device\n\nUse `help` at any time for the full command list.\n\n## CLEARANCE LEVELS\n\n- Guest: Bulletins and public notices only\n- Quartermaster: Warehouse stock, harbor and vehicle maintenance records\n- Admin: Port command, defense orders and node configuration\n\n## STANDING ORDERS\n\n- Credentials are personal. Every session is logged against the account that opened it.\n- Encrypted intercept volumes open only with a matching Defense intel key. The node reports every failed attempt to Port Command.\n- If the node is compromised, shut it down and fall back to the harbor gate.\n\nUICS Order. Stability. Control.\n\n> END OF FILE"
+										"Text":
+										{
+											"$text": "# UICS COASTAL NETWORK â€“ PORT NODE OSK-3 â€“ README\n\nYou are connected to Port Node OSK-3, the UICS terminal for the ports of Outskirts island.\n\nWhen government control collapsed, every faction took a piece of the island. The UICS holds the ports, and from here the coastal network is meant to expand inland. This node coordinates harbor traffic, the UICS general supply warehouses and the coastal patrols. Its uplink runs through the Comms Building complex on the hill.\n\n## SYSTEM FUNCTIONS\n\n- **read** Open and view a file's contents\n- **run** Execute a terminal-compatible program\n- **scan** Check a file for classification markers or hidden data\n- **download** â€“ Copy a file from the node to your local device\n\nUse `help` at any time for the full command list.\n\n## CLEARANCE LEVELS\n\n- Guest: Bulletins and public notices only\n- Quartermaster: Warehouse stock, harbor and vehicle maintenance records\n- Admin: Port command, defense orders and node configuration\n\n## STANDING ORDERS\n\n- Credentials are personal. Every session is logged against the account that opened it.\n- Encrypted intercept volumes open only with a matching Defense intel key. The node reports every failed attempt to Port Command.\n- If the node is compromised, shut it down and fall back to the harbor gate.\n\nUICS Order. Stability. Control.\n\n> END OF FILE",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "88E1B74F4958E427F41D64B3B2D05490"
 										}
 									}
 								]
@@ -98,16 +121,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Users.txt",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "# OSK-3 Account Register (excerpt)\r\n\r\n- **Guest**\r\n  - Username: Guest\r\n  - Password: accessUICS\r\n  - Note: Public bulletins. No write access.\r\n\r\n- **Quartermaster**\r\n  - Username: Quartermaster\r\n  - Password: Harbor#Ware4\r\n  - Note: Logistics directory. Warehouse stock, harbor and vehicle maintenance.\r\n\r\n- **Admin**\r\n  - Username: Admin\r\n  - Note: Credential withheld from this register by order of Port Command (Directive 7-P). Ask the duty quartermaster for the current rotation."
+										"Text":
+										{
+											"$text": "# OSK-3 Account Register (excerpt)\r\n\r\n- **Guest**\r\n  - Username: Guest\r\n  - Password: accessUICS\r\n  - Note: Public bulletins. No write access.\r\n\r\n- **Quartermaster**\r\n  - Username: Quartermaster\r\n  - Password: Harbor#Ware4\r\n  - Note: Logistics directory. Warehouse stock, harbor and vehicle maintenance.\r\n\r\n- **Admin**\r\n  - Username: Admin\r\n  - Note: Credential withheld from this register by order of Port Command (Directive 7-P). Ask the duty quartermaster for the current rotation.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "E2384E4B4FCDC471617F79BB75CA07FF"
 										}
 									}
 								]
@@ -118,16 +146,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Port_Bulletin.txt",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "# PORT BULLETIN â€“ OUTSKIRTS\r\n\r\nEffective immediately:\r\n\r\n1. Curfew on the harbor road runs 21:00â€“05:00. Anyone moving between the ports and the coastal apartments after curfew is stopped and searched.\r\n2. The processing plant is still under construction. There is next to no cover on the site. Do not cross it in daylight.\r\n3. The locked warehouses at the old quay belong to VCUP and the old IGC. Leave them shut. They are not ours to open.\r\n4. The resort is VLF ground. Patrols turn back at the beach road.\r\n5. Aircraft over the island are IGC traffic for the airstrip. Do not engage unless fired upon.\r\n6. Ration distribution for the coastal apartments moves to the small village hall on Thursdays.\r\n\r\nThe western money is gone, but the ports still matter. Hold them."
+										"Text":
+										{
+											"$text": "# PORT BULLETIN â€“ OUTSKIRTS\r\n\r\nEffective immediately:\r\n\r\n1. Curfew on the harbor road runs 21:00â€“05:00. Anyone moving between the ports and the coastal apartments after curfew is stopped and searched.\r\n2. The processing plant is still under construction. There is next to no cover on the site. Do not cross it in daylight.\r\n3. The locked warehouses at the old quay belong to VCUP and the old IGC. Leave them shut. They are not ours to open.\r\n4. The resort is VLF ground. Patrols turn back at the beach road.\r\n5. Aircraft over the island are IGC traffic for the airstrip. Do not engage unless fired upon.\r\n6. Ration distribution for the coastal apartments moves to the small village hall on Thursdays.\r\n\r\nThe western money is gone, but the ports still matter. Hold them.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "36E3D2114ADEBE44654480B455062FA5"
 										}
 									}
 								]
@@ -148,8 +181,11 @@
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 								"Events": [],
-								"Text": {
-									"$text": "Access denied. {user} is not cleared for this directory.\r\nRequired clearance: Quartermaster."
+								"Text":
+								{
+									"$text": "Access denied. {user} is not cleared for this directory.\r\nRequired clearance: Quartermaster.",
+									"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+									"$key": "579D1B794329892E361EA891A9B0408F"
 								}
 							}
 						],
@@ -161,16 +197,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Warehouse_Inventory.csv",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "WAREHOUSE,ITEM,QTY,UNIT,STATUS\r\nUICS Warehouse 1,Ration Packs,1340,pcs,OK\r\nUICS Warehouse 1,Diesel,4200,L,OK\r\nUICS Warehouse 2,Petrol,900,L,LOW\r\nUICS Warehouse 2,Medical Kits,85,pcs,OK\r\nUICS Warehouse 4,Ammunition 5.56,0,crates,EMPTY â€“ theft reported 03/11\r\nUICS Warehouse 4,Boat Engine Parts,6,crates,OK\r\nBike Shop (village road),Chains / Tyres / Tools,â€”,lot,REQUISITION PENDING\r\nComms Building,Generator Fuel,240,L,AWAITING ESCORT\r\n\r\n> Warehouse 4 losses exceed tolerance for the third week. The locked IGC warehouses next door show fresh tyre tracks. Recommend a night watch on the quay."
+										"Text":
+										{
+											"$text": "WAREHOUSE,ITEM,QTY,UNIT,STATUS\r\nUICS Warehouse 1,Ration Packs,1340,pcs,OK\r\nUICS Warehouse 1,Diesel,4200,L,OK\r\nUICS Warehouse 2,Petrol,900,L,LOW\r\nUICS Warehouse 2,Medical Kits,85,pcs,OK\r\nUICS Warehouse 4,Ammunition 5.56,0,crates,EMPTY â€“ theft reported 03/11\r\nUICS Warehouse 4,Boat Engine Parts,6,crates,OK\r\nBike Shop (village road),Chains / Tyres / Tools,â€”,lot,REQUISITION PENDING\r\nComms Building,Generator Fuel,240,L,AWAITING ESCORT\r\n\r\n> Warehouse 4 losses exceed tolerance for the third week. The locked IGC warehouses next door show fresh tyre tracks. Recommend a night watch on the quay.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "B32BCD16423F2923FF24BE87F55BFEA4"
 										}
 									}
 								]
@@ -181,16 +222,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Maintenance_Log.txt",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "# HARBOR & NODE MAINTENANCE LOG â€“ OSK-3\r\n\r\n[02/11 06:40] Harbor gate barrier motor replaced. Hydraulics still leaking.\r\n[02/11 14:15] Patrol boat UICS-P-07 returned with a fouled intake. Grounded.\r\n[03/11 09:02] Node OSK-3 rebooted after the power cut. Admin account reset by signals.\r\n              Temporary admin credential issued to the duty officer: Admin / UICS@Outskirts-7\r\n              REMINDER: rotate before the next inspection. (Still not rotated â€“ QM)\r\n[04/11 18:30] Comms Building generator down to its last filter. Fuel waiting in the store, needs an escort up the hill.\r\n[05/11 07:55] Dish on the Comms Building realigned. Uplink to the coastal network restored.\r\n[06/11 11:20] Bike shop on the village road is untouched. Sent a list of parts we can use."
+										"Text":
+										{
+											"$text": "# HARBOR & NODE MAINTENANCE LOG â€“ OSK-3\r\n\r\n[02/11 06:40] Harbor gate barrier motor replaced. Hydraulics still leaking.\r\n[02/11 14:15] Patrol boat UICS-P-07 returned with a fouled intake. Grounded.\r\n[03/11 09:02] Node OSK-3 rebooted after the power cut. Admin account reset by signals.\r\n              Temporary admin credential issued to the duty officer: Admin / UICS@Outskirts-7\r\n              REMINDER: rotate before the next inspection. (Still not rotated â€“ QM)\r\n[04/11 18:30] Comms Building generator down to its last filter. Fuel waiting in the store, needs an escort up the hill.\r\n[05/11 07:55] Dish on the Comms Building realigned. Uplink to the coastal network restored.\r\n[06/11 11:20] Bike shop on the village road is untouched. Sent a list of parts we can use.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "F919C8AB4396E5F63687459FDC7F15CA"
 										}
 									}
 								]
@@ -208,16 +254,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "SignalCheck.exe",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Run": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Run":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "Running SignalCheck v2.4..."
+										"Text":
+										{
+											"$text": "Running SignalCheck v2.4...",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "2587980A4BE452C000D02184D97D764E"
 										}
 									},
 									{
@@ -231,8 +282,11 @@
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "Uplink: Coastal Network ....... OK (Comms Building dish)\r\nRelay: Harbor Gate ............ OK\r\nRelay: Coastal Apartments ..... WEAK (-87 dBm)\r\nRelay: Small Village .......... NO RESPONSE\r\nForeign traffic: IGC airstrip approach control on 121.3 MHz.\r\nLocal jamming detected on 412.5 MHz â€“ source bearing 070Â°, resort direction.\r\n\r\nRecommendation: secure the Comms Building. Without it this node is deaf."
+										"Text":
+										{
+											"$text": "Uplink: Coastal Network ....... OK (Comms Building dish)\r\nRelay: Harbor Gate ............ OK\r\nRelay: Coastal Apartments ..... WEAK (-87 dBm)\r\nRelay: Small Village .......... NO RESPONSE\r\nForeign traffic: IGC airstrip approach control on 121.3 MHz.\r\nLocal jamming detected on 412.5 MHz â€“ source bearing 070Â°, resort direction.\r\n\r\nRecommendation: secure the Comms Building. Without it this node is deaf.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "EAC6696C4C87C480BEEB599F72CB79B4"
 										}
 									}
 								]
@@ -253,8 +307,11 @@
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 								"Events": [],
-								"Text": {
-									"$text": "Access denied. {user} is not cleared for this directory.\r\nRequired clearance: Admin."
+								"Text":
+								{
+									"$text": "Access denied. {user} is not cleared for this directory.\r\nRequired clearance: Admin.",
+									"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+									"$key": "8B53974641D02A01C92AC5BCC79DBB32"
 								}
 							}
 						],
@@ -266,16 +323,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Directive_7P.txt",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "# PORT COMMAND DIRECTIVE 7-P (COPY)\r\n\r\nOutskirts was meant to be the forefront of western expansion. That stalled with the war, but the ports are still the only door to the island the UICS controls. They are to be held until relieved.\r\n\r\nThe Comms Building complex is the key position on the island. Every UICS signal on Outskirts goes through it. It is to be held at all costs.\r\n\r\nPatrols are not to enter the resort (VLF) or approach the airstrip (IGC). Contact with either is reported directly to Port Command, not over the open net.\r\n\r\nThe full coastal defense plan is stored on this node. Do not print it, do not transmit it."
+										"Text":
+										{
+											"$text": "# PORT COMMAND DIRECTIVE 7-P (COPY)\r\n\r\nOutskirts was meant to be the forefront of western expansion. That stalled with the war, but the ports are still the only door to the island the UICS controls. They are to be held until relieved.\r\n\r\nThe Comms Building complex is the key position on the island. Every UICS signal on Outskirts goes through it. It is to be held at all costs.\r\n\r\nPatrols are not to enter the resort (VLF) or approach the airstrip (IGC). Contact with either is reported directly to Port Command, not over the open net.\r\n\r\nThe full coastal defense plan is stored on this node. Do not print it, do not transmit it.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "11623BE1447038360A191EB06ECECAE9"
 										}
 									}
 								]
@@ -286,16 +348,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Coastal_Defense_Plan.zip",
 						"bAutoHack": true,
-						"Responses": {
-							"Mission.Terminal.Commands.Download": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Download":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "Initiating download of {r}..."
+										"Text":
+										{
+											"$text": "Initiating download of {r}...",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "4149C771410763E7243A59B93E7C73EA"
 										}
 									},
 									{
@@ -314,7 +381,8 @@
 												"NetworkExecType": "Both",
 												"MessageTag": "Mission.Messages.Downloaded",
 												"TargetData": null,
-												"Payload": {
+												"Payload":
+												{
 													"IntegerValue": 0,
 													"FloatValue": 0,
 													"BoolValue": true,
@@ -322,8 +390,11 @@
 												}
 											}
 										],
-										"Text": {
-											"$text": "Document Title: \"OUTSKIRTS â€“ Coastal Defense Plan\"\r\nDate: 2024-12-04\r\nClassification: Secret â€“ Port Command\r\n\r\nDocument successfully downloaded."
+										"Text":
+										{
+											"$text": "Document Title: \"OUTSKIRTS â€“ Coastal Defense Plan\"\r\nDate: 2024-12-04\r\nClassification: Secret â€“ Port Command\r\n\r\nDocument successfully downloaded.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "D2CAAA4C45425B44C2458AA9140CF3B5"
 										}
 									}
 								]
@@ -343,8 +414,11 @@
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 								"Events": [],
-								"Text": {
-									"$text": "Defense key A accepted. Encrypted volume mounted."
+								"Text":
+								{
+									"$text": "Defense key A accepted. Encrypted volume mounted.",
+									"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+									"$key": "06F4C7064D3B52858A2BA08CE19E6117"
 								}
 							}
 						],
@@ -353,8 +427,11 @@
 								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 								"Events": [],
-								"Text": {
-									"$text": "Encrypted volume. Insert Defense intel key A to mount it."
+								"Text":
+								{
+									"$text": "Encrypted volume. Insert Defense intel key A to mount it.",
+									"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+									"$key": "DF9AA19346971585D8014188C2FA546B"
 								}
 							}
 						],
@@ -369,8 +446,10 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Intercept_0711.zip",
 						"bAutoHack": true,
-						"Responses": {
-							"Mission.Terminal.Commands.Scan": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Scan":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
@@ -383,8 +462,11 @@
 												"Target Tag": "Terminal"
 											}
 										],
-										"Text": {
-											"$text": "Decrypting intercept volume...\r\nWarning: decryption traffic is visible on the island net."
+										"Text":
+										{
+											"$text": "Decrypting intercept volume...\r\nWarning: decryption traffic is visible on the island net.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "621F7970451CB335C517B0AF7FD399A6"
 										}
 									},
 									{
@@ -403,7 +485,8 @@
 												"NetworkExecType": "Both",
 												"MessageTag": "Mission.Messages.Scanned",
 												"TargetData": null,
-												"Payload": {
+												"Payload":
+												{
 													"IntegerValue": 0,
 													"FloatValue": 0,
 													"BoolValue": true,
@@ -411,8 +494,11 @@
 												}
 											}
 										],
-										"Text": {
-											"$text": "Document Title: \"INTERCEPT 0711 â€“ Resort Net\"\r\nDate: 2024-12-02\r\nClassification: Top Secret â€“ Signals\r\n\r\nDecryption with Defense key A complete. Preview of recovered traffic:\r\n-----------------------------------------------------\r\n\"[02:14] RESORT-1: Shipment lands at the airstrip Thursday. IGC take their cut, we take the rest.\r\n[02:15] HUT-3: Then we store it in the locked warehouses on the quay. The old VCUP keys still work.\r\n[02:17] RESORT-1: Good. Port watch changes at 05:00. Don't cross the processing plant, there's no cover. Go through the village.\r\n[02:18] HUT-3: And the comms building?\r\n[02:18] RESORT-1: Last. Once it goes dark, the ports are deaf.\"\r\n-----------------------------------------------------\r\nAnalysis: a VLF cell from the resort is using the nature huts as a forward post and moving goods through the IGC airstrip into the locked VCUP/IGC warehouses next to our own. The end goal is the Comms Building.\r\n\r\nFull intercept secured for Port Command."
+										"Text":
+										{
+											"$text": "Document Title: \"INTERCEPT 0711 â€“ Resort Net\"\r\nDate: 2024-12-02\r\nClassification: Top Secret â€“ Signals\r\n\r\nDecryption with Defense key A complete. Preview of recovered traffic:\r\n-----------------------------------------------------\r\n\"[02:14] RESORT-1: Shipment lands at the airstrip Thursday. IGC take their cut, we take the rest.\r\n[02:15] HUT-3: Then we store it in the locked warehouses on the quay. The old VCUP keys still work.\r\n[02:17] RESORT-1: Good. Port watch changes at 05:00. Don't cross the processing plant, there's no cover. Go through the village.\r\n[02:18] HUT-3: And the comms building?\r\n[02:18] RESORT-1: Last. Once it goes dark, the ports are deaf.\"\r\n-----------------------------------------------------\r\nAnalysis: a VLF cell from the resort is using the nature huts as a forward post and moving goods through the IGC airstrip into the locked VCUP/IGC warehouses next to our own. The end goal is the Comms Building.\r\n\r\nFull intercept secured for Port Command.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "D68D1441431D286D512B13B786415089"
 										}
 									}
 								]
@@ -430,16 +516,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Patrol_Roster_W44.txt",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "# PATROL ROSTER â€“ WEEK 44 (ARCHIVED)\r\n\r\nHarbor Gate ............ Squad Kestrel (day) / Squad Heron (night)\r\nUICS Warehouses ........ Squad Marten (day) / understrength (night)\r\nCoastal Apartments ..... Squad Kestrel, 10:00 daily\r\nComms Building ......... Signals detachment, escort on request\r\n\r\n> Squad Heron was reassigned to the Quarry on 29/10. The night watch on the warehouses has run short since."
+										"Text":
+										{
+											"$text": "# PATROL ROSTER â€“ WEEK 44 (ARCHIVED)\r\n\r\nHarbor Gate ............ Squad Kestrel (day) / Squad Heron (night)\r\nUICS Warehouses ........ Squad Marten (day) / understrength (night)\r\nCoastal Apartments ..... Squad Kestrel, 10:00 daily\r\nComms Building ......... Signals detachment, escort on request\r\n\r\n> Squad Heron was reassigned to the Quarry on 29/10. The night watch on the warehouses has run short since.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "B6C861B54FEE655C347A16908F64AFD6"
 										}
 									}
 								]
@@ -450,16 +541,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Investor_Brochure_2011.txt",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "# WELCOME TO OUTSKIRTS (2011 investor brochure, archived)\r\n\r\nDear guest,\r\n\r\nWelcome to the Outskirts Communications & Conference Complex. You are standing at the gateway to the region's future.\r\n\r\n- A deep-water port, ready for trade\r\n- A brand-new resort on the north shore, opening next season\r\n- An airstrip with direct connections\r\n- Coastal apartments for a growing workforce, and a processing plant under way\r\n\r\nInvest in Outskirts today, and help bring stability and prosperity to the whole region.\r\n\r\n> Handwritten in the margin: \"The vacationers never came. The VLF did.\""
+										"Text":
+										{
+											"$text": "# WELCOME TO OUTSKIRTS (2011 investor brochure, archived)\r\n\r\nDear guest,\r\n\r\nWelcome to the Outskirts Communications & Conference Complex. You are standing at the gateway to the region's future.\r\n\r\n- A deep-water port, ready for trade\r\n- A brand-new resort on the north shore, opening next season\r\n- An airstrip with direct connections\r\n- Coastal apartments for a growing workforce, and a processing plant under way\r\n\r\nInvest in Outskirts today, and help bring stability and prosperity to the whole region.\r\n\r\n> Handwritten in the margin: \"The vacationers never came. The VLF did.\"",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "2C534AE145292E834DF170A763CF1FE5"
 										}
 									}
 								]
@@ -470,16 +566,21 @@
 						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
 						"Name": "Ferry_Notice.txt",
 						"bAutoHack": false,
-						"Responses": {
-							"Mission.Terminal.Commands.Read": {
+						"Responses":
+						{
+							"Mission.Terminal.Commands.Read":
+							{
 								"Condition": [],
 								"Sequences": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 										"Events": [],
-										"Text": {
-											"$text": "# CIVIL NOTICE â€“ FERRY SERVICE (ARCHIVED)\r\n\r\nResidents of the coastal apartments and the small village may leave the island on the civilian ferry from the ports between 06:00 and 18:00 with a valid ration card.\r\n\r\nDepartures through the airstrip are not available to civilians.\r\n\r\nThis notice was withdrawn on 01/11. Civilian departures are suspended until further notice."
+										"Text":
+										{
+											"$text": "# CIVIL NOTICE â€“ FERRY SERVICE (ARCHIVED)\r\n\r\nResidents of the coastal apartments and the small village may leave the island on the civilian ferry from the ports between 06:00 and 18:00 with a valid ration card.\r\n\r\nDepartures through the airstrip are not available to civilians.\r\n\r\nThis notice was withdrawn on 01/11. Civilian departures are suspended until further notice.",
+											"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+											"$key": "3D23D82442AE3ACFD854BEA01798FF7A"
 										}
 									}
 								]
@@ -502,8 +603,11 @@
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 						"Events": [],
-						"Text": {
-							"$text": "Available Commands:\r\n\r\n1. help (?) - Display available commands and their descriptions.\r\n2. dir (ls) - Display all of the files and folders in the current directory.\r\n3. cd <directory> - Change directory.\r\n4. pop (..) - Go back to the previous directory.\r\n5. login - Enter new login credentials to change the user & permissions.\r\n6. read <file_id> - Read the content of a file.\r\n7. run <file_id> - Execute a program.\r\n8. scan <file_id> - Scan a file for hidden or classified content.\r\n9. download <file_id> - Download a file to your device.\r\n10. shutdown (exit) - Shut down the terminal.\r\n\r\n**Additional help**\r\n\r\n> Use cd <directory> and dir to look around. Restricted directories need the right account or the right key.\r\n> The account register in sys lists who can log in. Not every credential is written down there."
+						"Text":
+						{
+							"$text": "Available Commands:\r\n\r\n1. help (?) - Display available commands and their descriptions.\r\n2. dir (ls) - Display all of the files and folders in the current directory.\r\n3. cd <directory> - Change directory.\r\n4. pop (..) - Go back to the previous directory.\r\n5. login - Enter new login credentials to change the user & permissions.\r\n6. read <file_id> - Read the content of a file.\r\n7. run <file_id> - Execute a program.\r\n8. scan <file_id> - Scan a file for hidden or classified content.\r\n9. download <file_id> - Download a file to your device.\r\n10. shutdown (exit) - Shut down the terminal.\r\n\r\n**Additional help**\r\n\r\n> Use cd <directory> and dir to look around. Restricted directories need the right account or the right key.\r\n> The account register in sys lists who can log in. Not every credential is written down there.",
+							"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+							"$key": "09AECC7E41E5341C59CBFD81F6A102E5"
 						}
 					}
 				],
@@ -513,7 +617,8 @@
 				"Keyword": "cd",
 				"Aliases": [],
 				"CommandTag": "Mission.Terminal.Commands.ChangeDirectory",
-				"Argument": {
+				"Argument":
+				{
 					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_ChangeDirectory",
 					"bPredictable": false,
 					"OnSuccessSequences": [],
@@ -522,8 +627,11 @@
 							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 							"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 							"Events": [],
-							"Text": {
-								"$text": "No directory named \"{r}\" here."
+							"Text":
+							{
+								"$text": "No directory named \"{r}\" here.",
+								"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+								"$key": "B433946C471658BD62F70ABAC7D4C515"
 							}
 						}
 					]
@@ -537,7 +645,8 @@
 					".."
 				],
 				"CommandTag": "Mission.Terminal.Commands.GoBack",
-				"Argument": {
+				"Argument":
+				{
 					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_GoBack",
 					"bPredictable": false,
 					"OnSuccessSequences": [],
@@ -546,8 +655,11 @@
 							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 							"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 							"Events": [],
-							"Text": {
-								"$text": "Already at the top directory."
+							"Text":
+							{
+								"$text": "Already at the top directory.",
+								"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+								"$key": "0C8965AF4DF2029CFFF2D9AC79E0BE6C"
 							}
 						}
 					]
@@ -567,8 +679,11 @@
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 						"Events": [],
-						"Text": {
-							"$text": "Directory {active}\r\n{directories} {files}\r\n"
+						"Text":
+						{
+							"$text": "Directory {active}\r\n{directories} {files}\r\n",
+							"$ns": "[77E2FA750C295F22B53B087B1D9F5B3C]",
+							"$key": "D37BE9D241811A536FF46BB6C21A1C4C"
 						}
 					}
 				],
@@ -584,19 +699,24 @@
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 						"Events": [],
-						"Text": {
-							"$text": "UICS Coastal Network â€“ Port Node OSK-3\r\n\r\nAll sessions are logged and reviewed by Port Command.\r\n\r\nSecurity Clearance Required"
+						"Text":
+						{
+							"$text": "UICS Coastal Network â€“ Port Node OSK-3\r\n\r\nAll sessions are logged and reviewed by Port Command.\r\n\r\nSecurity Clearance Required",
+							"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+							"$key": "61B2635949B95CA8FD5BCA8984240DDB"
 						}
 					},
 					{
 						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C",
 						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_RequestLogin.W_TerminalResponse_RequestLogin_C",
 						"Events": [],
-						"Command": {
+						"Command":
+						{
 							"Keyword": "",
 							"Aliases": [],
 							"CommandTag": "",
-							"Argument": {
+							"Argument":
+							{
 								"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Login",
 								"bPredictable": false,
 								"OnSuccessSequences": [],
@@ -607,8 +727,11 @@
 									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 									"Events": [],
-									"Text": {
-										"$text": "Successfully logged in as [{user}]."
+									"Text":
+									{
+										"$text": "Successfully logged in as [{user}].",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "AA4672204D5CA7F619AF6D86E228DBB5"
 									}
 								}
 							],
@@ -617,8 +740,11 @@
 									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
 									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 									"Events": [],
-									"Text": {
-										"$text": "Failed to login. Credentials do not match."
+									"Text":
+									{
+										"$text": "Failed to login. Credentials do not match.",
+										"$ns": "[D9005B52ACD7749023EA8B876287D10F]",
+										"$key": "8D760DE34A7589873DD79C82F9171205"
 									}
 								}
 							]
@@ -631,14 +757,18 @@
 				"Keyword": "read",
 				"Aliases": [],
 				"CommandTag": "Mission.Terminal.Commands.Read",
-				"Argument": {
+				"Argument":
+				{
 					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
 					"bPredictable": false,
 					"OnSuccessSequences": [],
 					"OnFailureSequences": [],
 					"Tag": "Mission.Terminal.Commands.Read",
-					"OnFailText": {
-						"$text": "Cannot read {file}."
+					"OnFailText":
+					{
+						"$text": "Cannot read {file}.",
+						"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+						"$key": "EB5CB3A1436BE1124946F1898100B4E4"
 					},
 					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
@@ -649,14 +779,18 @@
 				"Keyword": "run",
 				"Aliases": [],
 				"CommandTag": "Mission.Terminal.Commands.Run",
-				"Argument": {
+				"Argument":
+				{
 					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
 					"bPredictable": false,
 					"OnSuccessSequences": [],
 					"OnFailureSequences": [],
 					"Tag": "Mission.Terminal.Commands.Run",
-					"OnFailText": {
-						"$text": "Cannot run {file}."
+					"OnFailText":
+					{
+						"$text": "Cannot run {file}.",
+						"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+						"$key": "6B94279F441C174E48820EA01D22A278"
 					},
 					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
@@ -667,14 +801,18 @@
 				"Keyword": "scan",
 				"Aliases": [],
 				"CommandTag": "Mission.Terminal.Commands.Scan",
-				"Argument": {
+				"Argument":
+				{
 					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
 					"bPredictable": false,
 					"OnSuccessSequences": [],
 					"OnFailureSequences": [],
 					"Tag": "Mission.Terminal.Commands.Scan",
-					"OnFailText": {
-						"$text": "Cannot scan {file}."
+					"OnFailText":
+					{
+						"$text": "Cannot scan {file}.",
+						"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+						"$key": "471958A54D68216E33F271A6A66F6DED"
 					},
 					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
@@ -685,14 +823,18 @@
 				"Keyword": "download",
 				"Aliases": [],
 				"CommandTag": "Mission.Terminal.Commands.Download",
-				"Argument": {
+				"Argument":
+				{
 					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
 					"bPredictable": false,
 					"OnSuccessSequences": [],
 					"OnFailureSequences": [],
 					"Tag": "Mission.Terminal.Commands.Download",
-					"OnFailText": {
-						"$text": "Cannot download {file}."
+					"OnFailText":
+					{
+						"$text": "Cannot download {file}.",
+						"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+						"$key": "CF02C94D4F07C2AC031CA59A6E4D7AD8"
 					},
 					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
 				},
@@ -715,7 +857,8 @@
 								"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendWorldEvent",
 								"NetworkExecType": "Both",
 								"MessageTag": "Mission.Messages.Shutdown",
-								"Payload": {
+								"Payload":
+								{
 									"IntegerValue": 0,
 									"FloatValue": 0,
 									"BoolValue": true,
@@ -723,8 +866,11 @@
 								}
 							}
 						],
-						"Text": {
-							"$text": "Shutting down Port Node OSK-3...\r\nSession closed. Node secure."
+						"Text":
+						{
+							"$text": "Shutting down Port Node OSK-3...\r\nSession closed. Node secure.",
+							"$ns": "[2C9853E6E633F3D3F51C087FCE244600]",
+							"$key": "2E72DA6B469927F130ACAE91ACA35623"
 						}
 					}
 				],
@@ -734,7 +880,8 @@
 				"Keyword": "hack",
 				"Aliases": [],
 				"CommandTag": "Mission.Terminal.Commands.Hack",
-				"Argument": {
+				"Argument":
+				{
 					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Hack",
 					"bPredictable": false,
 					"OnSuccessSequences": [],
@@ -754,22 +901,26 @@
 				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
 				"Events": [],
 				"bUseInterruptReason": false,
-				"ReadyText": {
+				"ReadyText":
+				{
 					"$text": "Intrusion device {Device} connected. Battery {Battery}%. Estimated cost {Cost}%. Type \"hack\" to start.",
 					"$ns": "IRRTerminalHackStatus",
 					"$key": "Ready"
 				},
-				"NoDeviceText": {
+				"NoDeviceText":
+				{
 					"$text": "No intrusion device connected.",
 					"$ns": "IRRTerminalHackStatus",
 					"$key": "NoDevice"
 				},
-				"DepletedText": {
+				"DepletedText":
+				{
 					"$text": "Intrusion device {Device}: battery depleted ({Battery}%).",
 					"$ns": "IRRTerminalHackStatus",
 					"$key": "Depleted"
 				},
-				"NoDeviceRequiredText": {
+				"NoDeviceRequiredText":
+				{
 					"$text": ""
 				}
 			}
