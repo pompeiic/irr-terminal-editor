@@ -15,7 +15,7 @@
 			"$invariant": true
 		},
 		"GuidePrompt": {
-			"$text": "Type \"help\" for a list of available commands. Start with \"read Readme.txt\".",
+			"$text": "Type \"help\" for a list of available commands. This unit is provided for training purposes.   Unlike field terminals encountered in raid, the \"hack\" command requires no intrusion device here.",
 			"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
 			"$key": "4EAAEA94482C08F71D965C8007498308"
 		},
