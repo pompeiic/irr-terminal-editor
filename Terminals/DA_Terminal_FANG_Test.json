@@ -784,7 +784,7 @@
 						"Events": [],
 						"Text":
 						{
-							"$text": "Available commands:\r\n  help / ?            this list\r\n  dir / ls            list the current folder\r\n  cd <folder>         open a folder\r\n  pop / ..            back to the parent folder\r\n  login               sign in as another user\r\n  read <file>         print a document\r\n  scan <file>         analyse a file\r\n  download <file>     copy a file to your device\r\n  run <file>          start a program\r\n  hack                automatic intrusion\r\n  shutdown / exit     close the session",
+							"$text": "Available Commands:\r\n\r\n1. help / ? - Display available commands and their descriptions.\r\n2. dir / ls - Display all of the files and folders in the current directory.\r\n3. cd <directory> - Change directory.\r\n4. pop / .. - Go back to the previous directory.\r\n5. login - Enter new login credentials to change the user & permissions.\r\n6. read <file_id> - Read the content of a file.\r\n7. run <file_id> - Execute a program.\r\n8. scan <file_id> - Scan a file for hidden or classified content.\r\n9. download <file_id> - Download a file to your device.\r\n10. shutdown / exit - Shut down the terminal.\r\n11. hack - Start an automatic intrusion. Field terminals need a hacking device.\r\n\r\n**Additional help**\r\n\r\n> Use cd <directory> and dir to look around. Restricted directories need the right account or the right key.\r\n> A user list on the terminal shows who can log in. Not every credential is written down there.",
 							"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
 							"$key": "53D2399A4414F81480142BB0D81E5D0B"
 						}
