@@ -1,0 +1,758 @@
+{
+	"schemaSoftVersion": 1,
+	"schemaHardVersion": 1,
+	"asset": "",
+	"name": "DA_Terminal_UICS_Outskirts",
+	"sourceHash": "",
+	"data": {
+		"VersionInfo": {
+			"$text": "UICS Forward Node OSK-3 - Outskirts Security Cordon - Secure Access at uics-network.org"
+		},
+		"SystemArt": {
+			"$text": "\r\n██╗   ██╗██╗ ██████╗███████╗                                     \r\n██║   ██║██║██╔════╝██╔════╝                                     \r\n██║   ██║██║██║     ███████╗                                     \r\n██║   ██║██║██║     ╚════██║                                     \r\n╚██████╔╝██║╚██████╗███████║                                     \r\n ╚═════╝ ╚═╝ ╚═════╝╚══════╝                                     \r\n                                                                 \r\n████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗ █████╗ ██╗     \r\n╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔══██╗██║     \r\n   ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║███████║██║     \r\n   ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══██║██║     \r\n   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║██║  ██║███████╗\r\n   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝\r\n                                                                 ",
+			"$invariant": true
+		},
+		"GuidePrompt": {
+			"$text": "Type \"help\" for a list of available commands."
+		},
+		"bBootSequence": true,
+		"BootSequences": [
+			{
+				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+				"Events": [],
+				"Text": {
+					"$text": "Establishing secure uplink to UICS GridNet..."
+				}
+			},
+			{
+				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+				"Events": [],
+				"Delay": 1.5,
+				"Deviation": 0.01
+			},
+			{
+				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+				"Events": [],
+				"Text": {
+					"$text": "Uplink established via grain silo mast. Forward Node OSK-3 online."
+				}
+			}
+		],
+		"ErrorSequence": {
+			"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+			"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+			"Events": [],
+			"Text": {
+				"$text": "Error: Command \"{command}\" not recognized. Type \"help\" for a list of available commands."
+			}
+		},
+		"CharacterDelay": 0.005,
+		"ResponseDelay": 0.5,
+		"Users": [
+			{
+				"Tag": "Mission.Terminal.Users.Guest",
+				"Name": "Guest",
+				"Password": "accessUICS"
+			},
+			{
+				"Tag": "Mission.Terminal.Users.Quartermaster",
+				"Name": "Quartermaster",
+				"Password": "Depot#Ring12"
+			},
+			{
+				"Tag": "Mission.Terminal.Users.Admin",
+				"Name": "Admin",
+				"Password": "UICS@Outskirts-7"
+			}
+		],
+		"Directories": [
+			{
+				"MotherDirectoryName": "",
+				"DirectoryName": "sys",
+				"Requirements": [],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Readme.txt",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Read": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "# UICS FORWARD NODE OSK-3 – README\r\n\r\nYou are connected to Forward Node OSK-3, the UICS terminal serving the Outskirts Security Cordon (Sector 12, city perimeter).\r\n\r\nThis node coordinates checkpoint traffic, fuel and ration distribution, and patrol rotations between the rail yard, the water treatment plant and the residential blocks east of the ring road.\r\n\r\n## SYSTEM FUNCTIONS\r\n\r\n- **read** – Open and view a file's contents\r\n- **run** – Execute a terminal-compatible program\r\n- **scan** – Check a file for classification markers or hidden data\r\n- **download** – Copy a file from the node to your local device\r\n\r\nUse `help` at any time for the full command list.\r\n\r\n## CLEARANCE LEVELS\r\n\r\n- Guest: Bulletins and public notices only\r\n- Quartermaster: Logistics, fuel and supply records\r\n- Admin: Cordon command, patrol orders and node configuration\r\n\r\n## STANDING ORDERS\r\n\r\n- Credentials are personal. Rotations are logged against the account that issued them.\r\n- Encrypted intercept volumes open only with a matching Defense intel key. Do not attempt to brute-force them; the node reports every attempt to Sector Command.\r\n- If the node is compromised, run a full shutdown and fall back to Checkpoint Bravo.\r\n\r\nUICS — Order. Stability. Control.\r\n\r\n> END OF FILE"
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Users.txt",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Read": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "# OSK-3 Account Register (excerpt)\r\n\r\n- **Guest**\r\n  - Username: Guest\r\n  - Password: accessUICS\r\n  - Note: Public bulletins. No write access.\r\n\r\n- **Quartermaster**\r\n  - Username: Quartermaster\r\n  - Password: Depot#Ring12\r\n  - Note: Logistics directory. Fuel, rations, vehicle maintenance.\r\n\r\n- **Admin**\r\n  - Username: Admin\r\n  - Note: Credential withheld from this register by order of Sector Command (Directive 12-C). Contact the duty quartermaster for the current rotation."
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Checkpoint_Bulletin.txt",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Read": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "# CHECKPOINT BULLETIN – OUTSKIRTS CORDON\r\n\r\nEffective immediately:\r\n\r\n1. Curfew on the ring road runs 21:00–05:00. Civilian vehicles found inside the cordon after curfew are to be stopped and searched.\r\n2. Checkpoint Alpha (rail overpass) is reduced to one lane while the barrier is repaired. Expect queues.\r\n3. The water treatment plant is OFF LIMITS to all non-engineering personnel. Report any movement near the settling tanks.\r\n4. Abandoned vehicles on Kiln Street are NOT to be approached. Two were rigged last week.\r\n5. Ration distribution moves to the school gymnasium on Thursdays.\r\n\r\nStay sharp. The city is watching the cordon, and so is everyone else."
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Logistics",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [
+							{
+								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+								"Events": [],
+								"Text": {
+									"$text": "Access denied. {user} is not cleared for this directory.\r\nRequired clearance: Quartermaster."
+								}
+							}
+						],
+						"RequiredUserTag": "Mission.Terminal.Users.Quartermaster"
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Fuel_Manifest.csv",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Read": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "DEPOT,ITEM,QTY,UNIT,STATUS\r\nRing Road Depot,Diesel,4200,L,OK\r\nRing Road Depot,Petrol,900,L,LOW\r\nRing Road Depot,Ration Packs,1340,pcs,OK\r\nRail Yard Shed 4,Diesel,0,L,EMPTY – theft reported 03/11\r\nRail Yard Shed 4,Spare Tyres,18,pcs,OK\r\nWater Plant Store,Chlorine,60,kg,RESTRICTED\r\nWater Plant Store,Generator Parts,7,crates,AWAITING ESCORT\r\n\r\n> Shed 4 losses exceed tolerance for the third week. Recommend a night watch on the rail sidings."
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Maintenance_Log.txt",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Read": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "# VEHICLE & NODE MAINTENANCE LOG – OSK-3\r\n\r\n[02/11 06:40] Checkpoint Alpha barrier motor replaced. Hydraulics still leaking.\r\n[02/11 14:15] Patrol truck UICS-12-07 returned with a cracked radiator. Grounded.\r\n[03/11 09:02] Node OSK-3 rebooted after the power cut. Admin account reset by signals.\r\n              Temporary admin credential issued to the duty officer: Admin / UICS@Outskirts-7\r\n              REMINDER: rotate before the next inspection. (Still not rotated – QM)\r\n[04/11 18:30] Water plant generator running on its last filter. Parts at Water Plant Store.\r\n[05/11 07:55] Radio mast on the grain silo realigned. Signal to Sector Command restored."
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Programs",
+				"Requirements": [],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "SignalCheck.exe",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Run": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "Running SignalCheck v2.4..."
+										}
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 2,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "Uplink: Sector Command ........ OK (grain silo mast)\r\nRelay: Checkpoint Alpha ........ OK\r\nRelay: Checkpoint Bravo ........ WEAK (-87 dBm)\r\nRelay: Water Plant ............. NO RESPONSE\r\nLocal jamming detected on 412.5 MHz – source bearing 070°, rail yard direction.\r\n\r\nRecommendation: dispatch a patrol to the rail sidings."
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Command",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_IsCorrectUser.BP_TerminalDirectoryRequirement_IsCorrectUser_C",
+						"OnSuccessSequences": [],
+						"OnFailureSequences": [
+							{
+								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+								"Events": [],
+								"Text": {
+									"$text": "Access denied. {user} is not cleared for this directory.\r\nRequired clearance: Admin."
+								}
+							}
+						],
+						"RequiredUserTag": "Mission.Terminal.Users.Admin"
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Directive_12C.txt",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Read": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "# SECTOR COMMAND DIRECTIVE 12-C (COPY)\r\n\r\nThe Outskirts cordon is to be held at the ring road until relieved. Withdrawal from the residential blocks is NOT authorised.\r\n\r\nPatrol strength is raised to two squads per checkpoint during curfew. The rail yard is to be swept daily; any contact is reported directly to Sector Command, not over the open net.\r\n\r\nThe full perimeter plan is stored on this node. Do not print it, do not transmit it."
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Perimeter_Plan.zip",
+						"bAutoHack": true,
+						"Responses": {
+							"Mission.Terminal.Commands.Download": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "Initiating download of {r}..."
+										}
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 5,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Downloaded",
+												"TargetData": null,
+												"Payload": {
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "Perimeter_Plan.zip"
+												}
+											}
+										],
+										"Text": {
+											"$text": "Document Title: \"OUTSKIRTS – Perimeter Defense Plan\"\r\nDate: 2024-12-04\r\nClassification: Secret – Sector Command\r\n\r\nDocument successfully downloaded."
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Intercepts",
+				"Requirements": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/DirectoryRequirement/BP_TerminalDirectoryRequirement_HasItem.BP_TerminalDirectoryRequirement_HasItem_C",
+						"OnSuccessSequences": [
+							{
+								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+								"Events": [],
+								"Text": {
+									"$text": "Defense key A accepted. Encrypted volume mounted."
+								}
+							}
+						],
+						"OnFailureSequences": [
+							{
+								"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+								"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+								"Events": [],
+								"Text": {
+									"$text": "Encrypted volume. Insert Defense intel key A to mount it."
+								}
+							}
+						],
+						"Items": [
+							"Inventory.Items.Quest.Defense.Intel A"
+						],
+						"Container Indexes": []
+					}
+				],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Intercept_0711.zip",
+						"bAutoHack": true,
+						"Responses": {
+							"Mission.Terminal.Commands.Scan": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Game/Blueprints/MissionSystem/Objects/Events/BP_MissionEvent_TriggerReinforcement.BP_MissionEvent_TriggerReinforcement_C",
+												"NetworkExecType": "OnlyServer",
+												"Target Tag": "Terminal"
+											}
+										],
+										"Text": {
+											"$text": "Decrypting intercept volume...\r\nWarning: decryption traffic is visible on the cordon net."
+										}
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Loading.BP_TerminalSequence_Loading_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Loading.W_TerminalResponse_Loading_C",
+										"Events": [],
+										"Delay": 6,
+										"Deviation": 0.01
+									},
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [
+											{
+												"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendMissionEvent",
+												"NetworkExecType": "Both",
+												"MessageTag": "Mission.Messages.Scanned",
+												"TargetData": null,
+												"Payload": {
+													"IntegerValue": 0,
+													"FloatValue": 0,
+													"BoolValue": true,
+													"StringPayload": "Intercept_0711.zip"
+												}
+											}
+										],
+										"Text": {
+											"$text": "Document Title: \"INTERCEPT 0711 – Rail Yard Net\"\r\nDate: 2024-12-02\r\nClassification: Top Secret – Signals\r\n\r\nDecryption with Defense key A complete. Preview of recovered traffic:\r\n-----------------------------------------------------\r\n\"[02:14] SILO-1: Convoy holds at the overpass until the lights on the water plant go out.\r\n[02:15] YARD-3: Shed 4 is empty. We moved everything to the old kiln.\r\n[02:17] SILO-1: Good. Cordon changes shift at 05:00 – Bravo is thin then.\r\n[02:18] YARD-3: And the trucks on Kiln Street?\r\n[02:18] SILO-1: Leave them. Let the cordon keep guessing.\"\r\n-----------------------------------------------------\r\nAnalysis: hostile cell operating out of the rail yard, staging in the old kiln. Their spotter sits on the grain silo – the same mast this node uploads through.\r\n\r\nFull intercept secured for Sector Command."
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			},
+			{
+				"MotherDirectoryName": "sys",
+				"DirectoryName": "Archive",
+				"Requirements": [],
+				"Files": [
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Patrol_Roster_W44.txt",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Read": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "# PATROL ROSTER – WEEK 44 (ARCHIVED)\r\n\r\nCheckpoint Alpha .... Squad Kestrel (day) / Squad Heron (night)\r\nCheckpoint Bravo .... Squad Marten (day) / understrength (night)\r\nRail Yard sweep ..... Squad Kestrel, 10:00 daily\r\nWater Plant ......... Engineering detachment, escort on request\r\n\r\n> Squad Heron was reassigned to the Quarry on 29/10. Night shift at Alpha has run short since."
+										}
+									}
+								]
+							}
+						}
+					},
+					{
+						"$class": "/Script/IRRMissionSystem.IRRTerminalFile",
+						"Name": "Evacuation_Notice.txt",
+						"bAutoHack": false,
+						"Responses": {
+							"Mission.Terminal.Commands.Read": {
+								"Condition": [],
+								"Sequences": [
+									{
+										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+										"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+										"Events": [],
+										"Text": {
+											"$text": "# CIVIL NOTICE – EVACUATION ROUTES (ARCHIVED)\r\n\r\nResidents east of the ring road may leave the city through Checkpoint Alpha between 06:00 and 18:00 with a valid ration card.\r\n\r\nRoutes via the rail yard and the water treatment plant are CLOSED.\r\n\r\nThis notice was withdrawn on 01/11. Civilian departures are suspended until further notice."
+										}
+									}
+								]
+							}
+						}
+					}
+				]
+			}
+		],
+		"Commands": [
+			{
+				"Keyword": "help",
+				"Aliases": [
+					"?"
+				],
+				"CommandTag": "Mission.Terminal.Commands.Help",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [],
+						"Text": {
+							"$text": "Available Commands:\r\n\r\n1. help (?) - Display available commands and their descriptions.\r\n2. dir (ls) - Display all of the files and folders in the current directory.\r\n3. cd <directory> - Change directory.\r\n4. pop (..) - Go back to the previous directory.\r\n5. login - Enter new login credentials to change the user & permissions.\r\n6. read <file_id> - Read the content of a file.\r\n7. run <file_id> - Execute a program.\r\n8. scan <file_id> - Scan a file for hidden or classified content.\r\n9. download <file_id> - Download a file to your device.\r\n10. shutdown (exit) - Shut down the terminal.\r\n\r\n**Additional help**\r\n\r\n> Use cd <directory> and dir to look around. Restricted directories need the right account or the right key.\r\n> The account register in sys lists who can log in. Not every credential is written down there."
+						}
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "cd",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.ChangeDirectory",
+				"Argument": {
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_ChangeDirectory",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [
+						{
+							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+							"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+							"Events": [],
+							"Text": {
+								"$text": "No directory named \"{r}\" here."
+							}
+						}
+					]
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "pop",
+				"Aliases": [
+					".."
+				],
+				"CommandTag": "Mission.Terminal.Commands.GoBack",
+				"Argument": {
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_GoBack",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [
+						{
+							"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+							"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+							"Events": [],
+							"Text": {
+								"$text": "Already at the top directory."
+							}
+						}
+					]
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "dir",
+				"Aliases": [
+					"ls"
+				],
+				"CommandTag": "Mission.Terminal.Commands.Dir",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Dir.BP_TerminalSequence_Dir_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [],
+						"Text": {
+							"$text": "Directory {active}\r\n{directories} {files}\r\n"
+						}
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "login",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Login",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [],
+						"Text": {
+							"$text": "UICS Forward Node OSK-3\r\n\r\nAll sessions are logged and reviewed by Sector Command.\r\n\r\nSecurity Clearance Required"
+						}
+					},
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_RequestLogin.BP_TerminalSequence_RequestLogin_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_RequestLogin.W_TerminalResponse_RequestLogin_C",
+						"Events": [],
+						"Command": {
+							"Keyword": "",
+							"Aliases": [],
+							"CommandTag": "",
+							"Argument": {
+								"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Login",
+								"bPredictable": false,
+								"OnSuccessSequences": [],
+								"OnFailureSequences": []
+							},
+							"OnSuccessSequences": [
+								{
+									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+									"Events": [],
+									"Text": {
+										"$text": "Successfully logged in as [{user}]."
+									}
+								}
+							],
+							"OnFailSequences": [
+								{
+									"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+									"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+									"Events": [],
+									"Text": {
+										"$text": "Failed to login. Credentials do not match."
+									}
+								}
+							]
+						}
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "read",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Read",
+				"Argument": {
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Read",
+					"OnFailText": {
+						"$text": "Cannot read {file}."
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "run",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Run",
+				"Argument": {
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Run",
+					"OnFailText": {
+						"$text": "Cannot run {file}."
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "scan",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Scan",
+				"Argument": {
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Scan",
+					"OnFailText": {
+						"$text": "Cannot scan {file}."
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "download",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Download",
+				"Argument": {
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_FileCommand",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": [],
+					"Tag": "Mission.Terminal.Commands.Download",
+					"OnFailText": {
+						"$text": "Cannot download {file}."
+					},
+					"FailTextSequenceClass": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C"
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "shutdown",
+				"Aliases": [
+					"exit"
+				],
+				"CommandTag": "Mission.Terminal.Commands.Shutdown",
+				"Argument": null,
+				"OnSuccessSequences": [
+					{
+						"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+						"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+						"Events": [
+							{
+								"$class": "/Script/IRRMissionSystem.IRRMissionEvent_SendWorldEvent",
+								"NetworkExecType": "Both",
+								"MessageTag": "Mission.Messages.Shutdown",
+								"Payload": {
+									"IntegerValue": 0,
+									"FloatValue": 0,
+									"BoolValue": true,
+									"StringPayload": "Terminal"
+								}
+							}
+						],
+						"Text": {
+							"$text": "Shutting down Forward Node OSK-3...\r\nSession closed. Node secure."
+						}
+					}
+				],
+				"OnFailSequences": []
+			},
+			{
+				"Keyword": "hack",
+				"Aliases": [],
+				"CommandTag": "Mission.Terminal.Commands.Hack",
+				"Argument": {
+					"$class": "/Script/IRRMissionSystem.IRRTerminalArgument_Hack",
+					"bPredictable": false,
+					"OnSuccessSequences": [],
+					"OnFailureSequences": []
+				},
+				"OnSuccessSequences": [],
+				"OnFailSequences": []
+			}
+		],
+		"HackDelay": 0.5,
+		"RequiredHackDevice": "Inventory.Items.Quest.USB Drive",
+		"HackCommandCost": 2,
+		"HackBypassCost": 8,
+		"HackInterruptedSequences": [
+			{
+				"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_HackStatus.BP_TerminalSequence_HackStatus_C",
+				"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+				"Events": [],
+				"bUseInterruptReason": false,
+				"ReadyText": {
+					"$text": "Intrusion device {Device} connected. Battery {Battery}%. Estimated cost {Cost}%. Type \"hack\" to start.",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "Ready"
+				},
+				"NoDeviceText": {
+					"$text": "No intrusion device connected.",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "NoDevice"
+				},
+				"DepletedText": {
+					"$text": "Intrusion device {Device}: battery depleted ({Battery}%).",
+					"$ns": "IRRTerminalHackStatus",
+					"$key": "Depleted"
+				},
+				"NoDeviceRequiredText": {
+					"$text": ""
+				}
+			}
+		]
+	}
+}
