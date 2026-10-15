@@ -531,6 +531,17 @@
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/ResponseCondition/BP_TerminalResponseCondition_HasItem.BP_TerminalResponseCondition_HasItem_C",
 										"Items": [
 											"Inventory.Items.Quest.USB Drive"
+										],
+										"OnFailureSequences": [
+											{
+												"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
+												"Widget": "/Game/Blueprints/MissionSystem/UI/Terminal/Response/W_TerminalResponse_Text.W_TerminalResponse_Text_C",
+												"Events": [],
+												"Text":
+												{
+													"$text": "Encrypted.txt is locked (AES-256).\r\nNo decryption key found on this device. Insert the USB key and try again."
+												}
+											}
 										]
 									}
 								],
@@ -559,7 +570,7 @@
 										"Events": [],
 										"Text":
 										{
-											"$text": "Decrypted. Contents:\r\n\"If you can read this, the item condition works. - test\"",
+											"$text": "Decrypted. Contents:\r\n--------------------------------\r\nFANG // COURIER NOTE // EYES ONLY\r\nDrop moved. The old pump house is burned - every faction on the net has its grid ref now.\r\nNew drop: second culvert under the north road, marked with blue tape.\r\nBring the key back with you. Without it this note is just noise on the drive.\r\n--------------------------------",
 											"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
 											"$key": "2A75C4F54A4A067A39693F8A0F117AA4"
 										}
