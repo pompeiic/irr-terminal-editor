@@ -539,7 +539,7 @@
 												"Events": [],
 												"Text":
 												{
-													"$text": "Encrypted.txt is locked (AES-256).\r\nNo decryption key found on this device. Insert the USB key and try again."
+													"$text": "Encrypted.txt is encrypted.\r\nRequired item: USB Drive - not found in your inventory."
 												}
 											}
 										]
