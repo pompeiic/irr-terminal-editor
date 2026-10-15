@@ -745,6 +745,24 @@
 		{
 			"fields": [
 				{
+					"name": "OnFailureSequences",
+					"label": "On Failure Sequences",
+					"tooltip": "Played instead of the response when this condition fails; empty = the command's own failure output",
+					"category": "Setup",
+					"type":
+					{
+						"kind": "array",
+						"inner":
+						{
+							"kind": "instanced",
+							"base": "/Script/IRRMissionSystem.IRRTerminalSequence"
+						}
+					},
+					"meta":
+					{
+					}
+				},
+				{
 					"name": "Items",
 					"label": "Items",
 					"tooltip": "",
@@ -770,6 +788,7 @@
 			],
 			"defaults":
 			{
+				"OnFailureSequences": [],
 				"Items": []
 			}
 		},
