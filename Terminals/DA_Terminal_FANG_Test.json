@@ -3,7 +3,7 @@
 	"schemaHardVersion": 1,
 	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_FANG_Test.DA_Terminal_FANG_Test",
 	"name": "DA_Terminal_FANG_Test",
-	"sourceHash": "a1463464616da75ceb1b3ad1c77f944a",
+	"sourceHash": "2cb98f26d2851f8c7a0c5f9033c63de0",
 	"data":
 	{
 		"VersionInfo":
@@ -529,9 +529,6 @@
 								"Condition": [
 									{
 										"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/ResponseCondition/BP_TerminalResponseCondition_HasItem.BP_TerminalResponseCondition_HasItem_C",
-										"Items": [
-											"Inventory.Items.Quest.USB Drive"
-										],
 										"OnFailureSequences": [
 											{
 												"$class": "/Game/Blueprints/MissionSystem/Objects/Terminal/Sequences/BP_TerminalSequence_Text.BP_TerminalSequence_Text_C",
@@ -539,9 +536,14 @@
 												"Events": [],
 												"Text":
 												{
-													"$text": "Encrypted.txt is encrypted.\r\nRequired item: USB Drive - not found in your inventory."
+													"$text": "Encrypted.txt is encrypted.\r\nRequired item: USB Drive - not found in your inventory.",
+													"$ns": "[EDAC0B018CBE25972ECAB73CF773A6E0]",
+													"$key": "866CA5C3496FEC0C390DF59AD06425D6"
 												}
 											}
+										],
+										"Items": [
+											"Inventory.Items.Quest.USB Drive"
 										]
 									}
 								],
