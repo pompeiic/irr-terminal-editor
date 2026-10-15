@@ -3,7 +3,7 @@
 	"schemaHardVersion": 1,
 	"asset": "/Game/Blueprints/MissionSystem/DataAssets/Terminal/DA_Terminal_FANG_Test.DA_Terminal_FANG_Test",
 	"name": "DA_Terminal_FANG_Test",
-	"sourceHash": "be2978df00bb78c860dd87a371454da9",
+	"sourceHash": "a1463464616da75ceb1b3ad1c77f944a",
 	"data":
 	{
 		"VersionInfo":
@@ -603,7 +603,7 @@
 							}
 						],
 						"Items": [
-							"Inventory.Items.Quest.Defense.Intel D"
+							"Inventory.Items.Quest.Defense.Intel Fang"
 						],
 						"Container Indexes": []
 					}
